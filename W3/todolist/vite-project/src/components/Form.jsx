@@ -1,6 +1,6 @@
 import { BiMessageSquareAdd } from 'react-icons/bi';
 
-const Form = ({ setInputText, inputText, todos, setTodos }) => {
+const Form = ({ setInputText, inputText, todos, setTodos, setTab }) => {
   // 寫js 的地方
 
   const inputTextHandler = (event) => {
@@ -25,9 +25,11 @@ const Form = ({ setInputText, inputText, todos, setTodos }) => {
 
     setInputText('')
   }
-  const statusHandler = (event) => {
-    setLab(event.target.value)
+
+  const handleSelect = (event) => {
+    setTab(event.target.value)
   }
+
   return (
     <form>
       <input
@@ -46,7 +48,7 @@ const Form = ({ setInputText, inputText, todos, setTodos }) => {
       </button>
 
       <div className="select">
-        <select name="todos">
+        <select name="todos" onChange={handleSelect}>
           <option value="all">全部</option>
           <option value="completed">已完成</option>
           <option value="uncompleted">待完成</option>

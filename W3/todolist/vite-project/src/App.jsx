@@ -1,39 +1,40 @@
-import { useState,useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import './App.css'
 import Form from './components/Form'
 import TodoList from './components/TodoList'
 
 function App() {
   const [inputText, setInputText] = useState('')
-  const [lab, setLab] = useState('all')
+  const [tab, setTab] = useState('all')
   const [filterTodos, setFilterTodos] = useState([])
 
   const [todos, setTodos] = useState([
-    {completed : false, id: 1, text: '吃飯'},
-    {completed : false, id: 2, text: '睡覺'},
-    {completed : false, id: 3, text: '打咚咚'}
+    { text: '寫作業', completed: false, id: 1 },
+    { text: '閱讀', completed: false, id: 2 },
+    { text: '進修', completed: false, id: 3 },
   ])
+
   const handleFilter = () => {
-    switch (lab) {
+    switch (tab) {
       case 'completed':
-        setFilterTodos(todos.filter(todo => todo.completed === true))
+        setFilterTodos(todos.filter(todo => todo.completed))
         break
       case 'uncompleted':
-        setFilterTodos(todos.filter(todo => todo.completed === false))
+        setFilterTodos(todos.filter(todo => !todo.completed))
         break
       default:
         setFilterTodos(todos)
         break
     }
   }
+
   useEffect(() => {
     handleFilter()
-  }, [todos, lab])
-  
+  }, [tab, todos])
+
   return (
     <div className="App">
       <div className="container">
-
         <header>
           ToDoList
         </header>
@@ -43,14 +44,14 @@ function App() {
           setInputText={setInputText}
           todos={todos}
           setTodos={setTodos}
+          setTab={setTab}
         />
-        <TodoList
-          todos={todos}
-          setTodos={setTodos}
 
+        <TodoList
+          todos={filterTodos}
+          setTodos={setTodos}
         />
       </div>
-
     </div>
   )
 }

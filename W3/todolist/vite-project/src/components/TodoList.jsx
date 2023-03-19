@@ -18,8 +18,9 @@ const Todo = ({
       return item
     }))
   }
+
   const deleteTodo = () => {
-    setTodos(todos.filter(item => item.id !== todo.id))
+    setTodos(todos.filter(el => el.id !== todo.id))
   }
 
   return (
@@ -32,7 +33,6 @@ const Todo = ({
         <MdCheck />
       </button>
       <button className="trash-btn" onClick={deleteTodo}>
-
         <MdDeleteOutline />
       </button>
     </div>

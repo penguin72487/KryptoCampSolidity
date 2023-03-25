@@ -1,81 +1,42 @@
 @import url("https://fonts.googleapis.com/css2?family=Fira+Sans:wght@700&display=swap");
 
-html {
+html, body {
   height: 100%;
 }
 
 body {
   font-family: "Noto Sans TC";
-  width: 100%;
-  height: 100%;
-  
   margin: 0;
-  padding: 0;
-  
   background-image: linear-gradient(0deg, #D9AFD9 0%, #97D9E1 100%);
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-}
-
-:focus-visible {
-  outline: none;
-}
-
-.container {
-  padding-left: 15px;
-  padding-right: 15px;
-}
-
-ul {
-  list-style: none;
-}
-
-a {
-  text-decoration: none;
-  color: #333;
+  display: flex;
+  flex-direction: column;
 }
 
 header {
-  margin-top: 16px;
-  margin-bottom: 16px;
-
+  margin: 16px 0;
   font-size: 2.2rem;
   font-family: "Fira Sans", sans-serif;
   font-weight: bold;
   text-align: center;
-  width: 100%;
-  text-align: center;
 }
 
-input {
-  color: #9F9A91;
-  font-size: 16px;
-  line-height: 23px;
-  padding: 12px 16px;
-  border-radius: 6px;
-  border: 0;
-  background: #fff;
-
-  -webkit-box-shadow: 0px 0px 15px 0px #00000026;
-          box-shadow: 0px 0px 15px 0px #00000026;
-}
-
-
-form, .todo-container {
+.todo-container {
+  flex: 1;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-
-  width: 600px;
-  margin: 0 auto;
-  position: relative;
 }
 
 form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   margin-bottom: 20px;
 }
 
 .todo-input {
+  flex: 1;
   color: #9F9A91;
   font-size: 16px;
   line-height: 23px;
@@ -83,7 +44,6 @@ form {
   border-radius: 6px;
   border: 0;
   background: #fff;
-  width: 400px;
   margin-right: 1.5rem;
 }
 
@@ -92,13 +52,11 @@ form {
   background: transparent;
   border: 0;
   cursor: pointer;
-
-  position: absolute;
-  right: 17%;
-  transform: translate(-50%, 0);
+  border-radius: 6px;
+  position: relative;
   z-index: 1;
-
 }
+
 .todo-button svg {
   width: 24px;
   height: 24px;
@@ -108,26 +66,25 @@ form {
   color: #333;
 }
 
-.select select{
-  padding: 1rem;
-  cursor: pointer;
-  border-radius: 5px;
-  background-color: #ddd;
-  list-style: none;
-
+.select {
   width: 100%;
-  margin: 0;
-  padding: 15px;
+  max-width: 600px;
+  margin-bottom: 20px;
+}
+
+.select select {
+  padding: 12px 16px;
+  cursor: pointer;
+  border-radius: 6px;
   background-color: #fff;
+  border: none;
+  width: 100%;
 }
 
 .todo-list {
   display: flex;
-  justify-content: center;
   flex-direction: column;
-  width: 100%;
   align-items: center;
-
   margin: 0;
   padding: 0;
 }
@@ -139,8 +96,13 @@ form {
   margin-bottom: 15px;
 }
 
+/* ... 其他 CSS ... */
+
 .todo .todo-item {
-  color: #9F9A91;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #9f9a91;
   width: 400px;
   font-size: 16px;
   line-height: 23px;
@@ -150,24 +112,30 @@ form {
   border-radius: 6px;
   border: 0;
   background: #fff;
-
   color: #333;
   font-size: 24px;
 }
 
-.todo .todo-item.completed {
-  text-decoration: line-through;
-  opacity: 0.4;
+.todo .todo-item.overdue {
+  color: #ce4b4b; /* 紅色 */
 }
+.no-due-date {
+  color: black;
+}
+
 
 .complete-btn, .trash-btn {
   padding: 4px;
   background: transparent;
   border: 0;
   cursor: pointer;
-  
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-.complete-btn svg, .trash-btn svg{
+
+.complete-btn svg, .trash-btn svg {
   width: 24px;
   height: 24px;
   padding: 4px 12px;
@@ -175,10 +143,12 @@ form {
   border: 0;
   color: #fff;
 }
+
 .complete-btn {
-  background: #4dd94d;
+  background-color: #4dd94d;
 }
+
 .trash-btn {
-  background: #ce4b4b;
-  border-radius: 6px;
+  background-color: #ce4b4b;
+  margin-left: 10px;
 }

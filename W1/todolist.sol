@@ -11,28 +11,20 @@ contract TodoList {
     function moveTodoTOCompleted(uint256 index) external {
         string storage compeltedTodo = todos[index];
         todoCompleted.push(compeltedTodo);
-        todos[index] = todos[todos.length - 1];
-        delete todos[todos.length - 1];
-        todos.pop();
+        deleteTodo(index );
     }
         function getTodo(uint256 index) external view returns (string memory) {
         return todos[index];
     }
 
-    function deleteTodo(uint256 index) external {
-        delete todos[index];
+    function deleteTodo(uint256 index) public  {
+        todos[index] = todos[todos.length - 1];
+        todos.pop();
+
     }
 
     function getCompleted(uint256 index) external view returns (string memory) {
         return todoCompleted[index];
-    }
-
-    function getAllTodo() external view returns (string[] memory) {
-        return todos;
-    }
-
-    function getAllCompleted() external view returns (string[] memory) {
-        return todoCompleted;
     }
     function clearCompleted() external {
         for (uint256 i = 0; i < todoCompleted.length; i++) {
@@ -43,5 +35,13 @@ contract TodoList {
         }
        
     }
+    function getAllTodo() external view returns (string[] memory) {
+        return todos;
+    }
+
+    function getAllCompleted() external view returns (string[] memory) {
+        return todoCompleted;
+    }
+
 
 } 

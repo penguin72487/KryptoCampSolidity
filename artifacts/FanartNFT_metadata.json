@@ -1,6 +1,6 @@
 {
 	"compiler": {
-		"version": "0.8.18+commit.87f61d96"
+		"version": "0.8.19+commit.7dd6d404"
 	},
 	"language": "Solidity",
 	"output": {
@@ -527,7 +527,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"remix-backup-at-9h46min-2023-3-21\\workspaces\\KryptocampHW1todolist\\contracts\\erc721treap.sol": "FanartNFT"
+			"W1\\erc721treap.sol": "FanartNFT"
 		},
 		"evmVersion": "paris",
 		"libraries": {},
@@ -621,12 +621,12 @@
 				"dweb:/ipfs/Qmct36zWXv3j7LZB83uwbg7TXwnZSN1fqHNDZ93GG98bGz"
 			]
 		},
-		"remix-backup-at-9h46min-2023-3-21\\workspaces\\KryptocampHW1todolist\\contracts\\erc721treap.sol": {
-			"keccak256": "0xb0028978b4fed9b0cfd550c67c651a4f19aa1008255982c747f1d7449ae474b7",
+		"W1\\erc721treap.sol": {
+			"keccak256": "0x4782bee8d3ab2c80cbb16590fef06229c9cd7bdeef0b2a0b57152f361214383e",
 			"license": "GPL-3.0",
 			"urls": [
-				"bzz-raw://c4ef6d2f855c4300964747624785dd1ad90c217afd79f144ea2103fb9f79ae38",
-				"dweb:/ipfs/QmRD3ofURZd4zYb7yTDuzsUWmPqMSmy3yoDrA9tVJd4qng"
+				"bzz-raw://5c407399c872713127df06f50ff83ea753b78f1705ac8f8d31408255db894c7e",
+				"dweb:/ipfs/Qmepj1o9jYnXC6oBQtUwZSrFgKyHHPhUgoiAj1GE72dWiG"
 			]
 		}
 	},

@@ -77,7 +77,7 @@ contract FanartNFT is ERC721 {
     address public  creater;
     address[] public owner;
     uint256 public max_Supply=5;
-    uint256 public mintPrice = 0 ether;
+    uint256 public mintPrice = 1 ether;
    address[] public whitelist = [
     0x7A4D6c296B28460cda81Fb584234A15Fc105e182,
     0xB7Ef6435a61AAD311748AC5116C67e8d0888aD19,

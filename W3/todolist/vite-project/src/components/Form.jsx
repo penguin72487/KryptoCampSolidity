@@ -47,7 +47,7 @@ const Form = ({ setInputText, inputText, todos, setTodos, setTab }) => {
       <button type="submit" className="todo-button" onClick={submitTodo}>
         <BiMessageSquareAdd />
       </button>
-      y<div className="select">
+      <div className="select">
       <select name="todos" onChange={handleSelect}>
         <option value="all">全部</option>
         <option value="completed">已完成</option>

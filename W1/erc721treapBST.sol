@@ -1,6 +1,8 @@
 // SPDX-License-Identifier: GPL-3.0
 pragma solidity >=0.8.18 <0.9.0;
 import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
+import "@openzeppelin/contracts/utils/Strings.sol";
+
 
 
 contract treap {
@@ -33,6 +35,8 @@ contract treap {
         uint256 currentNode = root[0].right;
         uint256 _target = uint256(keccak256(abi.encodePacked(_whitelist_user)));
         while (currentNode != 0) {
+              emit LogMessage("Some message");
+
             if (root[currentNode].val == _target) {
                 return currentNode;
             }
@@ -65,6 +69,8 @@ contract treap {
         bytes32 blockHash = blockhash(block.number - 1);
         return uint256(blockHash);
     }
+    event LogMessage(string message);
+
 
 
 

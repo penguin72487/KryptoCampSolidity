@@ -24,51 +24,43 @@ function App() {
   
 
   const handleFilter = () => {
-    switch (tab) {
-      case 'completed':
-        setFilterTodos(todos.filter((todo) => todo.completed));
-        break;
-      case 'uncompleted':
-        setFilterTodos(
-          todos.filter((todo) => {
-            if (todo.completed) return false;
-            if (!todo.dueDate) return true;
-            const now = new Date();
-            const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
-            const dueDate = new Date(todo.dueDate);
-            return dueDate >= today;
-          })
-        );
-        break;
-      case 'dueToday':
-        setFilterTodos(
-          todos.filter(
-            (todo) =>
-              todo.dueDate &&
-              todo.dueDate.getDate() === new Date().getDate() &&
-              todo.dueDate.getMonth() === new Date().getMonth() &&
-              todo.dueDate.getFullYear() === new Date().getFullYear()
-          )
-        );
-        break;
-      case 'dueTomorrow':
-        const tomorrow = new Date();
-        tomorrow.setDate(tomorrow.getDate() + 1);
-        setFilterTodos(
-          todos.filter(
-            (todo) =>
-              todo.dueDate &&
-              todo.dueDate.getDate() === tomorrow.getDate() &&
-              todo.dueDate.getMonth() === tomorrow.getMonth() &&
-              todo.dueDate.getFullYear() === tomorrow.getFullYear()
-          )
-        );
-        break;
-      default:
-        setFilterTodos(todos);
-        break;
-    }
-  };
+  switch (tab) {
+    case 'completed':
+      setFilterTodos(todos.filter((todo) => todo.completed));
+      break;
+    case 'uncompleted':
+      setFilterTodos(todos.filter((todo) => !todo.completed));
+      break;
+    case 'dueToday':
+      setFilterTodos(
+        todos.filter(
+          (todo) =>
+            todo.dueDate &&
+            todo.dueDate.getDate() === new Date().getDate() &&
+            todo.dueDate.getMonth() === new Date().getMonth() &&
+            todo.dueDate.getFullYear() === new Date().getFullYear()
+        )
+      );
+      break;
+    case 'dueTomorrow':
+      const tomorrow = new Date();
+      tomorrow.setDate(tomorrow.getDate() + 1);
+      setFilterTodos(
+        todos.filter(
+          (todo) =>
+            todo.dueDate &&
+            todo.dueDate.getDate() === tomorrow.getDate() &&
+            todo.dueDate.getMonth() === tomorrow.getMonth() &&
+            todo.dueDate.getFullYear() === tomorrow.getFullYear()
+        )
+      );
+      break;
+    default:
+      setFilterTodos(todos);
+      break;
+  }
+};
+
   
 
   useEffect(() => {

@@ -26,11 +26,16 @@ const Todo = ({ todos, setTodos, text, todo }) => {
   };
 
   const checkOverdue = () => {
+    if (!todo.dueDate || isNaN(Date.parse(todo.dueDate))) {
+      setIsOverdue(false);
+      return;
+    }
     const now = new Date();
     const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
     const dueDate = new Date(todo.dueDate);
     setIsOverdue(dueDate < today);
   };
+  
 
   useEffect(() => {
     checkOverdue();
@@ -43,10 +48,13 @@ const Todo = ({ todos, setTodos, text, todo }) => {
         className={`todo-item ${
           todo.completed ? 'completed' : ''} ${
           isOverdue && todo.dueDate ? 'overdue' : ''}`}
-        style={{ opacity: todo.completed ? 0.5 : 1 }}
+        style={{
+          opacity: todo.completed ? 0.5 : 1,
+          textDecoration: todo.completed ? 'line-through' : 'none',
+        }}
       >
         {text}
-        {todo.dueDate && (
+        {todo.dueDate && !isNaN(Date.parse(todo.dueDate)) && (
           <span className="due-date">: {new Date(todo.dueDate).toDateString()}</span>
         )}
       </li>
@@ -59,6 +67,7 @@ const Todo = ({ todos, setTodos, text, todo }) => {
     </div>
   );
 };
+
   
 
 const TodoList = ({ todos, setTodos }) => {

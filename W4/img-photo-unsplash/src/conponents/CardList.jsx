@@ -1,4 +1,4 @@
-export default function CardList({ data }) {
+function CardList({ data }) {
   return (
     <div className="card-list">
       {data.map((item) => (
@@ -7,3 +7,5 @@ export default function CardList({ data }) {
     </div>
   )
 }
+
+export default CardList

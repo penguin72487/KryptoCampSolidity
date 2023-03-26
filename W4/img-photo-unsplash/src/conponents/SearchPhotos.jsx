@@ -1,4 +1,4 @@
-export default function SearchPhotos() {
+function SearchPhotos() {
   const [query, setQuery] = useState('')
   const [page, setPage] = useState(1)
   const [photos, setPhotos] = useState([])
@@ -65,3 +65,4 @@ export default function SearchPhotos() {
     </div>
   )
 }
+export default  SearchPhotos

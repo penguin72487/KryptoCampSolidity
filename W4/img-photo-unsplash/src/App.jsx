@@ -2,6 +2,8 @@ import { useState } from 'react'
 import './App.scss'
 import SearchPhotos from '@/components/SearchPhotos'
 import CardList from '@/components/CardList'
+import axios from 'axios' 
+const ACCESS_KEY = import.meta.env.VITE_ACCESS_KEY
 
 function App() {
   const [list, setList] = useState([])

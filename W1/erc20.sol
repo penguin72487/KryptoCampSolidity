@@ -18,4 +18,4 @@ contract testGaoDuckToken is ERC20{
     
 }
 
-//0xae6B0f75b55fa4c90b2768e3157b7000241A41c5
+//goerli 0xae6B0f75b55fa4c90b2768e3157b7000241A41c5

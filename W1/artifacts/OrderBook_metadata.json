@@ -135,11 +135,11 @@
 			]
 		},
 		"W1/orderbook.sol": {
-			"keccak256": "0x75b2b86a22e8c4e03bd55c70225c1bdaf953605b98ab18ba7aa30889f95487f4",
+			"keccak256": "0x9d1525cfd182c19fc6c05e0826f055abc91f8f475e443a2f22e90482d3ea9bbe",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://533f15b042473d76b11a653b7a944a8f406201885e6818f153e0a987b7625e3e",
-				"dweb:/ipfs/QmWisyCqjXdBo1kNQJjKBiQfEuhhRwDf3RtGAiULi7LxnW"
+				"bzz-raw://c4ed0114096fc47a4b3031a8c979059aadf4eea6b343d2465591d504ae90cb92",
+				"dweb:/ipfs/QmSLGYtYbhRmsDzoMjvzasV1GL13Rbw1DrbyJ1j5haGmx3"
 			]
 		}
 	},

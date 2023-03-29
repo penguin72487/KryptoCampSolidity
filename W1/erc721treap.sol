@@ -1,160 +1,138 @@
 // SPDX-License-Identifier: GPL-3.0
 pragma solidity >=0.8.18 <0.9.0;
 import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
+import "@openzeppelin/contracts/utils/Strings.sol";
 
-
-contract treap {
-
+contract Treap {
     struct Node {
         uint256 val;
         uint256 priority;
-        uint256 sum;
-        uint256 left; 
+        uint256 left;
         uint256 right;
     }
-    Node[] private root;
-    //uint256 size = 0;// count All node unless node0
+
+    Node[] public nodes;
+    uint256 private rootIndex;
+
     constructor() {
-        root.push(Node(uint256(keccak256(abi.encodePacked(address(0)))),MAX_INT, 
-        uint256(keccak256(abi.encodePacked(address(0),address(0),address(0)))), 0, 0));
-    }
-    function insert(address _whitelist_user) public{
-        
-        //size++;// for abs index
-        root.push(Node(uint256(keccak256(abi.encodePacked(_whitelist_user))),random(),0,0,0));
-        root[root.length - 1].sum = uint256(keccak256(abi.encodePacked(get_Sum(root[root.length - 1].left), root[root.length - 1].val, get_Sum(root[root.length - 1].right))));
-        root[0].right = merge(0, root.length);
-    }
-    // function new_Node(uint256 _val,uint256 _priority,uint256 _sum,uint256 _left,uint256 _right) public returns (Node storage){
-    //     root.push(Node(_val,_priority,_sum,_left,_right));
-    //     return root[root.length-1];
-
-       
-    // }
-    function remove(address _whitelist_user) public{
-        uint256 _target = uint256(keccak256(abi.encodePacked(_whitelist_user)));
-        (uint256 a, uint256 b) = splitByValue(root[0].right,_target);
-        (uint256 c, uint256 d) = splitByValue(b, _target);
-        (uint256 e, uint256 f) = splitByValue(d,root[root.length-1].val);
-        root[c] = root[e];
-        delete root[e];
-        root.pop();
-        root[0].right = merge(a, merge(c, f));
-    }
-    function modify(address exUser,address newUser) public{
-        uint256 _target = uint256(keccak256(abi.encodePacked(exUser)));
-        (uint256 a, uint256 b) = splitByValue(root[0].right,_target);
-        (uint256 c, uint256 d) = splitByValue(b, _target);
-        root[c].val = uint256(keccak256(abi.encodePacked(newUser)));
-        root[c].sum = uint256(keccak256(abi.encodePacked(get_Sum(root[c].left), root[c].val, get_Sum(root[c].right))));
-        root[0].right = merge(merge(a, c), d);
-    }
-    
-
-    function verify(address _whitelist_user) public returns (bool) {
-    uint256 _target = uint256(keccak256(abi.encodePacked(_whitelist_user)));
-    (uint256 a, uint256 b) = splitByValue(root[0].right,_target);
-    (uint256 c, uint256 d) = splitByValue(b, _target);
-    if(c==0) {
-        root[0].right = merge(merge(a, c), d);
-        return false;
-    } else {
-        root[0].right = merge(merge(a, c), d);
-        return true;
-    }
+        nodes.push(Node(0, MAX_INT, 0, 0));
+        rootIndex = 0;
     }
 
-    function userExists(uint256 _target) internal view returns (bool) {
-    uint256 currentNode = root[0].right;
-    while (currentNode != 0) {
-        if (root[currentNode].val == _target) {
-            return true;
+    function insert(adress ) public {
+        rootIndex = _insert(rootIndex,node(uint256))
+    }
+
+    function erase(uint256 v) public {
+        rootIndex = _erase(rootIndex, v);
+    }
+
+    function _leftRotate(uint256 t) private pure returns (uint256) {
+        uint256 tmp = nodes[t].right;
+        nodes[t].right = nodes[tmp].left;
+        nodes[tmp].left = t;
+        return tmp;
+    }
+
+    function _rightRotate(uint256 t) private pure returns (uint256) {
+        uint256 tmp = nodes[t].left;
+        nodes[t].left = nodes[tmp].right;
+        nodes[tmp].right = t;
+        return tmp;
+    }
+
+    function _insert(uint256 nowIndex, Node memory t) private returns (uint256) {
+        if (nowIndex == 0) {
+            nodes.push(t);
+            return nodes.length - 1;
         }
-        if (_target < root[currentNode].val) {
-            currentNode = root[currentNode].left;
+        if (nodes[nowIndex].val < t.val) {
+            nodes[nowIndex].right = _insert(nodes[nowIndex].right, t);
+            if (nodes[nowIndex].priority < nodes[nodes[nowIndex].right].priority) {
+                nowIndex = _leftRotate(nowIndex);
+            }
         } else {
-            currentNode = root[currentNode].right;
+            nodes[nowIndex].left = _insert(nodes[nowIndex].left, t);
+            if (nodes[nowIndex].priority < nodes[nodes[nowIndex].left].priority) {
+                nowIndex = _rightRotate(nowIndex);
+            }
+        }
+        return nowIndex;
+    }
+
+    function _erase(uint256 nowIndex, uint256 v) private returns (uint256) {
+        if (nowIndex == 0) {
+            return 0;
+        }
+        if (nodes[nowIndex].val == v) {
+            uint256 ret = _merge(nodes[nowIndex].left, nodes[nowIndex].right);
+            uint256 lastIndex = nodes.length - 1;
+
+            if (nowIndex != lastIndex) {
+                nodes[nowIndex] = nodes[lastIndex];
+
+                uint256 parentIndex = _findParent(lastIndex);
+                if (nodes[parentIndex].left == lastIndex) {
+                    nodes[parentIndex].left = nowIndex;
+                } else {
+                    nodes[parentIndex].right = nowIndex;
+                }
+
+                if (nodes[nowIndex].left != 0) {
+                    uint256 leftChildIndex = nodes[nowIndex].left;
+                    nodes[leftChildIndex].left = nowIndex;
+                }
+                if (nodes[nowIndex].right != 0) {
+                    uint256 rightChildIndex = nodes[nowIndex].right;
+                    nodes[rightChildIndex].right = nowIndex;
+                }
+            }
+
+            nodes.pop();
+            return ret;
+        } else if (nodes[nowIndex].val < v) {
+            nodes[nowIndex].right = _erase(nodes[nowIndex].right, v);
+        } else {
+                        nodes[nowIndex].left = _erase(nodes[nowIndex].left, v);
+        }
+        return nowIndex;
+    }
+
+    function _merge(uint256 left, uint256 right) private pure returns (uint256) {
+        if (left == 0 || right == 0) {
+            return left == 0 ? right : left;
+        }
+        if (nodes[left].priority > nodes[right].priority) {
+            nodes[left].right = _merge(nodes[left].right, right);
+            return left;
+        } else {
+            nodes[right].left = _merge(left, nodes[right].left);
+            return right;
         }
     }
-    return false;
+
+    function _findParent(uint256 index) private view returns (uint256) {
+        uint256 parentIndex = 0;
+        uint256 currentNodeIndex = rootIndex;
+
+        while (currentNodeIndex != index && currentNodeIndex != 0) {
+            parentIndex = currentNodeIndex;
+
+            if (nodes[currentNodeIndex].val < nodes[index].val) {
+                currentNodeIndex = nodes[currentNodeIndex].right;
+            } else {
+                currentNodeIndex = nodes[currentNodeIndex].left;
+            }
+        }
+
+        return parentIndex;
     }
-
-
-
-
-
-
-
-    
-
-
-    function get_Sum(uint256 _now) internal view returns (uint256){
-        return _now!=0 ?root[_now].sum:keccak0;
-    }
-    function pull(uint256 _now) internal {
-        if(_now!=0){
-            root[_now].sum = uint256(keccak256(abi.encodePacked(get_Sum(root[_now].left),root[_now].val,get_Sum(root[_now].right))));
-        }
-    }
-    function merge(uint256 a, uint256 b) internal returns (uint256) {
-        if(a==0||b==0) 
-        {
-            return a!=0?a:b;
-        }
-        if(root[a].priority > root[b].priority){
-            root[a].right = merge(root[a].right, b);
-            pull(a);
-            return a;
-        }
-        else{
-            root[b].left = merge(a, root[b].left);
-            pull(b);
-            return b;
-        }
-    }
-    function splitByValue(uint256 _now, uint256 _val) internal returns (uint256, uint256) { // for modify one point
-        if(_now==0) return (0,0);
-        if(root[_now].val<=_val){
-            (uint256 a, uint256 b) = splitByValue(root[_now].right, _val);
-            root[_now].right = a;
-            pull(_now);
-            return (_now, b);
-        }
-        else{
-            (uint256 a, uint256 b) = splitByValue(root[_now].left, _val);
-            root[_now].left = b;
-            pull(_now);
-            return (a, _now);
-        }
-    }
-    // function splitBySize(uint256 _now, uint256 _size) public returns (uint256, uint256) { // for range query
-    //     if(_now==0) return (0,0);
-    //     if(get_Size(root[_now].left)+1>=_size){ //  +1????
-    //         (uint256 a, uint256 b) = splitBySize(root[_now].left, _size);
-    //         root[_now].left = b;
-    //         pull(_now);
-    //         return (a, _now);
-    //     }
-    //     else{
-    //         (uint256 a, uint256 b) = splitBySize(root[_now].right, _size-get_Size(root[_now].left)-1);
-    //         root[_now].right = a;
-    //         pull(_now);
-    //         return (_now, b);
-    //     }
-    // }
-
     uint256 MAX_INT = 0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff;
     uint256 keccak0 = uint256(keccak256(abi.encodePacked(address(0))));
-    function random() public view returns (uint256) {
-        bytes32 blockHash = blockhash(block.number - 1);
-        return uint256(blockHash);
+    function random() internal view returns (uint256) {
+        return uint256(keccak256(abi.encodePacked(block.timestamp, block.difficulty, msg.sender))) % MAX_INT;
     }
-
-
-
-
 }
-
 
 contract FanartNFT is ERC721 {
     uint256 public totle_Supply = 0;

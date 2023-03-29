@@ -2,82 +2,7 @@
 pragma solidity >=0.8.18 <0.9.0;
 import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 import "@openzeppelin/contracts/utils/Strings.sol";
-
-
-
-contract treap {
-
-    struct Node {
-        uint256 val;
-        uint256 priority;
-        uint256 left; 
-        uint256 right;
-    }
-    Node[] private root;
-    //uint256 size = 0;// count All node unless node0
-    constructor() {
-        root.push(Node(uint256(keccak256(abi.encodePacked(address(0)))),MAX_INT, 0, 0));
-    }
-    function insert(address _whitelist_user) public{
-        
-        //size++;// for abs index
-        root.push(Node(uint256(keccak256(abi.encodePacked(_whitelist_user))),random(),0,0));
-        root[0].right = merge(0, root.length);
-    }
-    function remove(address _whitelist_user) public{
-        uint256 removeTarge =getUserIndex(_whitelist_user);
-        root[removeTarge] = root[root.length-1];
-        root[0].right = merge(root[0].right, merge(removeTarge,merge(root[removeTarge].left,merge(root[removeTarge].right,merge(root[root.length-1].left,root[root.length-1].right)))));
-        delete root[root.length-1];
-        root.pop();
-    }
-    function getUserIndex(address _whitelist_user) internal view returns (uint256 index) {
-        uint256 currentNode = root[0].right;
-        uint256 _target = uint256(keccak256(abi.encodePacked(_whitelist_user)));
-        while (currentNode != 0) {
-              emit LogMessage("Some message");
-
-            if (root[currentNode].val == _target) {
-                return currentNode;
-            }
-            if (_target < root[currentNode].val) {
-                currentNode = root[currentNode].left;
-            } else {
-                currentNode = root[currentNode].right;
-            }
-        }
-        return currentNode;
-    }
-    function verify(address _whitelist_user) public view returns (bool) {
-        return getUserIndex(_whitelist_user) != 0;
-    }
-    function merge(uint256 a, uint256 b) public returns (uint256) {
-        if (a == 0) return b;
-        if (b == 0) return a;
-        if (root[a].priority > root[b].priority) {
-            root[a].right = merge(root[a].right, b);
-            return a;
-        } else {
-            root[b].left = merge(a, root[b].left);
-            return b;
-        }
-    }
-
-    uint256 MAX_INT = 0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff;
-    uint256 keccak0 = uint256(keccak256(abi.encodePacked(address(0))));
-    function random() public view returns (uint256) {
-        bytes32 blockHash = blockhash(block.number - 1);
-        return uint256(blockHash);
-    }
-    event LogMessage(string message);
-
-
-
-
-
-}
-
-
+import "./treap.sol";
 contract FanartNFT is ERC721 {
     uint256 public totle_Supply = 0;
     address public  creater;
@@ -140,6 +65,9 @@ contract FanartNFT is ERC721 {
         else {
             return address(0);
         }
+    }
+    function print() public view returns (uint256[] memory) {
+        return treap_Whitelist.print();
     }
     function withdraw() public {
         require(msg.sender == creater, "Only the contract creator can call this function");

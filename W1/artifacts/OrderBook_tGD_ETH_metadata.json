@@ -14,12 +14,25 @@
 				"inputs": [
 					{
 						"internalType": "uint256",
-						"name": "amount",
+						"name": "_amount",
 						"type": "uint256"
 					},
 					{
 						"internalType": "uint256",
 						"name": "price",
+						"type": "uint256"
+					}
+				],
+				"name": "buyOrder",
+				"outputs": [],
+				"stateMutability": "payable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_amount",
 						"type": "uint256"
 					}
 				],
@@ -43,8 +56,64 @@
 			},
 			{
 				"inputs": [],
+				"name": "getBuyTop",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
 				"name": "getSellPrice",
 				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getSellTop",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					},
 					{
 						"internalType": "uint256",
 						"name": "",
@@ -58,7 +127,20 @@
 				"inputs": [
 					{
 						"internalType": "uint256",
-						"name": "amount",
+						"name": "_amount",
+						"type": "uint256"
+					}
+				],
+				"name": "sellOrder",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_amount",
 						"type": "uint256"
 					},
 					{
@@ -117,11 +199,11 @@
 			]
 		},
 		"W1/orderbook.sol": {
-			"keccak256": "0x2c669c288b3d751db7a4584fbb9188315f0fa26c3d81b8f5ea5b02b85374799a",
+			"keccak256": "0x6603f15d257ab505c1ad82963687d461fc1cd41ffaf6e9a13831c51cf9dc1c95",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://79a03e8ed5cf35c9f9b61dedcf151ea5af5d07cdc2e5cf4759594b2c5b1e6db8",
-				"dweb:/ipfs/QmSGfYdns73aLbZPtXeBLNRRdKieQBcBbiT2uyQnzxwX49"
+				"bzz-raw://8194ae908e75e889bb8a1b9d4766f4631ad87a37b801ddf8f0ef3d14d9ce01f2",
+				"dweb:/ipfs/QmTx1uEYRidqwJuGFYoGasnKBqKbLj8WTCAkf2Q1yDFYYx"
 			]
 		}
 	},

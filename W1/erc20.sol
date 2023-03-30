@@ -19,3 +19,5 @@ contract testGaoDuckToken is ERC20{
 }
 
 //goerli 0xae6B0f75b55fa4c90b2768e3157b7000241A41c5
+// VM merge 0xa9d281dA3B02DF2ffc8A1955c45d801B5726661D
+

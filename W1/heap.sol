@@ -13,7 +13,7 @@ contract MinHeap {
     Order[] private heap;
 
     constructor() {
-        heap.push(Order(address(0), 0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff, 0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff, 0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff));
+        heap.push(Order(address(0), type(uint256).max, type(uint256).max, type(uint256).max));
     }
     
     function push (Order memory o) public {
@@ -98,7 +98,7 @@ contract MaxHeap{
     }
     Order[] private heap;
     constructor() {
-        heap.push(Order(address(0), 0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff, 1, 0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff));
+        heap.push(Order(address(0), type(uint256).max, 1, type(uint256).max));
     }
     function push (Order memory o) public {
         heap.push(o);

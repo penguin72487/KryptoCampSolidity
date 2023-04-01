@@ -2,14 +2,16 @@
 //ERC20 0xa131AD247055FD2e2aA8b156A11bdEc81b9eAD95
 pragma solidity ^0.8.19;
 import "./heap.sol";
+import "./erc20.sol";
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
-contract OrderBook_tGD_ETH {   // sell tGD get ETH buy tGD pay ETH
+contract OrderBook_ERC20_ETH {   // sell tGD get ETH buy tGD pay ETH
     //enum OrderType { Buy, Sell }
     MaxHeap private buyHeap;
     MinHeap private sellHeap;
-
-    IERC20 tGD = IERC20(0xa131AD247055FD2e2aA8b156A11bdEc81b9eAD95);
-    constructor() {
+    //IERC20(0xa131AD247055FD2e2aA8b156A11bdEc81b9eAD95);
+    IERC20 tGD;
+    constructor(IERC20 _tGD) {
+        tGD = _tGD;
         buyHeap = new MaxHeap();
         sellHeap = new MinHeap();
     }
@@ -103,8 +105,7 @@ contract OrderBook_tGD_ETH {   // sell tGD get ETH buy tGD pay ETH
     function sellOrder(uint256 _amount, uint256 price) public {
         uint256 amount = _amount;
         tGD.approve(msg.sender, amount);
-        require(tGD.balanceOf(msg.sender) >= _amount);  
-
+        require(tGD.balanceOf(msg.sender) >= _amount, string(abi.encodePacked(addressToString(msg.sender), " not enough token")));
         if(sellHeap.top().price <= price) {
             tGD.transferFrom(msg.sender, address(this), _amount);
             sellHeap.push(MinHeap.Order(msg.sender, amount, price, block.timestamp));
@@ -138,5 +139,20 @@ contract OrderBook_tGD_ETH {   // sell tGD get ETH buy tGD pay ETH
             sellHeap.push(MinHeap.Order(msg.sender, amount, price, block.timestamp));
         }
     }
+    function addressToString(address _address) internal pure returns (string memory) {
+        bytes32 result = bytes32(uint256(uint160(_address)));
+        bytes memory alphabet = "0123456789abcdef";
+
+        bytes memory str = new bytes(42);
+        str[0] = "0";
+        str[1] = "x";
+        for (uint256 i = 0; i < 20; i++) {
+            str[2 + i * 2] = alphabet[uint8(result[i + 12] >> 4)];
+            str[3 + i * 2] = alphabet[uint8(result[i + 12] & 0x0f)];
+        }
+        return string(str);
+    }
+
+
     
 }

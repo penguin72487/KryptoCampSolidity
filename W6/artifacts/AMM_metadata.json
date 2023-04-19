@@ -182,6 +182,25 @@
 				"type": "function"
 			},
 			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_amountIn",
+						"type": "uint256"
+					}
+				],
+				"name": "swapTokenForETH",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "amountOut",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
 				"inputs": [],
 				"name": "token",
 				"outputs": [
@@ -276,11 +295,11 @@
 			]
 		},
 		"W6/simpleamm.sol": {
-			"keccak256": "0x4a939904f2041dcbdd9bd8820851fd66082efda99e25d5bd348aa61d165df8e4",
+			"keccak256": "0x3c58b6bbe62d1a32548bdb7d63a30acf39c3ce2d96ebf434b3c2f6991c549256",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://24373e7490e2b91950a36aab5d228c1877a6a80f5a89acee61afcf77047aeb42",
-				"dweb:/ipfs/QmWgHRAiXqq2EEGSRadUv3H575ax1T6dd3rUqGY4nCgHHB"
+				"bzz-raw://d64763d9017cac96efd323d8520433dbf1a9db30ae053d2349fb677d96a59235",
+				"dweb:/ipfs/Qmafv3JtpYtJZkCysJ5T1XkfZZ9osUEMv2aUdhueDFJM94"
 			]
 		}
 	},

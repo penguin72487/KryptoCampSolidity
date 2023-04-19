@@ -3,6 +3,7 @@ pragma solidity ^0.8.17;
 //goerli 0xae6B0f75b55fa4c90b2768e3157b7000241A41c5
 // V1 0xf60440f93a677AB6968E1Fd10cf8a6cE61941131
 // V2 0x8b175c421E9307F0365dd37bc32Dda5df95C4946
+// V3 0x3ea585565c490232b0379C7D3C3A9fC3fA5C9c0C
 import "./erc20.sol";
 contract AMM {
     IERC20 public immutable token;
@@ -42,6 +43,17 @@ contract AMM {
         token.transfer(msg.sender, amountOut);
 
         _update(address(this).balance, token.balanceOf(address(this)));
+    }
+    function swapTokenForETH(uint256 _amountIn) external returns (uint256 amountOut) {
+        uint256 amountInWithFee = (_amountIn * 997) / 1000;
+
+        amountOut = (reserve0 * amountInWithFee) / (reserve1 + amountInWithFee);
+        require(amountOut > 0, "Insufficient output amount");
+
+        token.transferFrom(msg.sender, address(this), _amountIn);
+        payable(msg.sender).transfer(amountOut);
+
+        _update(address(this).balance - amountOut, token.balanceOf(address(this)));
     }
 
     function addLiquidity(uint256 _amount1) external payable returns (uint256 shares) {

@@ -1,6 +1,9 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.17;
 //goerli 0xae6B0f75b55fa4c90b2768e3157b7000241A41c5
+// V1 0xf60440f93a677AB6968E1Fd10cf8a6cE61941131
+// V2 0x8b175c421E9307F0365dd37bc32Dda5df95C4946
+import "./erc20.sol";
 contract AMM {
     IERC20 public immutable token;
     address public constant ETH_ADDRESS = address(0);
@@ -92,25 +95,34 @@ contract AMM {
     function _min(uint256 x, uint256 y) private pure returns (uint256) {
         return x <= y ? x : y;
     }
+    function getETHPrice() public view returns (uint256) {
+    require(reserve0 + reserve1 > 0, "Invalid reserves");
+    return (reserve1 * 1 ether) / reserve0;
+    }
+    function getERCPrice() public view returns (uint256) {
+    require(reserve0 + reserve1 > 0, "Invalid reserves");
+    return (reserve0 * 1 ether) / reserve1;
+    }
+
 
 }
-interface IERC20 {
-    function totalSupply() external view returns (uint256);
+// interface IERC20 {
+//     function totalSupply() external view returns (uint256);
 
-    function balanceOf(address account) external view returns (uint256);
+//     function balanceOf(address account) external view returns (uint256);
 
-    function transfer(address recipient, uint256 amount) external returns (bool);
+//     function transfer(address recipient, uint256 amount) external returns (bool);
 
-    function allowance(address owner, address spender) external view returns (uint256);
+//     function allowance(address owner, address spender) external view returns (uint256);
 
-    function approve(address spender, uint256 amount) external returns (bool);
+//     function approve(address spender, uint256 amount) external returns (bool);
 
-    function transferFrom(
-        address sender,
-        address recipient,
-        uint256 amount
-    ) external returns (bool);
+//     function transferFrom(
+//         address sender,
+//         address recipient,
+//         uint256 amount
+//     ) external returns (bool);
 
-    event Transfer(address indexed from, address indexed to, uint256 amount);
-    event Approval(address indexed owner, address indexed spender, uint256 amount);
-}
+//     event Transfer(address indexed from, address indexed to, uint256 amount);
+//     event Approval(address indexed owner, address indexed spender, uint256 amount);
+// }

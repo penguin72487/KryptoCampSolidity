@@ -217,11 +217,11 @@
 	},
 	"sources": {
 		"W6/simpleamm.sol": {
-			"keccak256": "0x320d3f4ec003d29544d3d5e0999410ba4bd3a14e118e41dbdf15d730aa67a570",
+			"keccak256": "0x0a4cc21c53541e43ba81cad247a16c3ec4dddd8108e9f5c1beea71a5fecfa6e9",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://ff781bd9378bf9cb5e7b9013e0ce930cf76f75e35bc37793c5c774937f2c3f5d",
-				"dweb:/ipfs/QmScmHU9A77x6rh6wM5rF5RSU54KE3qBXFEVo8AP22sPda"
+				"bzz-raw://21c632721b1ab44495d8f315df52d401f40dd89511d3617fef8c3da0deed157d",
+				"dweb:/ipfs/QmRVXfamgQi9ykyY9TuvgdqeTqYWhJoYaFwZUwLEMH6hUX"
 			]
 		}
 	},

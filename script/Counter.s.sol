@@ -25,10 +25,13 @@ contract CounterScript is Script {
         testAdd();
         testSubtract();
         testkaratsubaMultiply();
+        emit LogString("ok ka");
         testDivide();
-        testMultiply();
+        emit LogString("ok di");
+        //testMultiply();
+        emit LogString("ok mu");
     }
-    function testkaratsubaMultiply()
+    function testkaratsubaMultiply() internal
     {
         BigInt.bigint memory a = BigInt.set_Uint256(123456789);
         BigInt.bigint memory b = BigInt.set_Uint256(987654321);

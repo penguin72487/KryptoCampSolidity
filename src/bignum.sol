@@ -6,37 +6,40 @@ library BigInt {
         uint256[] limbs;
     }
 
-        function add(bigint memory a, bigint memory b) internal pure returns (bigint memory) {
-        uint256 length = max(a.limbs.length, b.limbs.length);
+    function add(bigint memory a, bigint memory b) internal pure returns (bigint memory) {
+    uint256 length = max(a.limbs.length, b.limbs.length);
 
-        bigint memory result;
-        result.limbs = new uint256[](length);
+    bigint memory result;
+    result.limbs = new uint256[](length);
 
-        uint256 carry = 0;
-        for (uint256 i = 0; i < length; i++) {
-            uint256 sum = carry;
-            if (i < a.limbs.length) {
-                sum += a.limbs[i];
-            }
-            if (i < b.limbs.length) {
-                sum += b.limbs[i];
-            }
+    uint256 carry = 0;
+    for (uint256 i = 0; i < length; i++) {
+        uint256 sum = carry;
+        if (i < a.limbs.length) {
+            sum += a.limbs[i];
+        }
+        if (i < b.limbs.length) {
+            sum += b.limbs[i];
+        }
 
+        if (i < result.limbs.length) {
             result.limbs[i] = sum % (2**128);
             carry = sum / (2**128);
         }
-
-        if (carry != 0) {
-            uint256[] memory newLimbs = new uint256[](length + 1);
-            for (uint256 i = 0; i < length; i++) {
-                newLimbs[i] = result.limbs[i];
-            }
-            newLimbs[length] = carry;
-            result.limbs = newLimbs;
-        }
-
-        return result;
     }
+
+    if (carry != 0) {
+        uint256[] memory newLimbs = new uint256[](length + 1);
+        for (uint256 i = 0; i < length; i++) {
+            newLimbs[i] = result.limbs[i];
+        }
+        newLimbs[length] = carry;
+        result.limbs = newLimbs;
+    }
+
+    return result;
+}
+
 
     function subtract(bigint memory a, bigint memory b) internal pure returns (bigint memory) {
         require(a.limbs.length >= b.limbs.length, "Subtraction result would be negative");
@@ -307,30 +310,4 @@ function slice(bigint memory a, uint256 start, uint256 end) internal pure return
     result.limbs[0] = remainder;
     return result;
 }
-}
-
-contract BigIntCalculator {
-    using BigInt for BigInt.bigint;
-    constructor() {
-        // BigInt.bigint memory a = BigInt.set_Uint256(0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff);
-        // BigInt.bigint memory b = BigInt.set_Uint256(0xffffffffffffffffffffffffffffffffff);
-        // BigInt.bigint memory c = a.add(b);
-        // BigInt.bigint memory d = a.multiply(b);
-    }
-    function set_Uint256(uint256 a) external pure returns (BigInt.bigint memory) {
-        return BigInt.set_Uint256(a);
-    }
-    function add(BigInt.bigint calldata a, BigInt.bigint calldata b) external pure returns (BigInt.bigint memory) {
-        return a.add(b);
-    }
-
-    function multiply(BigInt.bigint calldata a, BigInt.bigint calldata b) external pure returns (BigInt.bigint memory) {
-        return a.multiply(b);
-    }
-    function subtract(BigInt.bigint calldata a, BigInt.bigint calldata b) external pure returns (BigInt.bigint memory) {
-        return a.subtract(b);
-    }
-    function divide(BigInt.bigint calldata a, BigInt.bigint calldata b) external pure returns (BigInt.bigint memory) {
-        return a.divide(b);
-    }
 }

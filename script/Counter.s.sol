@@ -14,23 +14,37 @@ contract CounterScript is Script {
     event LogString(BigInt.bigint);
     event LogString(string);
 
-    BigIntCalculator public calculator;
-
     constructor() {
     }
 
     function setUp() public {}
 
     function run() public {
-        testAdd();
-        testSubtract();
+        //testAdd();
+        //testSubtract();
         testkaratsubaMultiply();
-        emit LogString("ok ka");
-        testDivide();
-        emit LogString("ok di");
+        //emit LogString("ok ka");
+        //testDivide();
+        //emit LogString("ok di");
         //testMultiply();
-        emit LogString("ok mu");
+        //emit LogString("ok mu");
+        // testMultiply();
+        // emit LogString("ok mu");
+        //testLargeNumbers();
+        //emit LogString("ok ln");
     }
+    function testLargeNumbers() internal {
+        string memory largeNumber1 = "115792089237316195423570985008687907853269984665640564039457584007913129639936";
+        string memory largeNumber2 = "57896044618658097711785492504343953926634992332820282019728792003956564819968";
+        
+        BigInt.bigint memory a = BigInt.set_String(largeNumber1);
+        BigInt.bigint memory b = BigInt.set_String(largeNumber2);
+        BigInt.bigint memory c = a.add(b);
+        //BigInt.bigint memory d = a.karatsubaMultiply(b);
+        emit LogString(c.get_Decimal());
+        //emit LogString(d.get_Decimal());
+    }
+
     function testkaratsubaMultiply() internal
     {
         BigInt.bigint memory a = BigInt.set_Uint256(123456789);

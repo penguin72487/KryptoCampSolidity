@@ -75,15 +75,15 @@ library BigInt {
 
         return result;
     }
-    function karatsubaMultiply(bigint memory a, bigint memory b) internal pure returns (bigint memory) {
+    function karatsubaMultiply(bigint memory a, bigint memory b) public pure returns (bigint memory) {
     uint256 lenA = a.limbs.length;
     uint256 lenB = b.limbs.length;
 
     if (lenA == 1 && lenB == 1) {
-        bigint memory result;
-        result.limbs = new uint256[](1);
-        result.limbs[0] = a.limbs[0] * b.limbs[0];
-        return result;
+        bigint memory presult;
+        presult.limbs = new uint256[](1);
+        presult.limbs[0] = a.limbs[0] * b.limbs[0];
+        return presult;
     }
 
     uint256 half = (max(lenA, lenB) + 1) / 2;

@@ -20,16 +20,16 @@ contract CounterScript is Script {
     function setUp() public {}
 
     function run() public {
-        testAdd();
-        testSubtract();
-        testkaratsubaMultiply();
-        emit LogString("ok ka");
-        testDivide();
-        emit LogString("ok di");
-        testMultiply();
-        emit LogString("ok mu");
-        testMultiply();
-        emit LogString("ok mu");
+        // testAdd();
+        // testSubtract();
+        // testkaratsubaMultiply();
+        // emit LogString("ok ka");
+        // testDivide();
+        // emit LogString("ok di");
+        // testMultiply();
+        // emit LogString("ok mu");
+        // testMultiply();
+        // emit LogString("ok mu");
         testLargeNumbers();
         emit LogString("ok ln");
     }

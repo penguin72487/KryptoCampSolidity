@@ -6,17 +6,51 @@ library BigInt {
         uint256[] limbs;
     }
 
-    function add(bigint memory a, bigint memory b) internal pure returns (bigint memory) {
-    uint256 length = max(a.limbs.length, b.limbs.length);
+function add(bigint memory a, bigint memory b) internal pure returns (bigint memory) {
+    uint256 max_length = max(a.limbs.length, b.limbs.length);
+    uint256 min_length = min(a.limbs.length, b.limbs.length);
 
     bigint memory result;
-    result.limbs = new uint256[](length);
+    result.limbs = new uint256[](max_length + 1);
 
     uint256 carry = 0;
-    for(uint256 )
+    for (uint256 i = 0; i < min_length; i++) {
+        (result.limbs[i], carry) = addWithCarry(a.limbs[i], b.limbs[i], carry);
+    }
+
+    for (uint256 i = min_length; i < max_length; i++) {
+        uint256 current = i < a.limbs.length ? a.limbs[i] : b.limbs[i];
+        (result.limbs[i], carry) = addWithCarry(current, 0, carry);
+    }
+
+    if (carry > 0) {
+        result.limbs[max_length-1] = carry;
+    } else {
+        uint256[] memory newLimbs = new uint256[](max_length);
+        for (uint256 i = 0; i < max_length; i++) {
+            newLimbs[i] = result.limbs[i];
+        }
+        result.limbs = newLimbs;
+    }
 
     return result;
 }
+
+function addWithCarry(uint256 a, uint256 b, uint256 carry) internal pure returns (uint256, uint256) {
+    uint256 sum = a + b + carry;
+    carry = 0;
+
+    if (sum >= 2**128) {
+        sum -= 2**128;
+        carry = 1;
+    }
+
+    return (sum, carry);
+}
+
+
+
+
 
 
     function subtract(bigint memory a, bigint memory b) internal pure returns (bigint memory) {
@@ -25,33 +59,12 @@ library BigInt {
         bigint memory result;
         result.limbs = new uint256[](a.limbs.length);
 
-        int carry = 0;
-        for (uint256 i = 0; i < a.limbs.length; i++) {
-            int diff = int(a.limbs[i]) - carry;
-            if (i < b.limbs.length) {
-                diff -= int(b.limbs[i]);
+        for(uint256 i = 0; i < a.limbs.length; i++) {
+            if(a.limbs[i] < b.limbs[i]) {
+                a.limbs[i + 1] -= 1;
+                a.limbs[i] += 2**128;
             }
-            if (diff < 0) {
-                carry = 1;
-                diff += int(2**128);
-            } else {
-                carry = 0;
-            }
-
-            result.limbs[i] = uint256(diff);
-        }
-
-        // Remove leading zero limbs
-        uint256 lastIndex = result.limbs.length - 1;
-        while (lastIndex > 0 && result.limbs[lastIndex] == 0) {
-            lastIndex--;
-        }
-        if (lastIndex < result.limbs.length - 1) {
-            uint256[] memory newLimbs = new uint256[](lastIndex + 1);
-            for (uint256 i = 0; i <= lastIndex; i++) {
-                newLimbs[i] = result.limbs[i];
-            }
-            result.limbs = newLimbs;
+            result.limbs[i] = a.limbs[i] - b.limbs[i];
         }
 
         return result;

@@ -1,0 +1,141 @@
+{
+	"compiler": {
+		"version": "0.8.18+commit.87f61d96"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "heap",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "pointer",
+				"outputs": [
+					{
+						"internalType": "contract Pointer",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "pop",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "print",
+				"outputs": [
+					{
+						"internalType": "uint256[]",
+						"name": "",
+						"type": "uint256[]"
+					},
+					{
+						"internalType": "uint256[]",
+						"name": "",
+						"type": "uint256[]"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "value",
+						"type": "uint256"
+					}
+				],
+				"name": "push",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"W6/heappointer.sol": "maxHeap"
+		},
+		"evmVersion": "paris",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"W6/heappointer.sol": {
+			"keccak256": "0x717c9aa08b798f754edf01b0eaecfe7897c6e79813dd3a4093eb897c907cbd36",
+			"license": "GPL-3.0",
+			"urls": [
+				"bzz-raw://0c1eb0b05d8e7a33c1624dda1c4ed8dcc963685c94f20fd5deb95d7eddff2658",
+				"dweb:/ipfs/QmQReETVSmwE2tDQdCz1AkgiT4uo6wz3WVA9uTLzw23brx"
+			]
+		},
+		"W6/pointer.sol": {
+			"keccak256": "0xe3192fb0b840b3506a8b05ca852b4d908f3ac91513aaf2440ebce04ec641ae01",
+			"license": "GPL-3.0",
+			"urls": [
+				"bzz-raw://935a3ae527d617777d51708d29a5ba08e3e1405abfaba400abb26579893b236e",
+				"dweb:/ipfs/QmaoSgfw3kqCVKojRWrizdLCx35vgxnUWFXd3J4UVsKAFm"
+			]
+		}
+	},
+	"version": 1
+}

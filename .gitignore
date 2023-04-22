@@ -1,3 +1,19 @@
+<<<<<<< HEAD
+# Compiler files
+cache/
+out/
+
+# Ignores development broadcast logs
+!/broadcast
+/broadcast/*/31337/
+/broadcast/**/dry-run/
+
+# Docs
+docs/
+
+# Dotenv file
+.env
+=======
 # Created by https://www.toptal.com/developers/gitignore/api/solidity
 # Edit at https://www.toptal.com/developers/gitignore?templates=solidity
 
@@ -133,3 +149,4 @@ dist
 .pnp.*
 
 # End of https://www.toptal.com/developers/gitignore/api/solidity
+>>>>>>> d4cf462ac44ec626cbfde87aac33640c91934962

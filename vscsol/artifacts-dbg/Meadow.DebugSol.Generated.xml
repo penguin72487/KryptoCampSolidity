@@ -1,0 +1,574 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Meadow.DebugSol.Generated</name>
+    </assembly>
+    <members>
+        <member name="T:Meadow.DebugSol.Generated.ERC721">
+            <summary>From file @openzeppelin/contracts/token/ERC721/ERC721.sol<para/> <para/>Implementation of https://eips.ethereum.org/EIPS/eip-721[ERC721] Non-Fungible Token Standard, including the Metadata extension, but not including the Enumerable extension, which is available separately as {ERC721Enumerable}.</summary>
+        </member>
+        <member name="M:Meadow.DebugSol.Generated.ERC721.Deploy(System.String,System.String,Meadow.JsonRpc.Client.IJsonRpcClient,Meadow.JsonRpc.Types.TransactionParams,System.Nullable{Meadow.Core.EthTypes.Address})">
+            <summary>
+            Deploys the contract.  <para/>Implementation of https://eips.ethereum.org/EIPS/eip-721[ERC721] Non-Fungible Token Standard, including the Metadata extension, but not including the Enumerable extension, which is available separately as {ERC721Enumerable}. <para/>
+            </summary>
+            <param name="name_"><c>string</c></param>
+            <param name="symbol_"><c>string</c></param>
+            <param name="rpcClient">The RPC client to be used for this contract instance.</param>
+            <param name="defaultFromAccount">If null then the first account returned by eth_accounts will be used.</param>
+            <returns>An contract instance pointed at the deployed contract address.</returns>
+        </member>
+        <member name="M:Meadow.DebugSol.Generated.ERC721.New(System.String,System.String,Meadow.JsonRpc.Client.IJsonRpcClient,Meadow.JsonRpc.Types.TransactionParams,System.Nullable{Meadow.Core.EthTypes.Address})">
+            <summary>
+            Deploys the contract.  <para/>Implementation of https://eips.ethereum.org/EIPS/eip-721[ERC721] Non-Fungible Token Standard, including the Metadata extension, but not including the Enumerable extension, which is available separately as {ERC721Enumerable}. <para/>
+            </summary>
+            <param name="name_"><c>string</c></param>
+            <param name="symbol_"><c>string</c></param>
+            <param name="rpcClient">The RPC client to be used for this contract instance.</param>
+            <param name="defaultFromAccount">If null then the first account returned by eth_accounts will be used.</param>
+            <returns>An contract instance pointed at the deployed contract address.</returns>
+        </member>
+        <member name="M:Meadow.DebugSol.Generated.ERC721.approve(Meadow.Core.EthTypes.Address,Meadow.Core.EthTypes.UInt256)">
+            <summary>See {IERC721-approve}.</summary>
+            <param name="to"><c>address</c></param>
+            <param name="tokenId"><c>uint256</c></param>
+        </member>
+        <member name="M:Meadow.DebugSol.Generated.ERC721.balanceOf(Meadow.Core.EthTypes.Address)">
+            <summary>See {IERC721-balanceOf}. <para/>Returns <c>uint256</c></summary>
+            <param name="owner"><c>address</c></param>
+        </member>
+        <member name="M:Meadow.DebugSol.Generated.ERC721.getApproved(Meadow.Core.EthTypes.UInt256)">
+            <summary>See {IERC721-getApproved}. <para/>Returns <c>address</c></summary>
+            <param name="tokenId"><c>uint256</c></param>
+        </member>
+        <member name="M:Meadow.DebugSol.Generated.ERC721.isApprovedForAll(Meadow.Core.EthTypes.Address,Meadow.Core.EthTypes.Address)">
+            <summary>See {IERC721-isApprovedForAll}. <para/>Returns <c>bool</c></summary>
+            <param name="owner"><c>address</c></param>
+            <param name="@operator"><c>address</c></param>
+        </member>
+        <member name="M:Meadow.DebugSol.Generated.ERC721.name">
+            <summary>See {IERC721Metadata-name}. <para/>Returns <c>string</c></summary>
+        </member>
+        <member name="M:Meadow.DebugSol.Generated.ERC721.ownerOf(Meadow.Core.EthTypes.UInt256)">
+            <summary>See {IERC721-ownerOf}. <para/>Returns <c>address</c></summary>
+            <param name="tokenId"><c>uint256</c></param>
+        </member>
+        <member name="M:Meadow.DebugSol.Generated.ERC721.safeTransferFrom(Meadow.Core.EthTypes.Address,Meadow.Core.EthTypes.Address,Meadow.Core.EthTypes.UInt256)">
+            <summary>See {IERC721-safeTransferFrom}.</summary>
+            <param name="from"><c>address</c></param>
+            <param name="to"><c>address</c></param>
+            <param name="tokenId"><c>uint256</c></param>
+        </member>
+        <member name="M:Meadow.DebugSol.Generated.ERC721.safeTransferFrom(Meadow.Core.EthTypes.Address,Meadow.Core.EthTypes.Address,Meadow.Core.EthTypes.UInt256,System.Collections.Generic.IEnumerable{System.Byte})">
+            <summary>See {IERC721-safeTransferFrom}.</summary>
+            <param name="from"><c>address</c></param>
+            <param name="to"><c>address</c></param>
+            <param name="tokenId"><c>uint256</c></param>
+            <param name="data"><c>bytes</c></param>
+        </member>
+        <member name="M:Meadow.DebugSol.Generated.ERC721.setApprovalForAll(Meadow.Core.EthTypes.Address,System.Boolean)">
+            <summary>See {IERC721-setApprovalForAll}.</summary>
+            <param name="@operator"><c>address</c></param>
+            <param name="approved"><c>bool</c></param>
+        </member>
+        <member name="M:Meadow.DebugSol.Generated.ERC721.supportsInterface(System.Collections.Generic.IEnumerable{System.Byte})">
+            <summary>See {IERC165-supportsInterface}. <para/>Returns <c>bool</c></summary>
+            <param name="interfaceId"><c>bytes4</c></param>
+        </member>
+        <member name="M:Meadow.DebugSol.Generated.ERC721.symbol">
+            <summary>See {IERC721Metadata-symbol}. <para/>Returns <c>string</c></summary>
+        </member>
+        <member name="M:Meadow.DebugSol.Generated.ERC721.tokenURI(Meadow.Core.EthTypes.UInt256)">
+            <summary>See {IERC721Metadata-tokenURI}. <para/>Returns <c>string</c></summary>
+            <param name="tokenId"><c>uint256</c></param>
+        </member>
+        <member name="M:Meadow.DebugSol.Generated.ERC721.transferFrom(Meadow.Core.EthTypes.Address,Meadow.Core.EthTypes.Address,Meadow.Core.EthTypes.UInt256)">
+            <summary>See {IERC721-transferFrom}.</summary>
+            <param name="from"><c>address</c></param>
+            <param name="to"><c>address</c></param>
+            <param name="tokenId"><c>uint256</c></param>
+        </member>
+        <member name="P:Meadow.DebugSol.Generated.ERC721.FallbackFunction">
+            <summary>The contract fallback function. <para/></summary>
+        </member>
+        <member name="T:Meadow.DebugSol.Generated.IERC721Metadata">
+            <summary>From file @openzeppelin/contracts/token/ERC721/extensions/IERC721Metadata.sol<para/> <para/>ERC-721 Non-Fungible Token Standard, optional metadata extension <para/>See https://eips.ethereum.org/EIPS/eip-721</summary>
+        </member>
+        <member name="M:Meadow.DebugSol.Generated.IERC721Metadata.Deploy(Meadow.JsonRpc.Client.IJsonRpcClient,Meadow.JsonRpc.Types.TransactionParams,System.Nullable{Meadow.Core.EthTypes.Address})">
+            <summary>
+            Deploys the contract.  <para/>ERC-721 Non-Fungible Token Standard, optional metadata extension <para/>See https://eips.ethereum.org/EIPS/eip-721 <para/>
+            </summary>
+            <param name="rpcClient">The RPC client to be used for this contract instance.</param>
+            <param name="defaultFromAccount">If null then the first account returned by eth_accounts will be used.</param>
+            <returns>An contract instance pointed at the deployed contract address.</returns>
+        </member>
+        <member name="M:Meadow.DebugSol.Generated.IERC721Metadata.New(Meadow.JsonRpc.Client.IJsonRpcClient,Meadow.JsonRpc.Types.TransactionParams,System.Nullable{Meadow.Core.EthTypes.Address})">
+            <summary>
+            Deploys the contract.  <para/>ERC-721 Non-Fungible Token Standard, optional metadata extension <para/>See https://eips.ethereum.org/EIPS/eip-721 <para/>
+            </summary>
+            <param name="rpcClient">The RPC client to be used for this contract instance.</param>
+            <param name="defaultFromAccount">If null then the first account returned by eth_accounts will be used.</param>
+            <returns>An contract instance pointed at the deployed contract address.</returns>
+        </member>
+        <member name="M:Meadow.DebugSol.Generated.IERC721Metadata.approve(Meadow.Core.EthTypes.Address,Meadow.Core.EthTypes.UInt256)">
+            <summary>Gives permission to `to` to transfer `tokenId` token to another account. The approval is cleared when the token is transferred. Only a single account can be approved at a time, so approving the zero address clears previous approvals. Requirements: - The caller must own the token or be an approved operator. - `tokenId` must exist. Emits an {Approval} event.</summary>
+            <param name="to"><c>address</c></param>
+            <param name="tokenId"><c>uint256</c></param>
+        </member>
+        <member name="M:Meadow.DebugSol.Generated.IERC721Metadata.balanceOf(Meadow.Core.EthTypes.Address)">
+            <summary>Returns the number of tokens in ``owner``'s account. <para/>Returns <c>uint256</c></summary>
+            <param name="owner"><c>address</c></param>
+        </member>
+        <member name="M:Meadow.DebugSol.Generated.IERC721Metadata.getApproved(Meadow.Core.EthTypes.UInt256)">
+            <summary>Returns the account approved for `tokenId` token. Requirements: - `tokenId` must exist. <para/>Returns <c>address</c></summary>
+            <param name="tokenId"><c>uint256</c></param>
+        </member>
+        <member name="M:Meadow.DebugSol.Generated.IERC721Metadata.isApprovedForAll(Meadow.Core.EthTypes.Address,Meadow.Core.EthTypes.Address)">
+            <summary>Returns if the `operator` is allowed to manage all of the assets of `owner`. See {setApprovalForAll} <para/>Returns <c>bool</c></summary>
+            <param name="owner"><c>address</c></param>
+            <param name="@operator"><c>address</c></param>
+        </member>
+        <member name="M:Meadow.DebugSol.Generated.IERC721Metadata.name">
+            <summary>Returns the token collection name. <para/>Returns <c>string</c></summary>
+        </member>
+        <member name="M:Meadow.DebugSol.Generated.IERC721Metadata.ownerOf(Meadow.Core.EthTypes.UInt256)">
+            <summary>Returns the owner of the `tokenId` token. Requirements: - `tokenId` must exist. <para/>Returns <c>address</c></summary>
+            <param name="tokenId"><c>uint256</c></param>
+        </member>
+        <member name="M:Meadow.DebugSol.Generated.IERC721Metadata.safeTransferFrom(Meadow.Core.EthTypes.Address,Meadow.Core.EthTypes.Address,Meadow.Core.EthTypes.UInt256)">
+            <summary>Safely transfers `tokenId` token from `from` to `to`, checking first that contract recipients are aware of the ERC721 protocol to prevent tokens from being forever locked. Requirements: - `from` cannot be the zero address. - `to` cannot be the zero address. - `tokenId` token must exist and be owned by `from`. - If the caller is not `from`, it must have been allowed to move this token by either {approve} or {setApprovalForAll}. - If `to` refers to a smart contract, it must implement {IERC721Receiver-onERC721Received}, which is called upon a safe transfer. Emits a {Transfer} event.</summary>
+            <param name="from"><c>address</c></param>
+            <param name="to"><c>address</c></param>
+            <param name="tokenId"><c>uint256</c></param>
+        </member>
+        <member name="M:Meadow.DebugSol.Generated.IERC721Metadata.safeTransferFrom(Meadow.Core.EthTypes.Address,Meadow.Core.EthTypes.Address,Meadow.Core.EthTypes.UInt256,System.Collections.Generic.IEnumerable{System.Byte})">
+            <summary>Safely transfers `tokenId` token from `from` to `to`. Requirements: - `from` cannot be the zero address. - `to` cannot be the zero address. - `tokenId` token must exist and be owned by `from`. - If the caller is not `from`, it must be approved to move this token by either {approve} or {setApprovalForAll}. - If `to` refers to a smart contract, it must implement {IERC721Receiver-onERC721Received}, which is called upon a safe transfer. Emits a {Transfer} event.</summary>
+            <param name="from"><c>address</c></param>
+            <param name="to"><c>address</c></param>
+            <param name="tokenId"><c>uint256</c></param>
+            <param name="data"><c>bytes</c></param>
+        </member>
+        <member name="M:Meadow.DebugSol.Generated.IERC721Metadata.setApprovalForAll(Meadow.Core.EthTypes.Address,System.Boolean)">
+            <summary>Approve or remove `operator` as an operator for the caller. Operators can call {transferFrom} or {safeTransferFrom} for any token owned by the caller. Requirements: - The `operator` cannot be the caller. Emits an {ApprovalForAll} event.</summary>
+            <param name="@operator"><c>address</c></param>
+            <param name="_approved"><c>bool</c></param>
+        </member>
+        <member name="M:Meadow.DebugSol.Generated.IERC721Metadata.supportsInterface(System.Collections.Generic.IEnumerable{System.Byte})">
+            <summary>Returns true if this contract implements the interface defined by `interfaceId`. See the corresponding https://eips.ethereum.org/EIPS/eip-165#how-interfaces-are-identified[EIP section] to learn more about how these ids are created. This function call must use less than 30 000 gas. <para/>Returns <c>bool</c></summary>
+            <param name="interfaceId"><c>bytes4</c></param>
+        </member>
+        <member name="M:Meadow.DebugSol.Generated.IERC721Metadata.symbol">
+            <summary>Returns the token collection symbol. <para/>Returns <c>string</c></summary>
+        </member>
+        <member name="M:Meadow.DebugSol.Generated.IERC721Metadata.tokenURI(Meadow.Core.EthTypes.UInt256)">
+            <summary>Returns the Uniform Resource Identifier (URI) for `tokenId` token. <para/>Returns <c>string</c></summary>
+            <param name="tokenId"><c>uint256</c></param>
+        </member>
+        <member name="M:Meadow.DebugSol.Generated.IERC721Metadata.transferFrom(Meadow.Core.EthTypes.Address,Meadow.Core.EthTypes.Address,Meadow.Core.EthTypes.UInt256)">
+            <summary>Transfers `tokenId` token from `from` to `to`. WARNING: Note that the caller is responsible to confirm that the recipient is capable of receiving ERC721 or else they may be permanently lost. Usage of {safeTransferFrom} prevents loss, though the caller must understand this adds an external call which potentially creates a reentrancy vulnerability. Requirements: - `from` cannot be the zero address. - `to` cannot be the zero address. - `tokenId` token must be owned by `from`. - If the caller is not `from`, it must be approved to move this token by either {approve} or {setApprovalForAll}. Emits a {Transfer} event.</summary>
+            <param name="from"><c>address</c></param>
+            <param name="to"><c>address</c></param>
+            <param name="tokenId"><c>uint256</c></param>
+        </member>
+        <member name="P:Meadow.DebugSol.Generated.IERC721Metadata.FallbackFunction">
+            <summary>The contract fallback function. <para/></summary>
+        </member>
+        <member name="T:Meadow.DebugSol.Generated.IERC721">
+            <summary>From file @openzeppelin/contracts/token/ERC721/IERC721.sol<para/> <para/>Required interface of an ERC721 compliant contract.</summary>
+        </member>
+        <member name="M:Meadow.DebugSol.Generated.IERC721.Deploy(Meadow.JsonRpc.Client.IJsonRpcClient,Meadow.JsonRpc.Types.TransactionParams,System.Nullable{Meadow.Core.EthTypes.Address})">
+            <summary>
+            Deploys the contract.  <para/>Required interface of an ERC721 compliant contract. <para/>
+            </summary>
+            <param name="rpcClient">The RPC client to be used for this contract instance.</param>
+            <param name="defaultFromAccount">If null then the first account returned by eth_accounts will be used.</param>
+            <returns>An contract instance pointed at the deployed contract address.</returns>
+        </member>
+        <member name="M:Meadow.DebugSol.Generated.IERC721.New(Meadow.JsonRpc.Client.IJsonRpcClient,Meadow.JsonRpc.Types.TransactionParams,System.Nullable{Meadow.Core.EthTypes.Address})">
+            <summary>
+            Deploys the contract.  <para/>Required interface of an ERC721 compliant contract. <para/>
+            </summary>
+            <param name="rpcClient">The RPC client to be used for this contract instance.</param>
+            <param name="defaultFromAccount">If null then the first account returned by eth_accounts will be used.</param>
+            <returns>An contract instance pointed at the deployed contract address.</returns>
+        </member>
+        <member name="M:Meadow.DebugSol.Generated.IERC721.approve(Meadow.Core.EthTypes.Address,Meadow.Core.EthTypes.UInt256)">
+            <summary>Gives permission to `to` to transfer `tokenId` token to another account. The approval is cleared when the token is transferred. Only a single account can be approved at a time, so approving the zero address clears previous approvals. Requirements: - The caller must own the token or be an approved operator. - `tokenId` must exist. Emits an {Approval} event.</summary>
+            <param name="to"><c>address</c></param>
+            <param name="tokenId"><c>uint256</c></param>
+        </member>
+        <member name="M:Meadow.DebugSol.Generated.IERC721.balanceOf(Meadow.Core.EthTypes.Address)">
+            <summary>Returns the number of tokens in ``owner``'s account. <para/>Returns <c>uint256</c></summary>
+            <param name="owner"><c>address</c></param>
+        </member>
+        <member name="M:Meadow.DebugSol.Generated.IERC721.getApproved(Meadow.Core.EthTypes.UInt256)">
+            <summary>Returns the account approved for `tokenId` token. Requirements: - `tokenId` must exist. <para/>Returns <c>address</c></summary>
+            <param name="tokenId"><c>uint256</c></param>
+        </member>
+        <member name="M:Meadow.DebugSol.Generated.IERC721.isApprovedForAll(Meadow.Core.EthTypes.Address,Meadow.Core.EthTypes.Address)">
+            <summary>Returns if the `operator` is allowed to manage all of the assets of `owner`. See {setApprovalForAll} <para/>Returns <c>bool</c></summary>
+            <param name="owner"><c>address</c></param>
+            <param name="@operator"><c>address</c></param>
+        </member>
+        <member name="M:Meadow.DebugSol.Generated.IERC721.ownerOf(Meadow.Core.EthTypes.UInt256)">
+            <summary>Returns the owner of the `tokenId` token. Requirements: - `tokenId` must exist. <para/>Returns <c>address</c></summary>
+            <param name="tokenId"><c>uint256</c></param>
+        </member>
+        <member name="M:Meadow.DebugSol.Generated.IERC721.safeTransferFrom(Meadow.Core.EthTypes.Address,Meadow.Core.EthTypes.Address,Meadow.Core.EthTypes.UInt256)">
+            <summary>Safely transfers `tokenId` token from `from` to `to`, checking first that contract recipients are aware of the ERC721 protocol to prevent tokens from being forever locked. Requirements: - `from` cannot be the zero address. - `to` cannot be the zero address. - `tokenId` token must exist and be owned by `from`. - If the caller is not `from`, it must have been allowed to move this token by either {approve} or {setApprovalForAll}. - If `to` refers to a smart contract, it must implement {IERC721Receiver-onERC721Received}, which is called upon a safe transfer. Emits a {Transfer} event.</summary>
+            <param name="from"><c>address</c></param>
+            <param name="to"><c>address</c></param>
+            <param name="tokenId"><c>uint256</c></param>
+        </member>
+        <member name="M:Meadow.DebugSol.Generated.IERC721.safeTransferFrom(Meadow.Core.EthTypes.Address,Meadow.Core.EthTypes.Address,Meadow.Core.EthTypes.UInt256,System.Collections.Generic.IEnumerable{System.Byte})">
+            <summary>Safely transfers `tokenId` token from `from` to `to`. Requirements: - `from` cannot be the zero address. - `to` cannot be the zero address. - `tokenId` token must exist and be owned by `from`. - If the caller is not `from`, it must be approved to move this token by either {approve} or {setApprovalForAll}. - If `to` refers to a smart contract, it must implement {IERC721Receiver-onERC721Received}, which is called upon a safe transfer. Emits a {Transfer} event.</summary>
+            <param name="from"><c>address</c></param>
+            <param name="to"><c>address</c></param>
+            <param name="tokenId"><c>uint256</c></param>
+            <param name="data"><c>bytes</c></param>
+        </member>
+        <member name="M:Meadow.DebugSol.Generated.IERC721.setApprovalForAll(Meadow.Core.EthTypes.Address,System.Boolean)">
+            <summary>Approve or remove `operator` as an operator for the caller. Operators can call {transferFrom} or {safeTransferFrom} for any token owned by the caller. Requirements: - The `operator` cannot be the caller. Emits an {ApprovalForAll} event.</summary>
+            <param name="@operator"><c>address</c></param>
+            <param name="_approved"><c>bool</c></param>
+        </member>
+        <member name="M:Meadow.DebugSol.Generated.IERC721.supportsInterface(System.Collections.Generic.IEnumerable{System.Byte})">
+            <summary>Returns true if this contract implements the interface defined by `interfaceId`. See the corresponding https://eips.ethereum.org/EIPS/eip-165#how-interfaces-are-identified[EIP section] to learn more about how these ids are created. This function call must use less than 30 000 gas. <para/>Returns <c>bool</c></summary>
+            <param name="interfaceId"><c>bytes4</c></param>
+        </member>
+        <member name="M:Meadow.DebugSol.Generated.IERC721.transferFrom(Meadow.Core.EthTypes.Address,Meadow.Core.EthTypes.Address,Meadow.Core.EthTypes.UInt256)">
+            <summary>Transfers `tokenId` token from `from` to `to`. WARNING: Note that the caller is responsible to confirm that the recipient is capable of receiving ERC721 or else they may be permanently lost. Usage of {safeTransferFrom} prevents loss, though the caller must understand this adds an external call which potentially creates a reentrancy vulnerability. Requirements: - `from` cannot be the zero address. - `to` cannot be the zero address. - `tokenId` token must be owned by `from`. - If the caller is not `from`, it must be approved to move this token by either {approve} or {setApprovalForAll}. Emits a {Transfer} event.</summary>
+            <param name="from"><c>address</c></param>
+            <param name="to"><c>address</c></param>
+            <param name="tokenId"><c>uint256</c></param>
+        </member>
+        <member name="P:Meadow.DebugSol.Generated.IERC721.FallbackFunction">
+            <summary>The contract fallback function. <para/></summary>
+        </member>
+        <member name="T:Meadow.DebugSol.Generated.IERC721Receiver">
+            <summary>From file @openzeppelin/contracts/token/ERC721/IERC721Receiver.sol<para/> <para/>ERC721 token receiver interface <para/>Interface for any contract that wants to support safeTransfers from ERC721 asset contracts.</summary>
+        </member>
+        <member name="M:Meadow.DebugSol.Generated.IERC721Receiver.Deploy(Meadow.JsonRpc.Client.IJsonRpcClient,Meadow.JsonRpc.Types.TransactionParams,System.Nullable{Meadow.Core.EthTypes.Address})">
+            <summary>
+            Deploys the contract.  <para/>ERC721 token receiver interface <para/>Interface for any contract that wants to support safeTransfers from ERC721 asset contracts. <para/>
+            </summary>
+            <param name="rpcClient">The RPC client to be used for this contract instance.</param>
+            <param name="defaultFromAccount">If null then the first account returned by eth_accounts will be used.</param>
+            <returns>An contract instance pointed at the deployed contract address.</returns>
+        </member>
+        <member name="M:Meadow.DebugSol.Generated.IERC721Receiver.New(Meadow.JsonRpc.Client.IJsonRpcClient,Meadow.JsonRpc.Types.TransactionParams,System.Nullable{Meadow.Core.EthTypes.Address})">
+            <summary>
+            Deploys the contract.  <para/>ERC721 token receiver interface <para/>Interface for any contract that wants to support safeTransfers from ERC721 asset contracts. <para/>
+            </summary>
+            <param name="rpcClient">The RPC client to be used for this contract instance.</param>
+            <param name="defaultFromAccount">If null then the first account returned by eth_accounts will be used.</param>
+            <returns>An contract instance pointed at the deployed contract address.</returns>
+        </member>
+        <member name="M:Meadow.DebugSol.Generated.IERC721Receiver.onERC721Received(Meadow.Core.EthTypes.Address,Meadow.Core.EthTypes.Address,Meadow.Core.EthTypes.UInt256,System.Collections.Generic.IEnumerable{System.Byte})">
+            <summary>Whenever an {IERC721} `tokenId` token is transferred to this contract via {IERC721-safeTransferFrom} by `operator` from `from`, this function is called. It must return its Solidity selector to confirm the token transfer. If any other value is returned or the interface is not implemented by the recipient, the transfer will be reverted. The selector can be obtained in Solidity with `IERC721Receiver.onERC721Received.selector`. <para/>Returns <c>bytes4</c></summary>
+            <param name="@operator"><c>address</c></param>
+            <param name="from"><c>address</c></param>
+            <param name="tokenId"><c>uint256</c></param>
+            <param name="data"><c>bytes</c></param>
+        </member>
+        <member name="P:Meadow.DebugSol.Generated.IERC721Receiver.FallbackFunction">
+            <summary>The contract fallback function. <para/></summary>
+        </member>
+        <member name="T:Meadow.DebugSol.Generated.Address">
+            <summary>From file @openzeppelin/contracts/utils/Address.sol<para/> <para/>Collection of functions related to the address type</summary>
+        </member>
+        <member name="M:Meadow.DebugSol.Generated.Address.Deploy(Meadow.JsonRpc.Client.IJsonRpcClient,Meadow.JsonRpc.Types.TransactionParams,System.Nullable{Meadow.Core.EthTypes.Address})">
+            <summary>
+            Deploys the contract.  <para/>Collection of functions related to the address type <para/>
+            </summary>
+            <param name="rpcClient">The RPC client to be used for this contract instance.</param>
+            <param name="defaultFromAccount">If null then the first account returned by eth_accounts will be used.</param>
+            <returns>An contract instance pointed at the deployed contract address.</returns>
+        </member>
+        <member name="M:Meadow.DebugSol.Generated.Address.New(Meadow.JsonRpc.Client.IJsonRpcClient,Meadow.JsonRpc.Types.TransactionParams,System.Nullable{Meadow.Core.EthTypes.Address})">
+            <summary>
+            Deploys the contract.  <para/>Collection of functions related to the address type <para/>
+            </summary>
+            <param name="rpcClient">The RPC client to be used for this contract instance.</param>
+            <param name="defaultFromAccount">If null then the first account returned by eth_accounts will be used.</param>
+            <returns>An contract instance pointed at the deployed contract address.</returns>
+        </member>
+        <member name="P:Meadow.DebugSol.Generated.Address.FallbackFunction">
+            <summary>The contract fallback function. <para/></summary>
+        </member>
+        <member name="T:Meadow.DebugSol.Generated.Context">
+            <summary>From file @openzeppelin/contracts/utils/Context.sol<para/> <para/>Provides information about the current execution context, including the sender of the transaction and its data. While these are generally available via msg.sender and msg.data, they should not be accessed in such a direct manner, since when dealing with meta-transactions the account sending and paying for execution may not be the actual sender (as far as an application is concerned). This contract is only required for intermediate, library-like contracts.</summary>
+        </member>
+        <member name="M:Meadow.DebugSol.Generated.Context.Deploy(Meadow.JsonRpc.Client.IJsonRpcClient,Meadow.JsonRpc.Types.TransactionParams,System.Nullable{Meadow.Core.EthTypes.Address})">
+            <summary>
+            Deploys the contract.  <para/>Provides information about the current execution context, including the sender of the transaction and its data. While these are generally available via msg.sender and msg.data, they should not be accessed in such a direct manner, since when dealing with meta-transactions the account sending and paying for execution may not be the actual sender (as far as an application is concerned). This contract is only required for intermediate, library-like contracts. <para/>
+            </summary>
+            <param name="rpcClient">The RPC client to be used for this contract instance.</param>
+            <param name="defaultFromAccount">If null then the first account returned by eth_accounts will be used.</param>
+            <returns>An contract instance pointed at the deployed contract address.</returns>
+        </member>
+        <member name="M:Meadow.DebugSol.Generated.Context.New(Meadow.JsonRpc.Client.IJsonRpcClient,Meadow.JsonRpc.Types.TransactionParams,System.Nullable{Meadow.Core.EthTypes.Address})">
+            <summary>
+            Deploys the contract.  <para/>Provides information about the current execution context, including the sender of the transaction and its data. While these are generally available via msg.sender and msg.data, they should not be accessed in such a direct manner, since when dealing with meta-transactions the account sending and paying for execution may not be the actual sender (as far as an application is concerned). This contract is only required for intermediate, library-like contracts. <para/>
+            </summary>
+            <param name="rpcClient">The RPC client to be used for this contract instance.</param>
+            <param name="defaultFromAccount">If null then the first account returned by eth_accounts will be used.</param>
+            <returns>An contract instance pointed at the deployed contract address.</returns>
+        </member>
+        <member name="P:Meadow.DebugSol.Generated.Context.FallbackFunction">
+            <summary>The contract fallback function. <para/></summary>
+        </member>
+        <member name="T:Meadow.DebugSol.Generated.ERC165">
+            <summary>From file @openzeppelin/contracts/utils/introspection/ERC165.sol<para/> <para/>Implementation of the {IERC165} interface. Contracts that want to implement ERC165 should inherit from this contract and override {supportsInterface} to check for the additional interface id that will be supported. For example: ```solidity function supportsInterface(bytes4 interfaceId) public view virtual override returns (bool) {     return interfaceId == type(MyInterface).interfaceId || super.supportsInterface(interfaceId); } ``` Alternatively, {ERC165Storage} provides an easier to use but more expensive implementation.</summary>
+        </member>
+        <member name="M:Meadow.DebugSol.Generated.ERC165.Deploy(Meadow.JsonRpc.Client.IJsonRpcClient,Meadow.JsonRpc.Types.TransactionParams,System.Nullable{Meadow.Core.EthTypes.Address})">
+            <summary>
+            Deploys the contract.  <para/>Implementation of the {IERC165} interface. Contracts that want to implement ERC165 should inherit from this contract and override {supportsInterface} to check for the additional interface id that will be supported. For example: ```solidity function supportsInterface(bytes4 interfaceId) public view virtual override returns (bool) {     return interfaceId == type(MyInterface).interfaceId || super.supportsInterface(interfaceId); } ``` Alternatively, {ERC165Storage} provides an easier to use but more expensive implementation. <para/>
+            </summary>
+            <param name="rpcClient">The RPC client to be used for this contract instance.</param>
+            <param name="defaultFromAccount">If null then the first account returned by eth_accounts will be used.</param>
+            <returns>An contract instance pointed at the deployed contract address.</returns>
+        </member>
+        <member name="M:Meadow.DebugSol.Generated.ERC165.New(Meadow.JsonRpc.Client.IJsonRpcClient,Meadow.JsonRpc.Types.TransactionParams,System.Nullable{Meadow.Core.EthTypes.Address})">
+            <summary>
+            Deploys the contract.  <para/>Implementation of the {IERC165} interface. Contracts that want to implement ERC165 should inherit from this contract and override {supportsInterface} to check for the additional interface id that will be supported. For example: ```solidity function supportsInterface(bytes4 interfaceId) public view virtual override returns (bool) {     return interfaceId == type(MyInterface).interfaceId || super.supportsInterface(interfaceId); } ``` Alternatively, {ERC165Storage} provides an easier to use but more expensive implementation. <para/>
+            </summary>
+            <param name="rpcClient">The RPC client to be used for this contract instance.</param>
+            <param name="defaultFromAccount">If null then the first account returned by eth_accounts will be used.</param>
+            <returns>An contract instance pointed at the deployed contract address.</returns>
+        </member>
+        <member name="M:Meadow.DebugSol.Generated.ERC165.supportsInterface(System.Collections.Generic.IEnumerable{System.Byte})">
+            <summary>See {IERC165-supportsInterface}. <para/>Returns <c>bool</c></summary>
+            <param name="interfaceId"><c>bytes4</c></param>
+        </member>
+        <member name="P:Meadow.DebugSol.Generated.ERC165.FallbackFunction">
+            <summary>The contract fallback function. <para/></summary>
+        </member>
+        <member name="T:Meadow.DebugSol.Generated.IERC165">
+            <summary>From file @openzeppelin/contracts/utils/introspection/IERC165.sol<para/> <para/>Interface of the ERC165 standard, as defined in the https://eips.ethereum.org/EIPS/eip-165[EIP]. Implementers can declare support of contract interfaces, which can then be queried by others ({ERC165Checker}). For an implementation, see {ERC165}.</summary>
+        </member>
+        <member name="M:Meadow.DebugSol.Generated.IERC165.Deploy(Meadow.JsonRpc.Client.IJsonRpcClient,Meadow.JsonRpc.Types.TransactionParams,System.Nullable{Meadow.Core.EthTypes.Address})">
+            <summary>
+            Deploys the contract.  <para/>Interface of the ERC165 standard, as defined in the https://eips.ethereum.org/EIPS/eip-165[EIP]. Implementers can declare support of contract interfaces, which can then be queried by others ({ERC165Checker}). For an implementation, see {ERC165}. <para/>
+            </summary>
+            <param name="rpcClient">The RPC client to be used for this contract instance.</param>
+            <param name="defaultFromAccount">If null then the first account returned by eth_accounts will be used.</param>
+            <returns>An contract instance pointed at the deployed contract address.</returns>
+        </member>
+        <member name="M:Meadow.DebugSol.Generated.IERC165.New(Meadow.JsonRpc.Client.IJsonRpcClient,Meadow.JsonRpc.Types.TransactionParams,System.Nullable{Meadow.Core.EthTypes.Address})">
+            <summary>
+            Deploys the contract.  <para/>Interface of the ERC165 standard, as defined in the https://eips.ethereum.org/EIPS/eip-165[EIP]. Implementers can declare support of contract interfaces, which can then be queried by others ({ERC165Checker}). For an implementation, see {ERC165}. <para/>
+            </summary>
+            <param name="rpcClient">The RPC client to be used for this contract instance.</param>
+            <param name="defaultFromAccount">If null then the first account returned by eth_accounts will be used.</param>
+            <returns>An contract instance pointed at the deployed contract address.</returns>
+        </member>
+        <member name="M:Meadow.DebugSol.Generated.IERC165.supportsInterface(System.Collections.Generic.IEnumerable{System.Byte})">
+            <summary>Returns true if this contract implements the interface defined by `interfaceId`. See the corresponding https://eips.ethereum.org/EIPS/eip-165#how-interfaces-are-identified[EIP section] to learn more about how these ids are created. This function call must use less than 30 000 gas. <para/>Returns <c>bool</c></summary>
+            <param name="interfaceId"><c>bytes4</c></param>
+        </member>
+        <member name="P:Meadow.DebugSol.Generated.IERC165.FallbackFunction">
+            <summary>The contract fallback function. <para/></summary>
+        </member>
+        <member name="T:Meadow.DebugSol.Generated.Math">
+            <summary>From file @openzeppelin/contracts/utils/math/Math.sol<para/> <para/>Standard math utilities missing in the Solidity language.</summary>
+        </member>
+        <member name="M:Meadow.DebugSol.Generated.Math.Deploy(Meadow.JsonRpc.Client.IJsonRpcClient,Meadow.JsonRpc.Types.TransactionParams,System.Nullable{Meadow.Core.EthTypes.Address})">
+            <summary>
+            Deploys the contract.  <para/>Standard math utilities missing in the Solidity language. <para/>
+            </summary>
+            <param name="rpcClient">The RPC client to be used for this contract instance.</param>
+            <param name="defaultFromAccount">If null then the first account returned by eth_accounts will be used.</param>
+            <returns>An contract instance pointed at the deployed contract address.</returns>
+        </member>
+        <member name="M:Meadow.DebugSol.Generated.Math.New(Meadow.JsonRpc.Client.IJsonRpcClient,Meadow.JsonRpc.Types.TransactionParams,System.Nullable{Meadow.Core.EthTypes.Address})">
+            <summary>
+            Deploys the contract.  <para/>Standard math utilities missing in the Solidity language. <para/>
+            </summary>
+            <param name="rpcClient">The RPC client to be used for this contract instance.</param>
+            <param name="defaultFromAccount">If null then the first account returned by eth_accounts will be used.</param>
+            <returns>An contract instance pointed at the deployed contract address.</returns>
+        </member>
+        <member name="P:Meadow.DebugSol.Generated.Math.FallbackFunction">
+            <summary>The contract fallback function. <para/></summary>
+        </member>
+        <member name="T:Meadow.DebugSol.Generated.Strings">
+            <summary>From file @openzeppelin/contracts/utils/Strings.sol<para/> <para/>String operations.</summary>
+        </member>
+        <member name="M:Meadow.DebugSol.Generated.Strings.Deploy(Meadow.JsonRpc.Client.IJsonRpcClient,Meadow.JsonRpc.Types.TransactionParams,System.Nullable{Meadow.Core.EthTypes.Address})">
+            <summary>
+            Deploys the contract.  <para/>String operations. <para/>
+            </summary>
+            <param name="rpcClient">The RPC client to be used for this contract instance.</param>
+            <param name="defaultFromAccount">If null then the first account returned by eth_accounts will be used.</param>
+            <returns>An contract instance pointed at the deployed contract address.</returns>
+        </member>
+        <member name="M:Meadow.DebugSol.Generated.Strings.New(Meadow.JsonRpc.Client.IJsonRpcClient,Meadow.JsonRpc.Types.TransactionParams,System.Nullable{Meadow.Core.EthTypes.Address})">
+            <summary>
+            Deploys the contract.  <para/>String operations. <para/>
+            </summary>
+            <param name="rpcClient">The RPC client to be used for this contract instance.</param>
+            <param name="defaultFromAccount">If null then the first account returned by eth_accounts will be used.</param>
+            <returns>An contract instance pointed at the deployed contract address.</returns>
+        </member>
+        <member name="P:Meadow.DebugSol.Generated.Strings.FallbackFunction">
+            <summary>The contract fallback function. <para/></summary>
+        </member>
+        <member name="T:Meadow.DebugSol.Generated.FanartNFT">
+            <summary>From file basicTest.t.sol<para/></summary>
+        </member>
+        <member name="M:Meadow.DebugSol.Generated.FanartNFT.Deploy(System.String,System.String,Meadow.JsonRpc.Client.IJsonRpcClient,Meadow.JsonRpc.Types.TransactionParams,System.Nullable{Meadow.Core.EthTypes.Address})">
+            <summary>
+            Deploys the contract.  <para/>
+            </summary>
+            <param name="_name"><c>string</c></param>
+            <param name="_symbol"><c>string</c></param>
+            <param name="rpcClient">The RPC client to be used for this contract instance.</param>
+            <param name="defaultFromAccount">If null then the first account returned by eth_accounts will be used.</param>
+            <returns>An contract instance pointed at the deployed contract address.</returns>
+        </member>
+        <member name="M:Meadow.DebugSol.Generated.FanartNFT.New(System.String,System.String,Meadow.JsonRpc.Client.IJsonRpcClient,Meadow.JsonRpc.Types.TransactionParams,System.Nullable{Meadow.Core.EthTypes.Address})">
+            <summary>
+            Deploys the contract.  <para/>
+            </summary>
+            <param name="_name"><c>string</c></param>
+            <param name="_symbol"><c>string</c></param>
+            <param name="rpcClient">The RPC client to be used for this contract instance.</param>
+            <param name="defaultFromAccount">If null then the first account returned by eth_accounts will be used.</param>
+            <returns>An contract instance pointed at the deployed contract address.</returns>
+        </member>
+        <member name="M:Meadow.DebugSol.Generated.FanartNFT.approve(Meadow.Core.EthTypes.Address,Meadow.Core.EthTypes.UInt256)">
+            <summary>See {IERC721-approve}.</summary>
+            <param name="to"><c>address</c></param>
+            <param name="tokenId"><c>uint256</c></param>
+        </member>
+        <member name="M:Meadow.DebugSol.Generated.FanartNFT.balanceOf(Meadow.Core.EthTypes.Address)">
+            <summary>See {IERC721-balanceOf}. <para/>Returns <c>uint256</c></summary>
+            <param name="owner"><c>address</c></param>
+        </member>
+        <member name="M:Meadow.DebugSol.Generated.FanartNFT.creater">
+            <summary> <para/>Returns <c>address</c></summary>
+        </member>
+        <member name="M:Meadow.DebugSol.Generated.FanartNFT.getApproved(Meadow.Core.EthTypes.UInt256)">
+            <summary>See {IERC721-getApproved}. <para/>Returns <c>address</c></summary>
+            <param name="tokenId"><c>uint256</c></param>
+        </member>
+        <member name="M:Meadow.DebugSol.Generated.FanartNFT.isApprovedForAll(Meadow.Core.EthTypes.Address,Meadow.Core.EthTypes.Address)">
+            <summary>See {IERC721-isApprovedForAll}. <para/>Returns <c>bool</c></summary>
+            <param name="owner"><c>address</c></param>
+            <param name="@operator"><c>address</c></param>
+        </member>
+        <member name="M:Meadow.DebugSol.Generated.FanartNFT.max_Supply">
+            <summary> <para/>Returns <c>uint256</c></summary>
+        </member>
+        <member name="M:Meadow.DebugSol.Generated.FanartNFT.mint">
+            <summary></summary>
+        </member>
+        <member name="M:Meadow.DebugSol.Generated.FanartNFT.mintPrice">
+            <summary> <para/>Returns <c>uint256</c></summary>
+        </member>
+        <member name="M:Meadow.DebugSol.Generated.FanartNFT.name">
+            <summary>See {IERC721Metadata-name}. <para/>Returns <c>string</c></summary>
+        </member>
+        <member name="M:Meadow.DebugSol.Generated.FanartNFT.owner(Meadow.Core.EthTypes.UInt256)">
+            <summary> <para/>Returns <c>address</c></summary>
+            <param name="unamed0"><c>uint256</c></param>
+        </member>
+        <member name="M:Meadow.DebugSol.Generated.FanartNFT.ownerOf(Meadow.Core.EthTypes.UInt256)">
+            <summary> <para/>Returns <c>address</c></summary>
+            <param name="_tokenId"><c>uint256</c></param>
+        </member>
+        <member name="M:Meadow.DebugSol.Generated.FanartNFT.safeTransferFrom(Meadow.Core.EthTypes.Address,Meadow.Core.EthTypes.Address,Meadow.Core.EthTypes.UInt256)">
+            <summary>See {IERC721-safeTransferFrom}.</summary>
+            <param name="from"><c>address</c></param>
+            <param name="to"><c>address</c></param>
+            <param name="tokenId"><c>uint256</c></param>
+        </member>
+        <member name="M:Meadow.DebugSol.Generated.FanartNFT.safeTransferFrom(Meadow.Core.EthTypes.Address,Meadow.Core.EthTypes.Address,Meadow.Core.EthTypes.UInt256,System.Collections.Generic.IEnumerable{System.Byte})">
+            <summary>See {IERC721-safeTransferFrom}.</summary>
+            <param name="from"><c>address</c></param>
+            <param name="to"><c>address</c></param>
+            <param name="tokenId"><c>uint256</c></param>
+            <param name="data"><c>bytes</c></param>
+        </member>
+        <member name="M:Meadow.DebugSol.Generated.FanartNFT.setApprovalForAll(Meadow.Core.EthTypes.Address,System.Boolean)">
+            <summary>See {IERC721-setApprovalForAll}.</summary>
+            <param name="@operator"><c>address</c></param>
+            <param name="approved"><c>bool</c></param>
+        </member>
+        <member name="M:Meadow.DebugSol.Generated.FanartNFT.supportsInterface(System.Collections.Generic.IEnumerable{System.Byte})">
+            <summary>See {IERC165-supportsInterface}. <para/>Returns <c>bool</c></summary>
+            <param name="interfaceId"><c>bytes4</c></param>
+        </member>
+        <member name="M:Meadow.DebugSol.Generated.FanartNFT.symbol">
+            <summary>See {IERC721Metadata-symbol}. <para/>Returns <c>string</c></summary>
+        </member>
+        <member name="M:Meadow.DebugSol.Generated.FanartNFT.tokenURI(Meadow.Core.EthTypes.UInt256)">
+            <summary> <para/>Returns <c>string</c></summary>
+            <param name="_tokenId"><c>uint256</c></param>
+        </member>
+        <member name="M:Meadow.DebugSol.Generated.FanartNFT.totle_Supply">
+            <summary> <para/>Returns <c>uint256</c></summary>
+        </member>
+        <member name="M:Meadow.DebugSol.Generated.FanartNFT.transferFrom(Meadow.Core.EthTypes.Address,Meadow.Core.EthTypes.Address,Meadow.Core.EthTypes.UInt256)">
+            <summary>See {IERC721-transferFrom}.</summary>
+            <param name="from"><c>address</c></param>
+            <param name="to"><c>address</c></param>
+            <param name="tokenId"><c>uint256</c></param>
+        </member>
+        <member name="M:Meadow.DebugSol.Generated.FanartNFT.treap_Whitelist">
+            <summary> <para/>Returns <c>address</c></summary>
+        </member>
+        <member name="M:Meadow.DebugSol.Generated.FanartNFT.whitelist(Meadow.Core.EthTypes.UInt256)">
+            <summary> <para/>Returns <c>address</c></summary>
+            <param name="unamed0"><c>uint256</c></param>
+        </member>
+        <member name="M:Meadow.DebugSol.Generated.FanartNFT.withdraw">
+            <summary></summary>
+        </member>
+        <member name="P:Meadow.DebugSol.Generated.FanartNFT.FallbackFunction">
+            <summary>The contract fallback function. <para/></summary>
+        </member>
+        <member name="T:Meadow.DebugSol.Generated.treap">
+            <summary>From file basicTest.t.sol<para/></summary>
+        </member>
+        <member name="M:Meadow.DebugSol.Generated.treap.Deploy(Meadow.JsonRpc.Client.IJsonRpcClient,Meadow.JsonRpc.Types.TransactionParams,System.Nullable{Meadow.Core.EthTypes.Address})">
+            <summary>
+            Deploys the contract.  <para/>
+            </summary>
+            <param name="rpcClient">The RPC client to be used for this contract instance.</param>
+            <param name="defaultFromAccount">If null then the first account returned by eth_accounts will be used.</param>
+            <returns>An contract instance pointed at the deployed contract address.</returns>
+        </member>
+        <member name="M:Meadow.DebugSol.Generated.treap.New(Meadow.JsonRpc.Client.IJsonRpcClient,Meadow.JsonRpc.Types.TransactionParams,System.Nullable{Meadow.Core.EthTypes.Address})">
+            <summary>
+            Deploys the contract.  <para/>
+            </summary>
+            <param name="rpcClient">The RPC client to be used for this contract instance.</param>
+            <param name="defaultFromAccount">If null then the first account returned by eth_accounts will be used.</param>
+            <returns>An contract instance pointed at the deployed contract address.</returns>
+        </member>
+        <member name="M:Meadow.DebugSol.Generated.treap.insert(Meadow.Core.EthTypes.Address)">
+            <summary></summary>
+            <param name="_whitelist_user"><c>address</c></param>
+        </member>
+        <member name="M:Meadow.DebugSol.Generated.treap.merge(Meadow.Core.EthTypes.UInt256,Meadow.Core.EthTypes.UInt256)">
+            <summary> <para/>Returns <c>uint256</c></summary>
+            <param name="a"><c>uint256</c></param>
+            <param name="b"><c>uint256</c></param>
+        </member>
+        <member name="M:Meadow.DebugSol.Generated.treap.random">
+            <summary> <para/>Returns <c>uint256</c></summary>
+        </member>
+        <member name="M:Meadow.DebugSol.Generated.treap.remove(Meadow.Core.EthTypes.Address)">
+            <summary></summary>
+            <param name="_whitelist_user"><c>address</c></param>
+        </member>
+        <member name="M:Meadow.DebugSol.Generated.treap.verify(Meadow.Core.EthTypes.Address)">
+            <summary> <para/>Returns <c>bool</c></summary>
+            <param name="_whitelist_user"><c>address</c></param>
+        </member>
+        <member name="P:Meadow.DebugSol.Generated.treap.FallbackFunction">
+            <summary>The contract fallback function. <para/></summary>
+        </member>
+    </members>
+</doc>

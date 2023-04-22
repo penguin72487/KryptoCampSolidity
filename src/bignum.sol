@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.0;
-
+pragma solidity ^0.8.18;
+import "@openzeppelin/contracts/utils/Strings.sol";
 library BigInt {
     struct bigint {
         uint256[] limbs;
@@ -165,6 +165,78 @@ library BigInt {
         result.limbs[0] = a;
         return result;
     }
+    function set_String(string memory a) internal pure returns (bigint memory) {
+        bytes memory input = bytes(a);
+        require(input.length > 0, "Input string must not be empty");
+
+        uint256 base = 2**128;
+        uint256 groupSize = 1;
+        uint256 maxGroupValue = base;
+
+        bigint memory result;
+        uint256[] memory tempLimbs = new uint256[]((input.length + groupSize - 1) / groupSize);
+        uint256 tempIndex = 0;
+        uint256 groupValue = 0;
+        uint256 groupDigits = 0;
+
+        for (uint256 i = 0; i < input.length; i++) {
+            uint8 digit = uint8(input[i]) - 48; // Convert the ASCII value to the corresponding integer
+            require(digit < 10, "Input string contains invalid characters");
+
+            groupValue = groupValue * 10 + digit;
+            groupDigits++;
+
+            if (groupDigits == groupSize) {
+                tempLimbs[tempIndex] = groupValue;
+                tempIndex++;
+                groupValue = 0;
+                groupDigits = 0;
+            }
+        }
+
+        if (groupDigits > 0) {
+            tempLimbs[tempIndex] = groupValue;
+        }
+
+        result.limbs = new uint256[](tempIndex + 1);
+        for (uint256 i = 0; i <= tempIndex; i++) {
+            bigint memory tempBigint = set_Uint256(tempLimbs[i]);
+            bigint memory baseBigint = set_Uint256(maxGroupValue);
+            for (uint256 j = 0; j < tempIndex - i; j++) {
+                tempBigint = multiply(tempBigint, baseBigint);
+            }
+            result = add(result, tempBigint);
+        }
+
+        return result;
+    
+    }
+function get_Decimal(BigInt.bigint memory a) internal pure returns (string memory) {
+        uint256 base = 2**128;
+        uint256 groupSize = 1;
+        uint256 maxGroupValue = base;
+
+        bigint memory temp = a;
+        string memory decimal = "";
+
+        while (BigInt.compare(temp, BigInt.set_Uint256(0)) > 0) {
+            bigint memory remainder = BigInt.mod(temp, maxGroupValue);
+            uint256 groupValue = remainder.limbs[0];
+            string memory groupString = groupValue.toString();
+
+            if (BigInt.compare(temp, BigInt.set_Uint256(maxGroupValue)) >= 0) {
+                temp = BigInt.divide(temp, BigInt.set_Uint256(maxGroupValue));
+                decimal = string(abi.encodePacked(groupString, decimal));
+            } else {
+                decimal = string(abi.encodePacked(groupValue.toString(), decimal));
+                break;
+            }
+        }
+
+        return decimal;
+    }
+
+    
 }
 
 contract BigIntCalculator {

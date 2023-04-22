@@ -159,18 +159,36 @@ library BigInt {
 
         a.limbs[limbIndex] |= (1 << bitIndex);
     }
-
-
+    function set_Uint256(uint256 a) internal pure returns (bigint memory) {
+        bigint memory result;
+        result.limbs = new uint256[](1);
+        result.limbs[0] = a;
+        return result;
+    }
 }
 
 contract BigIntCalculator {
     using BigInt for BigInt.bigint;
-
+    constructor() {
+        BigInt.bigint memory a = BigInt.set_Uint256(0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff);
+        BigInt.bigint memory b = BigInt.set_Uint256(0xffffffffffffffffffffffffffffffffff);
+        BigInt.bigint memory c = a.add(b);
+        BigInt.bigint memory d = a.multiply(b);
+    }
+    function set_Uint256(uint256 a) external pure returns (BigInt.bigint memory) {
+        return BigInt.set_Uint256(a);
+    }
     function add(BigInt.bigint calldata a, BigInt.bigint calldata b) external pure returns (BigInt.bigint memory) {
         return a.add(b);
     }
 
     function multiply(BigInt.bigint calldata a, BigInt.bigint calldata b) external pure returns (BigInt.bigint memory) {
         return a.multiply(b);
+    }
+    function subtract(BigInt.bigint calldata a, BigInt.bigint calldata b) external pure returns (BigInt.bigint memory) {
+        return a.subtract(b);
+    }
+    function divide(BigInt.bigint calldata a, BigInt.bigint calldata b) external pure returns (BigInt.bigint memory) {
+        return a.divide(b);
     }
 }

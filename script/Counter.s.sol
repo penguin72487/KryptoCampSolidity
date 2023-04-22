@@ -11,48 +11,60 @@ import "forge-std/console2.sol";
 contract CounterScript is Script {
     using BigInt for BigInt.bigint;
 
-    event LogBigInt(BigInt.bigint);
+    event LogString(BigInt.bigint);
+    event LogString(string);
 
     BigIntCalculator public calculator;
 
     constructor() {
-        calculator = new BigIntCalculator();
     }
 
     function setUp() public {}
 
     function run() public {
         testAdd();
-        testMultiply();
         testSubtract();
+        testkaratsubaMultiply();
         testDivide();
+        testMultiply();
+    }
+    function testkaratsubaMultiply()
+    {
+        BigInt.bigint memory a = BigInt.set_Uint256(123456789);
+        BigInt.bigint memory b = BigInt.set_Uint256(987654321);
+        BigInt.bigint memory c = a.karatsubaMultiply(b);
+        emit LogString(c.get_Decimal());
     }
 
     function testAdd() internal {
         BigInt.bigint memory a = BigInt.set_Uint256(123456789);
         BigInt.bigint memory b = BigInt.set_Uint256(987654321);
-        BigInt.bigint memory c = calculator.add(a, b);
-        emit LogBigInt(c);
+        BigInt.bigint memory c = a.add(b);
+        emit LogString(c.get_Decimal());
+
     }
 
     function testMultiply() internal {
         BigInt.bigint memory a = BigInt.set_Uint256(123456789);
         BigInt.bigint memory b = BigInt.set_Uint256(987654321);
-        BigInt.bigint memory c = calculator.multiply(a, b);
-        emit LogBigInt(c);
+        BigInt.bigint memory c = a.multiply(b);
+        emit LogString(c.get_Decimal());
+
     }
 
     function testSubtract() internal {
         BigInt.bigint memory a = BigInt.set_Uint256(987654321);
         BigInt.bigint memory b = BigInt.set_Uint256(123456789);
-        BigInt.bigint memory c = calculator.subtract(a, b);
-        emit LogBigInt(c);
+        BigInt.bigint memory c = a.subtract(b);
+        emit LogString(c.get_Decimal());
+
     }
 
     function testDivide() internal {
         BigInt.bigint memory a = BigInt.set_Uint256(987654321);
         BigInt.bigint memory b = BigInt.set_Uint256(123456789);
-        BigInt.bigint memory c = calculator.divide(a, b);
-        emit LogBigInt(c);
+        BigInt.bigint memory c = a.divide(b);
+        emit LogString(c.get_Decimal());
+
     }
 }

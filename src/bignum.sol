@@ -6,11 +6,11 @@ library BigInt {
         uint256[] limbs;
     }
 
-    function add(bigint memory a, bigint memory b) internal pure returns (bigint memory) {
+        function add(bigint memory a, bigint memory b) internal pure returns (bigint memory) {
         uint256 length = max(a.limbs.length, b.limbs.length);
 
         bigint memory result;
-        result.limbs = new uint256[](length + 1);
+        result.limbs = new uint256[](length);
 
         uint256 carry = 0;
         for (uint256 i = 0; i < length; i++) {
@@ -27,29 +27,18 @@ library BigInt {
         }
 
         if (carry != 0) {
-            result.limbs[length] = carry;
-        }
-
-        return result;
-    }
-
-    function multiply(bigint memory a, bigint memory b) internal pure returns (bigint memory) {
-        bigint memory result;
-        result.limbs = new uint256[](a.limbs.length + b.limbs.length);
-
-        for (uint256 i = 0; i < a.limbs.length; i++) {
-            uint256 carry = 0;
-            for (uint256 j = 0; j < b.limbs.length; j++) {
-                uint256 mul = a.limbs[i] * b.limbs[j] + carry + result.limbs[i + j];
-                result.limbs[i + j] = mul % (2**128);
-                carry = mul / (2**128);
+            uint256[] memory newLimbs = new uint256[](length + 1);
+            for (uint256 i = 0; i < length; i++) {
+                newLimbs[i] = result.limbs[i];
             }
-            result.limbs[i + b.limbs.length] = carry;
+            newLimbs[length] = carry;
+            result.limbs = newLimbs;
         }
 
         return result;
     }
-        function subtract(bigint memory a, bigint memory b) internal pure returns (bigint memory) {
+
+    function subtract(bigint memory a, bigint memory b) internal pure returns (bigint memory) {
         require(a.limbs.length >= b.limbs.length, "Subtraction result would be negative");
 
         bigint memory result;
@@ -69,6 +58,74 @@ library BigInt {
             }
 
             result.limbs[i] = uint256(diff);
+        }
+
+        // Remove leading zero limbs
+        uint256 lastIndex = result.limbs.length - 1;
+        while (lastIndex > 0 && result.limbs[lastIndex] == 0) {
+            lastIndex--;
+        }
+        if (lastIndex < result.limbs.length - 1) {
+            uint256[] memory newLimbs = new uint256[](lastIndex + 1);
+            for (uint256 i = 0; i <= lastIndex; i++) {
+                newLimbs[i] = result.limbs[i];
+            }
+            result.limbs = newLimbs;
+        }
+
+        return result;
+    }
+    function karatsubaMultiply(bigint memory a, bigint memory b) internal pure returns (bigint memory) {
+    uint256 lenA = a.limbs.length;
+    uint256 lenB = b.limbs.length;
+
+    if (lenA == 1 && lenB == 1) {
+        bigint memory result;
+        result.limbs = new uint256[](1);
+        result.limbs[0] = a.limbs[0] * b.limbs[0];
+        return result;
+    }
+
+    uint256 half = (max(lenA, lenB) + 1) / 2;
+
+    bigint memory aLow = slice(a, 0, half);
+    bigint memory aHigh = slice(a, half, lenA);
+    bigint memory bLow = slice(b, 0, half);
+    bigint memory bHigh = slice(b, half, lenB);
+
+    bigint memory p0 = karatsubaMultiply(aLow, bLow);
+    bigint memory p1 = karatsubaMultiply(aHigh, bHigh);
+    bigint memory p2 = karatsubaMultiply(add(aLow, aHigh), add(bLow, bHigh));
+    bigint memory p3 = subtract(subtract(p2, p1), p0);
+
+    bigint memory result = add(add(leftShift(p1, 2 * half * 128), leftShift(p3, half * 128)), p0);
+    return result;
+}
+
+function slice(bigint memory a, uint256 start, uint256 end) internal pure returns (bigint memory) {
+    uint256 length = end - start;
+    bigint memory result;
+    result.limbs = new uint256[](length);
+
+    for (uint256 i = 0; i < length && start + i < a.limbs.length; i++) {
+        result.limbs[i] = a.limbs[start + i];
+    }
+
+    return result;
+}
+
+    function multiply(bigint memory a, bigint memory b) internal pure returns (bigint memory) {
+        bigint memory result;
+        result.limbs = new uint256[](a.limbs.length + b.limbs.length);
+
+        for (uint256 i = 0; i < a.limbs.length; i++) {
+            uint256 carry = 0;
+            for (uint256 j = 0; j < b.limbs.length; j++) {
+                uint256 mul = a.limbs[i] * b.limbs[j] + carry + result.limbs[i + j];
+                result.limbs[i + j] = mul % (2**128);
+                carry = mul / (2**128);
+            }
+            result.limbs[i + b.limbs.length] = carry;
         }
 
         return result;
@@ -211,7 +268,7 @@ library BigInt {
         return result;
     
     }
-function get_Decimal(BigInt.bigint memory a) internal pure returns (string memory) {
+    function get_Decimal(BigInt.bigint memory a) internal pure returns (string memory) {
         uint256 base = 2**128;
         uint256 groupSize = 1;
         uint256 maxGroupValue = base;
@@ -222,13 +279,13 @@ function get_Decimal(BigInt.bigint memory a) internal pure returns (string memor
         while (BigInt.compare(temp, BigInt.set_Uint256(0)) > 0) {
             bigint memory remainder = BigInt.mod(temp, maxGroupValue);
             uint256 groupValue = remainder.limbs[0];
-            string memory groupString = groupValue.toString();
+            string memory groupString = Strings.toString(groupValue);
 
             if (BigInt.compare(temp, BigInt.set_Uint256(maxGroupValue)) >= 0) {
                 temp = BigInt.divide(temp, BigInt.set_Uint256(maxGroupValue));
                 decimal = string(abi.encodePacked(groupString, decimal));
             } else {
-                decimal = string(abi.encodePacked(groupValue.toString(), decimal));
+                decimal = string(abi.encodePacked(Strings.toString(groupValue), decimal));
                 break;
             }
         }
@@ -236,16 +293,29 @@ function get_Decimal(BigInt.bigint memory a) internal pure returns (string memor
         return decimal;
     }
 
-    
+    function mod(bigint memory a, uint256 b) internal pure returns (bigint memory) {
+    require(b > 0, "Modulus must be greater than zero");
+    bigint memory result;
+
+    uint256 remainder = 0;
+    for (int i = int(a.limbs.length) - 1; i >= 0; i--) {
+        uint256 temp = (remainder * (2**128)) + a.limbs[uint256(i)];
+        remainder = temp % b;
+    }
+
+    result.limbs = new uint256[](1);
+    result.limbs[0] = remainder;
+    return result;
+}
 }
 
 contract BigIntCalculator {
     using BigInt for BigInt.bigint;
     constructor() {
-        BigInt.bigint memory a = BigInt.set_Uint256(0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff);
-        BigInt.bigint memory b = BigInt.set_Uint256(0xffffffffffffffffffffffffffffffffff);
-        BigInt.bigint memory c = a.add(b);
-        BigInt.bigint memory d = a.multiply(b);
+        // BigInt.bigint memory a = BigInt.set_Uint256(0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff);
+        // BigInt.bigint memory b = BigInt.set_Uint256(0xffffffffffffffffffffffffffffffffff);
+        // BigInt.bigint memory c = a.add(b);
+        // BigInt.bigint memory d = a.multiply(b);
     }
     function set_Uint256(uint256 a) external pure returns (BigInt.bigint memory) {
         return BigInt.set_Uint256(a);

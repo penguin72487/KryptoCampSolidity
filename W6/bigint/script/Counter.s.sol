@@ -20,18 +20,18 @@ contract CounterScript is Script {
     function setUp() public {}
 
     function run() public {
-        //testAdd();
-        //testSubtract();
+        testAdd();
+        testSubtract();
         testkaratsubaMultiply();
-        //emit LogString("ok ka");
-        //testDivide();
-        //emit LogString("ok di");
-        //testMultiply();
-        //emit LogString("ok mu");
-        // testMultiply();
-        // emit LogString("ok mu");
-        //testLargeNumbers();
-        //emit LogString("ok ln");
+        emit LogString("ok ka");
+        testDivide();
+        emit LogString("ok di");
+        testMultiply();
+        emit LogString("ok mu");
+        testMultiply();
+        emit LogString("ok mu");
+        testLargeNumbers();
+        emit LogString("ok ln");
     }
     function testLargeNumbers() internal {
         string memory largeNumber1 = "115792089237316195423570985008687907853269984665640564039457584007913129639936";

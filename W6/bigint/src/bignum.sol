@@ -13,29 +13,7 @@ library BigInt {
     result.limbs = new uint256[](length);
 
     uint256 carry = 0;
-    for (uint256 i = 0; i < length; i++) {
-        uint256 sum = carry;
-        if (i < a.limbs.length) {
-            sum += a.limbs[i];
-        }
-        if (i < b.limbs.length) {
-            sum += b.limbs[i];
-        }
-
-        if (i < result.limbs.length) {
-            result.limbs[i] = sum % (2**128);
-            carry = sum / (2**128);
-        }
-    }
-
-    if (carry != 0) {
-        uint256[] memory newLimbs = new uint256[](length + 1);
-        for (uint256 i = 0; i < length; i++) {
-            newLimbs[i] = result.limbs[i];
-        }
-        newLimbs[length] = carry;
-        result.limbs = newLimbs;
-    }
+    for(uint256 )
 
     return result;
 }
@@ -185,7 +163,10 @@ function slice(bigint memory a, uint256 start, uint256 end) internal pure return
 
 
     function max(uint256 a, uint256 b) private pure returns (uint256) {
-        return a >= b ? a : b;
+        return a > b ? a : b;
+    }
+    function min(uint256 a, uint256 b) private pure returns (uint256) {
+        return a < b ? a : b;
     }
     function compare(bigint memory a, bigint memory b) internal pure returns (int) {
         if (a.limbs.length > b.limbs.length) {

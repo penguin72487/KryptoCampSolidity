@@ -6,7 +6,11 @@
   "author": "thirdweb <eng@thirdweb.com>",
   "license": "MIT",
   "dependencies": {
-    "@thirdweb-dev/contracts": "^3"
+    "@chakra-ui/react": "^2.5.5",
+    "@emotion/react": "^11.10.6",
+    "@emotion/styled": "^11.10.6",
+    "@thirdweb-dev/contracts": "^3",
+    "framer-motion": "^10.12.4"
   },
   "scripts": {
     "build": "npx thirdweb@latest detect",

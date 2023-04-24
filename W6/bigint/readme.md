@@ -2,6 +2,7 @@
 cd W6/bigint  
 `forge script script/Counter.s.sol:CounterScript -vvvvv`
 `forge debug --debug script/Counter.s.sol:CounterScript`
+`forge script script/testAMM.s.sol:TestSimpleAMM -vvvvv`
 ## start a vm node
 `anvil --fork-url $env:fork_url`  
 `curl --url $env:fork_url -X POST -H   "Content-Type: application/json" -d '{"jsonrpc":"2.0","method":"eth_blockNumber","params":[],"id":1}'`

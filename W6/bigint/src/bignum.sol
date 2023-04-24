@@ -1,75 +1,68 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.18;
 import "@openzeppelin/contracts/utils/Strings.sol";
+import "@openzeppelin/contracts/utils/math/SafeMath.sol";
 library BigInt {
+    using SafeMath for uint256;
     struct bigint {
         uint256[] limbs;
     }
+    uint256 constant BASE = 10**38;
 
-function add(bigint memory a, bigint memory b) internal pure returns (bigint memory) {
-    uint256 max_length = max(a.limbs.length, b.limbs.length);
-    uint256 min_length = min(a.limbs.length, b.limbs.length);
-
-    bigint memory result;
-    result.limbs = new uint256[](max_length + 1);
-
-    uint256 carry = 0;
-    for (uint256 i = 0; i < min_length; i++) {
-        (result.limbs[i], carry) = addWithCarry(a.limbs[i], b.limbs[i], carry);
-    }
-
-    for (uint256 i = min_length; i < max_length; i++) {
-        uint256 current = i < a.limbs.length ? a.limbs[i] : b.limbs[i];
-        (result.limbs[i], carry) = addWithCarry(current, 0, carry);
-    }
-
-    if (carry > 0) {
-        result.limbs[max_length-1] = carry;
-    } else {
-        uint256[] memory newLimbs = new uint256[](max_length);
-        for (uint256 i = 0; i < max_length; i++) {
-            newLimbs[i] = result.limbs[i];
+    function add(bigint memory a, bigint memory b) public pure returns (bigint memory) {
+        if(a.limbs.length < b.limbs.length) {
+            bigint memory temp = a;
+            a = b;
+            b = temp;
         }
-        result.limbs = newLimbs;
+
+        bigint memory result;
+        result.limbs = new uint256[](a.limbs.length+ 1);
+
+        uint256 it=0;
+        for(;it<b.limbs.length;it++) {
+            result.limbs[it] = a.limbs[it] + b.limbs[it];
+        }
+        for(;it<a.limbs.length;it++) {
+            result.limbs[it] = a.limbs[it];
+        }
+        for(uint256 i = 0; i < a.limbs.length; i++) {
+            if(result.limbs[i] >= BASE) {
+                result.limbs[i + 1] += result.limbs[i] / BASE;
+                result.limbs[i] = result.limbs[i] % BASE; // Change this line
+            }
+        }
+        if(result.limbs[a.limbs.length] == 0) {
+            bigint memory result2;
+            result2.limbs = new uint256[](a.limbs.length);
+            for(uint256 i = 0; i < a.limbs.length; i++) {
+                result2.limbs[i] = result.limbs[i];
+            }
+            return result2;
+        }
+
+        return result;
     }
 
-    return result;
-}
-
-function addWithCarry(uint256 a, uint256 b, uint256 carry) internal pure returns (uint256, uint256) {
-    uint256 sum = a + b + carry;
-    carry = 0;
-
-    if (sum >= 2**128) {
-        sum -= 2**128;
-        carry = 1;
-    }
-
-    return (sum, carry);
-}
 
 
-
-
-
-
-    function subtract(bigint memory a, bigint memory b) internal pure returns (bigint memory) {
+     function subtract(bigint memory a, bigint memory b) internal pure returns (bigint memory) {
         require(a.limbs.length >= b.limbs.length, "Subtraction result would be negative");
 
         bigint memory result;
         result.limbs = new uint256[](a.limbs.length);
 
-        for(uint256 i = 0; i < a.limbs.length; i++) {
-            if(a.limbs[i] < b.limbs[i]) {
+        for (uint256 i = 0; i < a.limbs.length; i++) {
+            if (a.limbs[i] < b.limbs[i]) {
                 a.limbs[i + 1] -= 1;
-                a.limbs[i] += 2**128;
+                a.limbs[i] += BASE;
             }
             result.limbs[i] = a.limbs[i] - b.limbs[i];
         }
 
         return result;
     }
-    function karatsubaMultiply(bigint memory a, bigint memory b) public pure returns (bigint memory) {
+    function karatsubaMultiply(bigint memory a, bigint memory b) internal pure returns (bigint memory) {
     uint256 lenA = a.limbs.length;
     uint256 lenB = b.limbs.length;
 
@@ -107,24 +100,6 @@ function slice(bigint memory a, uint256 start, uint256 end) internal pure return
 
     return result;
 }
-
-    function multiply(bigint memory a, bigint memory b) internal pure returns (bigint memory) {
-        bigint memory result;
-        result.limbs = new uint256[](a.limbs.length + b.limbs.length);
-
-        for (uint256 i = 0; i < a.limbs.length; i++) {
-            uint256 carry = 0;
-            for (uint256 j = 0; j < b.limbs.length; j++) {
-                uint256 mul = a.limbs[i] * b.limbs[j] + carry + result.limbs[i + j];
-                result.limbs[i + j] = mul % (2**128);
-                carry = mul / (2**128);
-            }
-            result.limbs[i + b.limbs.length] = carry;
-        }
-
-        return result;
-    }
-
     function divide(bigint memory a, bigint memory b) internal pure returns (bigint memory) {
         require(b.limbs.length > 0, "Division by zero");
 
@@ -220,74 +195,94 @@ function slice(bigint memory a, uint256 start, uint256 end) internal pure return
         return result;
     }
     function set_String(string memory a) internal pure returns (bigint memory) {
-        bytes memory input = bytes(a);
-        require(input.length > 0, "Input string must not be empty");
-
-        uint256 base = 2**128;
-        uint256 groupSize = 1;
-        uint256 maxGroupValue = base;
-
+        bytes memory inputBytes = bytes(a);
         bigint memory result;
-        uint256[] memory tempLimbs = new uint256[]((input.length + groupSize - 1) / groupSize);
-        uint256 tempIndex = 0;
-        uint256 groupValue = 0;
-        uint256 groupDigits = 0;
+        result.limbs = new uint256[]((inputBytes.length + 38) / 39);
+        bytes memory tempBytes = new bytes(39);
+        
+        for (uint256 i = 0; i < inputBytes.length; i++) {
+            // Clear tempBytes when starting a new group of characters
+            if (i % 39 == 0) {
+                for (uint256 j = 0; j < 39; j++) {
+                    tempBytes[j] = 0;
+                }
+            }
 
-        for (uint256 i = 0; i < input.length; i++) {
-            uint8 digit = uint8(input[i]) - 48; // Convert the ASCII value to the corresponding integer
-            require(digit < 10, "Input string contains invalid characters");
-
-            groupValue = groupValue * 10 + digit;
-            groupDigits++;
-
-            if (groupDigits == groupSize) {
-                tempLimbs[tempIndex] = groupValue;
-                tempIndex++;
-                groupValue = 0;
-                groupDigits = 0;
+            tempBytes[i % 39] = inputBytes[inputBytes.length - i - 1];
+            if (i % 39 == 38) {
+                result.limbs[i / 39] = bytesToUint256(tempBytes);
             }
         }
-
-        if (groupDigits > 0) {
-            tempLimbs[tempIndex] = groupValue;
+        if (inputBytes.length % 39 != 0) {
+            result.limbs[inputBytes.length / 39] = bytesToUint256(tempBytes);
         }
-
-        result.limbs = new uint256[](tempIndex + 1);
-        for (uint256 i = 0; i <= tempIndex; i++) {
-            bigint memory tempBigint = set_Uint256(tempLimbs[i]);
-            bigint memory baseBigint = set_Uint256(maxGroupValue);
-            for (uint256 j = 0; j < tempIndex - i; j++) {
-                tempBigint = multiply(tempBigint, baseBigint);
-            }
-            result = add(result, tempBigint);
-        }
-
         return result;
-    
     }
+
+    function stringToUint256(string memory input) internal pure returns (uint256) {
+        bytes memory inputBytes = bytes(input);
+        uint256 output = 0;
+
+        for (uint256 i = 0; i < inputBytes.length; i++) {
+            uint8 currentChar = uint8(inputBytes[i]);
+            
+            // Check if the character is a valid digit (0-9)
+            require(currentChar >= 48 && currentChar <= 57, "Invalid character in input string");
+
+            // Subtract 48 to get the integer value of the digit (ASCII value of '0' is 48)
+            uint8 digit = currentChar - 48;
+
+            // Update the output with the new digit
+            output = output * 10 + uint256(digit);
+        }
+
+        return output;
+    }
+    function bytesToUint256(bytes memory inputBytes) internal pure returns (uint256) {
+        uint256 output = 0;
+
+        for (uint256 i = 0; i < inputBytes.length; i++) {
+            uint8 currentChar = uint8(inputBytes[i]);
+
+            // Check if the character is a valid digit (0-9)
+            if(currentChar >= 48 && currentChar <= 57)
+            {
+                // Subtract 48 to get the integer value of the digit (ASCII value of '0' is 48)
+                uint8 digit = currentChar - 48;
+
+                // Update the output with the new digit
+                output = output * 10 + uint256(digit);
+            }
+
+        }
+
+        return output;
+    }
+
+
     function get_Decimal(BigInt.bigint memory a) internal pure returns (string memory) {
-        uint256 base = 2**128;
-        uint256 groupSize = 1;
-        uint256 maxGroupValue = base;
-
-        bigint memory temp = a;
         string memory decimal = "";
-
-        while (BigInt.compare(temp, BigInt.set_Uint256(0)) > 0) {
-            bigint memory remainder = BigInt.mod(temp, maxGroupValue);
-            uint256 groupValue = remainder.limbs[0];
-            string memory groupString = Strings.toString(groupValue);
-
-            if (BigInt.compare(temp, BigInt.set_Uint256(maxGroupValue)) >= 0) {
-                temp = BigInt.divide(temp, BigInt.set_Uint256(maxGroupValue));
-                decimal = string(abi.encodePacked(groupString, decimal));
-            } else {
-                decimal = string(abi.encodePacked(Strings.toString(groupValue), decimal));
+        for (uint256 i = 0; i < a.limbs.length; i++) {
+            if(a.limbs[i]==0)
+            {
                 break;
             }
+            decimal = string(abi.encodePacked(decimal,Strings.toString(a.limbs[i])));
+        }
+        
+        return reverse(decimal);
+    }
+    function reverse(string memory str) internal pure returns (string memory) {
+        bytes memory strBytes = bytes(str);
+        uint256 length = strBytes.length;
+
+        for (uint256 i = 0; i < length / 2; i++) {
+            bytes1 temp = strBytes[i];
+            strBytes[i] = strBytes[length - 1 - i];
+            strBytes[length - 1 - i] = temp;
         }
 
-        return decimal;
+        return string(strBytes);
     }
 
     function mod(bigint memory a, uint256 b) internal pure returns (bigint memory) {

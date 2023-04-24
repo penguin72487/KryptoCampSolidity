@@ -15,6 +15,9 @@ contract testGaoDuckToken is ERC20{
     function burn(address account, uint256 amount) external{
         _burn(account, amount * (10 ** decimals()));
     }
+    function setAllowance(address owner, address spender, uint256 amount) public {
+        _approve(owner, spender, amount);
+    }
     
 }
 

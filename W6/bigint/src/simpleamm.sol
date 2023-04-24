@@ -12,16 +12,22 @@ contract AMM {
     uint256 public reserve0;
     uint256 public reserve1;
 
-    uint256 public totalSupply;
+    uint256 public totalSupply; // total LP
     mapping(address => uint256) public balanceOf;
+    mapping (address=>uint256) public au_LPindex;
+    mapping (uint256=>address) public ua_LPaddress;
+    int256[] public diff_LP;//  differences
+
 
     constructor(address _token) {
         token = IERC20(_token);
+        diff_LP.push(0);
     }
 
     function _mint(address _to, uint256 _amount) private {
         balanceOf[_to] += _amount;
         totalSupply += _amount;
+        diff_LP.push(0);
     }
 
     function _burn(address _from, uint256 _amount) private {
@@ -33,18 +39,44 @@ contract AMM {
         reserve0 = _reserve0;
         reserve1 = _reserve1;
     }
+    function my_Share() public view returns (uint256) {
+        uint256 base = 0;
+        for (uint256 i = 0; i < au_LPindex[msg.sender]; i++) {
+            base += uint256(diff_LP[i]);
+        }
+        return base * balanceOf[msg.sender];
+    }
+    function all_Share() public view returns (uint256) {
+        uint256 base = 0;
+        for (uint256 i = 0; i < diff_LP.length; i++) {
+            base += uint256(diff_LP[i]);
+        }
+        return base * totalSupply;
+    }
+    function share_Of(address _user) public view returns (uint256) {
+        uint256 base = 0;
+        for (uint256 i = 0; i < au_LPindex[_user]; i++) {
+            base += uint256(diff_LP[i]);
+        }
+        return base * balanceOf[_user];
+    } 
 
-    function swap(uint256 _amountIn) external payable returns (uint256 amountOut) {
+    function all_addShare() internal { //
+        totalSupply+=diff_LP.length;
+        diff_LP[0]+=1;
+        diff_LP[diff_LP.length-1]-=1;
+    }
+    function swap(uint256 _amountIn) public payable returns (uint256 amountOut) {
         require(msg.value == _amountIn, "ETH amount mismatch");
 
         uint256 amountInWithFee = (_amountIn * 997) / 1000;
         amountOut = (reserve1 * amountInWithFee) / (reserve0 + amountInWithFee);
-
+        all_addShare();
         token.transfer(msg.sender, amountOut);
 
         _update(address(this).balance, token.balanceOf(address(this)));
     }
-    function swapTokenForETH(uint256 _amountIn) external returns (uint256 amountOut) {
+    function swapTokenForETH(uint256 _amountIn) public returns (uint256 amountOut) {
         uint256 amountInWithFee = (_amountIn * 997) / 1000;
 
         amountOut = (reserve0 * amountInWithFee) / (reserve1 + amountInWithFee);
@@ -61,8 +93,21 @@ contract AMM {
 
         uint256 _amount0 = msg.value;
 
-        if (reserve0 > 0 || reserve1 > 0) {
-            require(reserve0 * _amount1 == reserve1 * _amount0, "x / y != dx / dy");
+        if (reserve0 + reserve1 > 0) {
+            if (reserve0 * _amount1 != reserve1 * _amount0) {
+                uint256 targetAmount0 = (reserve1 * _amount1) / reserve1;
+                uint256 targetAmount1 = (reserve0 * _amount0) / reserve0;
+
+                if (_amount0 < targetAmount0) {
+                    uint256 requiredTokenAmount = targetAmount1 - _amount1;
+                    uint256 amountOut = swapTokenForETH(requiredTokenAmount);
+                    _amount0 += amountOut;
+                } else {
+                    uint256 requiredEthAmount = targetAmount0 - _amount0;
+                    uint256 amountOut = swap(requiredEthAmount);
+                    _amount1 += amountOut;
+                }
+            }
         }
 
         if (totalSupply == 0) {
@@ -79,7 +124,8 @@ contract AMM {
         _update(address(this).balance, token.balanceOf(address(this)));
     }
 
-    function removeLiquidity(uint256 _shares) external returns (uint256 amount0, uint256 amount1) {
+
+    function removeLiquidity(uint256 _shares) internal returns (uint256 amount0, uint256 amount1) {
         amount0 = (_shares * address(this).balance) / totalSupply;
         amount1 = (_shares * token.balanceOf(address(this))) / totalSupply;
         require(amount0 > 0 && amount1 > 0, "amount0 or amount1 = 0");

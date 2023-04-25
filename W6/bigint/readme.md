@@ -31,3 +31,20 @@ constructor的參數放constructor_args
 `cast send --rpc-url=$env:RPC_URL 0x25a1df485cfbb93117f12fc673d87d1cddeb845a "mintTo(address)" 0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266 --private-key=$env:PRIVATE_KEY`
 
 ## debug
+
+
+## test simpleamm
+```powershell
+# Load environment variables from .env file
+$env_vars = Get-Content -Path .\.env
+foreach ($env_var in $env_vars) {
+    $key, $value = $env_var.Split("=")
+    [System.Environment]::SetEnvironmentVariable($key, $value)
+}
+
+# Run the forge test command with the fork_url environment variable
+forge test -vvvvv --fork-url $env:fork_url --match-path test/testAMM.t.sol --match-contract TestSimpleAMM
+```
+
+
+

@@ -36,6 +36,7 @@ constructor的參數放constructor_args
 ## test simpleamm
 ```powershell
 # Load environment variables from .env file
+cd W6/simpleAMM
 $env_vars = Get-Content -Path .\.env
 foreach ($env_var in $env_vars) {
     $key, $value = $env_var.Split("=")

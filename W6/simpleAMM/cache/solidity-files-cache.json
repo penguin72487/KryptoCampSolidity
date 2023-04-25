@@ -100,58 +100,6 @@
         }
       }
     },
-    "lib/forge-std/src/Script.sol": {
-      "lastModificationDate": 1682130430089,
-      "contentHash": "c10ed2980061827d4a5ce78c310ae01b",
-      "sourceName": "lib/forge-std/src/Script.sol",
-      "solcConfig": {
-        "settings": {
-          "optimizer": {
-            "enabled": true,
-            "runs": 200
-          },
-          "metadata": {
-            "bytecodeHash": "ipfs",
-            "appendCBOR": true
-          },
-          "outputSelection": {
-            "*": {
-              "": [
-                "ast"
-              ],
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ]
-            }
-          },
-          "evmVersion": "london",
-          "libraries": {}
-        }
-      },
-      "imports": [
-        "lib/forge-std/src/Base.sol",
-        "lib/forge-std/src/StdChains.sol",
-        "lib/forge-std/src/StdCheats.sol",
-        "lib/forge-std/src/StdJson.sol",
-        "lib/forge-std/src/StdMath.sol",
-        "lib/forge-std/src/StdStorage.sol",
-        "lib/forge-std/src/StdUtils.sol",
-        "lib/forge-std/src\\Vm.sol",
-        "lib/forge-std/src\\console.sol",
-        "lib/forge-std/src\\console2.sol",
-        "lib/forge-std/src/interfaces/IMulticall3.sol"
-      ],
-      "versionRequirement": ">=0.6.2, <0.9.0",
-      "artifacts": {
-        "Script": {
-          "0.8.18+commit.87f61d96.Windows.msvc": "Script.sol\\Script.json"
-        }
-      }
-    },
     "lib/forge-std/src/StdAssertions.sol": {
       "lastModificationDate": 1682130430090,
       "contentHash": "d136ed3be15b16e8875196a38f225c2f",
@@ -961,194 +909,9 @@
         }
       }
     },
-    "lib/openzeppelin-contracts/contracts/utils/Strings.sol": {
-      "lastModificationDate": 1682134100170,
-      "contentHash": "a62ff4e4800475cf855e564a157ac52b",
-      "sourceName": "lib/openzeppelin-contracts/contracts/utils/Strings.sol",
-      "solcConfig": {
-        "settings": {
-          "optimizer": {
-            "enabled": true,
-            "runs": 200
-          },
-          "metadata": {
-            "bytecodeHash": "ipfs",
-            "appendCBOR": true
-          },
-          "outputSelection": {
-            "*": {
-              "": [
-                "ast"
-              ],
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ]
-            }
-          },
-          "evmVersion": "london",
-          "libraries": {}
-        }
-      },
-      "imports": [
-        "lib/openzeppelin-contracts/contracts/utils/math/Math.sol"
-      ],
-      "versionRequirement": "^0.8.0",
-      "artifacts": {
-        "Strings": {
-          "0.8.18+commit.87f61d96.Windows.msvc": "Strings.sol\\Strings.json"
-        }
-      }
-    },
-    "lib/openzeppelin-contracts/contracts/utils/math/Math.sol": {
-      "lastModificationDate": 1682134100183,
-      "contentHash": "c06231dd51da087d01dbe5b7805efd94",
-      "sourceName": "lib/openzeppelin-contracts/contracts/utils/math/Math.sol",
-      "solcConfig": {
-        "settings": {
-          "optimizer": {
-            "enabled": true,
-            "runs": 200
-          },
-          "metadata": {
-            "bytecodeHash": "ipfs",
-            "appendCBOR": true
-          },
-          "outputSelection": {
-            "*": {
-              "": [
-                "ast"
-              ],
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ]
-            }
-          },
-          "evmVersion": "london",
-          "libraries": {}
-        }
-      },
-      "imports": [],
-      "versionRequirement": "^0.8.0",
-      "artifacts": {
-        "Math": {
-          "0.8.18+commit.87f61d96.Windows.msvc": "Math.sol\\Math.json"
-        }
-      }
-    },
-    "lib/openzeppelin-contracts/contracts/utils/math/SafeMath.sol": {
-      "lastModificationDate": 1682134100184,
-      "contentHash": "162ccf43242f3d61992c57425c5829cf",
-      "sourceName": "lib/openzeppelin-contracts/contracts/utils/math/SafeMath.sol",
-      "solcConfig": {
-        "settings": {
-          "optimizer": {
-            "enabled": true,
-            "runs": 200
-          },
-          "metadata": {
-            "bytecodeHash": "ipfs",
-            "appendCBOR": true
-          },
-          "outputSelection": {
-            "*": {
-              "": [
-                "ast"
-              ],
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ]
-            }
-          },
-          "evmVersion": "london",
-          "libraries": {}
-        }
-      },
-      "imports": [],
-      "versionRequirement": "^0.8.0",
-      "artifacts": {
-        "SafeMath": {
-          "0.8.18+commit.87f61d96.Windows.msvc": "SafeMath.sol\\SafeMath.json"
-        }
-      }
-    },
-    "script/Counter.s.sol": {
-      "lastModificationDate": 1682334371857,
-      "contentHash": "980ae8e69118d365c9196bbf07910a32",
-      "sourceName": "script/Counter.s.sol",
-      "solcConfig": {
-        "settings": {
-          "optimizer": {
-            "enabled": true,
-            "runs": 200
-          },
-          "metadata": {
-            "bytecodeHash": "ipfs",
-            "appendCBOR": true
-          },
-          "outputSelection": {
-            "*": {
-              "": [
-                "ast"
-              ],
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ]
-            }
-          },
-          "evmVersion": "london",
-          "libraries": {}
-        }
-      },
-      "imports": [
-        "lib/forge-std/lib/ds-test/src\\test.sol",
-        "lib/forge-std/src/Base.sol",
-        "lib/forge-std/src\\Script.sol",
-        "lib/forge-std/src/StdAssertions.sol",
-        "lib/forge-std/src/StdChains.sol",
-        "lib/forge-std/src/StdCheats.sol",
-        "lib/forge-std/src/StdError.sol",
-        "lib/forge-std/src/StdInvariant.sol",
-        "lib/forge-std/src/StdJson.sol",
-        "lib/forge-std/src/StdMath.sol",
-        "lib/forge-std/src/StdStorage.sol",
-        "lib/forge-std/src/StdStyle.sol",
-        "lib/forge-std/src/StdUtils.sol",
-        "lib/forge-std/src\\Test.sol",
-        "lib/forge-std/src\\Vm.sol",
-        "lib/forge-std/src\\console.sol",
-        "lib/forge-std/src\\console2.sol",
-        "lib/forge-std/src/interfaces/IMulticall3.sol",
-        "lib/openzeppelin-contracts\\contracts/utils/Strings.sol",
-        "lib/openzeppelin-contracts/contracts/utils/math/Math.sol",
-        "lib/openzeppelin-contracts\\contracts/utils/math/SafeMath.sol",
-        "src\\bignum.sol"
-      ],
-      "versionRequirement": "^0.8.18",
-      "artifacts": {
-        "CounterScript": {
-          "0.8.18+commit.87f61d96.Windows.msvc": "Counter.s.sol\\CounterScript.json"
-        }
-      }
-    },
     "script/testAMM.s.sol": {
-      "lastModificationDate": 1682402258081,
-      "contentHash": "4f3e80d37f2efedc4898c0af29dc163e",
+      "lastModificationDate": 1682408604882,
+      "contentHash": "25a9b713a766d9ce1b62d1fd3c70c2f5",
       "sourceName": "script/testAMM.s.sol",
       "solcConfig": {
         "settings": {
@@ -1186,185 +949,9 @@
         }
       }
     },
-    "src/Counter.sol": {
-      "lastModificationDate": 1682130425378,
-      "contentHash": "ae6c800a2b4c57768024d6e9423d39e8",
-      "sourceName": "src/Counter.sol",
-      "solcConfig": {
-        "settings": {
-          "optimizer": {
-            "enabled": true,
-            "runs": 200
-          },
-          "metadata": {
-            "bytecodeHash": "ipfs",
-            "appendCBOR": true
-          },
-          "outputSelection": {
-            "*": {
-              "": [
-                "ast"
-              ],
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ]
-            }
-          },
-          "evmVersion": "london",
-          "libraries": {}
-        }
-      },
-      "imports": [],
-      "versionRequirement": "^0.8.13",
-      "artifacts": {
-        "Counter": {
-          "0.8.18+commit.87f61d96.Windows.msvc": "Counter.sol\\Counter.json"
-        }
-      }
-    },
-    "src/UniswapV3Liquidity.sol": {
-      "lastModificationDate": 1682401685838,
-      "contentHash": "41958372d4679b6408408730a94d539e",
-      "sourceName": "src/UniswapV3Liquidity.sol",
-      "solcConfig": {
-        "settings": {
-          "optimizer": {
-            "enabled": true,
-            "runs": 200
-          },
-          "metadata": {
-            "bytecodeHash": "ipfs",
-            "appendCBOR": true
-          },
-          "outputSelection": {
-            "*": {
-              "": [
-                "ast"
-              ],
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ]
-            }
-          },
-          "evmVersion": "london",
-          "libraries": {}
-        }
-      },
-      "imports": [],
-      "versionRequirement": "^0.8.17",
-      "artifacts": {
-        "IERC20": {
-          "0.8.18+commit.87f61d96.Windows.msvc": "UniswapV3Liquidity.sol\\IERC20.json"
-        },
-        "IERC721Receiver": {
-          "0.8.18+commit.87f61d96.Windows.msvc": "UniswapV3Liquidity.sol\\IERC721Receiver.json"
-        },
-        "INonfungiblePositionManager": {
-          "0.8.18+commit.87f61d96.Windows.msvc": "UniswapV3Liquidity.sol\\INonfungiblePositionManager.json"
-        },
-        "IWETH": {
-          "0.8.18+commit.87f61d96.Windows.msvc": "UniswapV3Liquidity.sol\\IWETH.json"
-        },
-        "UniswapV3Liquidity": {
-          "0.8.18+commit.87f61d96.Windows.msvc": "UniswapV3Liquidity.sol\\UniswapV3Liquidity.json"
-        }
-      }
-    },
-    "src/bignum.sol": {
-      "lastModificationDate": 1682240603317,
-      "contentHash": "6a5aa6f3342a30aabce4c2fe5ba4186c",
-      "sourceName": "src/bignum.sol",
-      "solcConfig": {
-        "settings": {
-          "optimizer": {
-            "enabled": true,
-            "runs": 200
-          },
-          "metadata": {
-            "bytecodeHash": "ipfs",
-            "appendCBOR": true
-          },
-          "outputSelection": {
-            "*": {
-              "": [
-                "ast"
-              ],
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ]
-            }
-          },
-          "evmVersion": "london",
-          "libraries": {}
-        }
-      },
-      "imports": [
-        "lib/openzeppelin-contracts\\contracts/utils/Strings.sol",
-        "lib/openzeppelin-contracts/contracts/utils/math/Math.sol",
-        "lib/openzeppelin-contracts\\contracts/utils/math/SafeMath.sol"
-      ],
-      "versionRequirement": "^0.8.18",
-      "artifacts": {
-        "BigInt": {
-          "0.8.18+commit.87f61d96.Windows.msvc": "bignum.sol\\BigInt.json"
-        }
-      }
-    },
-    "src/comput.sol": {
-      "lastModificationDate": 1682227759024,
-      "contentHash": "1ee302894c4d089661701c3f7eb55a81",
-      "sourceName": "src/comput.sol",
-      "solcConfig": {
-        "settings": {
-          "optimizer": {
-            "enabled": true,
-            "runs": 200
-          },
-          "metadata": {
-            "bytecodeHash": "ipfs",
-            "appendCBOR": true
-          },
-          "outputSelection": {
-            "*": {
-              "": [
-                "ast"
-              ],
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ]
-            }
-          },
-          "evmVersion": "london",
-          "libraries": {}
-        }
-      },
-      "imports": [],
-      "versionRequirement": null,
-      "artifacts": {
-        "comput": {
-          "0.8.18+commit.87f61d96.Windows.msvc": "comput.sol\\comput.json"
-        }
-      }
-    },
     "src/erc20.sol": {
-      "lastModificationDate": 1682251394983,
-      "contentHash": "5ca199843ea6db0fe4d27ab1baf25a62",
+      "lastModificationDate": 1681869326401,
+      "contentHash": "9ca1d1640129d25e0ce4622f1054218d",
       "sourceName": "src/erc20.sol",
       "solcConfig": {
         "settings": {
@@ -1407,10 +994,10 @@
         }
       }
     },
-    "src/simpleamm.sol": {
-      "lastModificationDate": 1682340198747,
+    "src/simpleAMM.sol": {
+      "lastModificationDate": 1682409083944,
       "contentHash": "7abc85e58190818770fbc56956a78f2d",
-      "sourceName": "src/simpleamm.sol",
+      "sourceName": "src/simpleAMM.sol",
       "solcConfig": {
         "settings": {
           "optimizer": {
@@ -1449,72 +1036,13 @@
       "versionRequirement": "^0.8.17",
       "artifacts": {
         "AMM": {
-          "0.8.18+commit.87f61d96.Windows.msvc": "simpleamm.sol\\AMM.json"
-        }
-      }
-    },
-    "test/Counter.t.sol": {
-      "lastModificationDate": 1682130425378,
-      "contentHash": "b1a6521ba9c61d5266bab1fc9a057d68",
-      "sourceName": "test/Counter.t.sol",
-      "solcConfig": {
-        "settings": {
-          "optimizer": {
-            "enabled": true,
-            "runs": 200
-          },
-          "metadata": {
-            "bytecodeHash": "ipfs",
-            "appendCBOR": true
-          },
-          "outputSelection": {
-            "*": {
-              "": [
-                "ast"
-              ],
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ]
-            }
-          },
-          "evmVersion": "london",
-          "libraries": {}
-        }
-      },
-      "imports": [
-        "lib/forge-std/lib/ds-test/src\\test.sol",
-        "lib/forge-std/src/Base.sol",
-        "lib/forge-std/src/StdAssertions.sol",
-        "lib/forge-std/src/StdChains.sol",
-        "lib/forge-std/src/StdCheats.sol",
-        "lib/forge-std/src/StdError.sol",
-        "lib/forge-std/src/StdInvariant.sol",
-        "lib/forge-std/src/StdJson.sol",
-        "lib/forge-std/src/StdMath.sol",
-        "lib/forge-std/src/StdStorage.sol",
-        "lib/forge-std/src/StdStyle.sol",
-        "lib/forge-std/src/StdUtils.sol",
-        "lib/forge-std/src\\Test.sol",
-        "lib/forge-std/src\\Vm.sol",
-        "lib/forge-std/src\\console.sol",
-        "lib/forge-std/src\\console2.sol",
-        "lib/forge-std/src/interfaces/IMulticall3.sol",
-        "src\\Counter.sol"
-      ],
-      "versionRequirement": "^0.8.13",
-      "artifacts": {
-        "CounterTest": {
-          "0.8.18+commit.87f61d96.Windows.msvc": "Counter.t.sol\\CounterTest.json"
+          "0.8.18+commit.87f61d96.Windows.msvc": "simpleAMM.sol\\AMM.json"
         }
       }
     },
     "test/UniswapV3Liquidity.test.sol": {
-      "lastModificationDate": 1682407268094,
-      "contentHash": "8f3d01292331cb80a7520b3b61183e2d",
+      "lastModificationDate": 1682409413260,
+      "contentHash": "f3304dae62419a19a9c9977bb077ecdb",
       "sourceName": "test/UniswapV3Liquidity.test.sol",
       "solcConfig": {
         "settings": {
@@ -1544,36 +1072,17 @@
           "libraries": {}
         }
       },
-      "imports": [
-        "lib/forge-std/lib/ds-test/src\\test.sol",
-        "lib/forge-std/src/Base.sol",
-        "lib/forge-std/src/StdAssertions.sol",
-        "lib/forge-std/src/StdChains.sol",
-        "lib/forge-std/src/StdCheats.sol",
-        "lib/forge-std/src/StdError.sol",
-        "lib/forge-std/src/StdInvariant.sol",
-        "lib/forge-std/src/StdJson.sol",
-        "lib/forge-std/src/StdMath.sol",
-        "lib/forge-std/src/StdStorage.sol",
-        "lib/forge-std/src/StdStyle.sol",
-        "lib/forge-std/src/StdUtils.sol",
-        "lib/forge-std/src\\Test.sol",
-        "lib/forge-std/src\\Vm.sol",
-        "lib/forge-std/src\\console.sol",
-        "lib/forge-std/src\\console2.sol",
-        "lib/forge-std/src/interfaces/IMulticall3.sol",
-        "src\\UniswapV3Liquidity.sol"
-      ],
-      "versionRequirement": "^0.8.17",
+      "imports": [],
+      "versionRequirement": null,
       "artifacts": {
-        "UniswapV3LiquidityTest": {
-          "0.8.18+commit.87f61d96.Windows.msvc": "UniswapV3Liquidity.test.sol\\UniswapV3LiquidityTest.json"
+        "UniswapV3Liquidity.test": {
+          "0.8.18+commit.87f61d96.Windows.msvc": "UniswapV3Liquidity.test.sol\\UniswapV3Liquidity.test.json"
         }
       }
     },
     "test/testAMM.t.sol": {
-      "lastModificationDate": 1682407292352,
-      "contentHash": "040af54579c352af54c88fec26ac0aff",
+      "lastModificationDate": 1682409459297,
+      "contentHash": "4f7d77dfb699af61a3e6e0f4625642f4",
       "sourceName": "test/testAMM.t.sol",
       "solcConfig": {
         "settings": {
@@ -1618,15 +1127,15 @@
         "lib/forge-std/src/StdUtils.sol",
         "lib/forge-std/src\\Test.sol",
         "lib/forge-std/src\\Vm.sol",
-        "lib/forge-std/src\\console.sol",
-        "lib/forge-std/src\\console2.sol",
+        "lib/forge-std/src/console.sol",
+        "lib/forge-std/src/console2.sol",
         "lib/forge-std/src/interfaces/IMulticall3.sol",
         "lib/openzeppelin-contracts\\contracts/token/ERC20/ERC20.sol",
         "lib/openzeppelin-contracts/contracts/token/ERC20/IERC20.sol",
         "lib/openzeppelin-contracts/contracts/token/ERC20/extensions/IERC20Metadata.sol",
         "lib/openzeppelin-contracts/contracts/utils/Context.sol",
         "src\\erc20.sol",
-        "src\\simpleamm.sol"
+        "src\\simpleAMM.sol"
       ],
       "versionRequirement": "^0.8.18",
       "artifacts": {

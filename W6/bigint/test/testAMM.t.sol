@@ -1,14 +1,5 @@
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.18;
-// # Load environment variables from .env file
-// $env_vars = Get-Content -Path .\.env
-// foreach ($env_var in $env_vars) {
-//     $key, $value = $env_var.Split("=")
-//     [System.Environment]::SetEnvironmentVariable($key, $value)
-// }
-
-// # Run the forge test command with the fork_url environment variable
-// forge test -vvvvv --fork-url $env:fork_url --match-path test/testAMM.t.sol --match-contract TestSimpleAMM
 
 import "forge-std/Test.sol";
 import "forge-std/Vm.sol";

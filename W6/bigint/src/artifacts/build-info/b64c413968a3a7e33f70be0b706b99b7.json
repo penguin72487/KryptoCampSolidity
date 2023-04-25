@@ -1,0 +1,71 @@
+{
+	"id": "b64c413968a3a7e33f70be0b706b99b7",
+	"_format": "hh-sol-build-info-1",
+	"solcVersion": "0.8.18",
+	"solcLongVersion": "0.8.18+commit.87f61d96",
+	"input": {
+		"language": "Solidity",
+		"sources": {
+			"W6/bigint/src/comput.sol": {
+				"content": "// // SPDX-License-Identifier: MIT\r\n// pragma solidity ^0.8.0;\r\n\r\n// import \"./bignum.sol\";\r\n\r\n// contract BigIntExample {\r\n//     using BigInt for BigInt.bigint;\r\n\r\n//     function ceilDiv(uint256 a, uint256 b) internal pure returns (uint256) {\r\n//         return (a + b - 1) / b;\r\n//     }\r\n\r\n//     function calculate() public pure returns (BigInt.bigint memory) {\r\n//         // Create the bigint 10^87\r\n//         BigInt.bigint memory baseTen = BigInt.bigint({\r\n//             limbs: new uint256[](1)\r\n//         });\r\n//         baseTen.limbs[0] = 10**77;\r\n\r\n//         // Create the bigint 2^1234\r\n//         uint256 limbsLength = 1 + ceilDiv(1234, 128);\r\n//         BigInt.bigint memory baseTwo = BigInt.bigint({\r\n//             limbs: new uint256[](limbsLength)\r\n//         });\r\n//         baseTwo.setBit(1234);\r\n\r\n//         // Calculate the result: 10^87 * 2^1234\r\n//         BigInt.bigint memory result = baseTen.multiply(baseTwo);\r\n//         return result;\r\n//     }\r\n// }\r\n"
+			}
+		},
+		"settings": {
+			"optimizer": {
+				"enabled": false,
+				"runs": 200
+			},
+			"outputSelection": {
+				"*": {
+					"": [
+						"ast"
+					],
+					"*": [
+						"abi",
+						"metadata",
+						"devdoc",
+						"userdoc",
+						"storageLayout",
+						"evm.legacyAssembly",
+						"evm.bytecode",
+						"evm.deployedBytecode",
+						"evm.methodIdentifiers",
+						"evm.gasEstimates",
+						"evm.assembly"
+					]
+				}
+			}
+		}
+	},
+	"output": {
+		"errors": [
+			{
+				"component": "general",
+				"errorCode": "3420",
+				"formattedMessage": "Warning: Source file does not specify required compiler version! Consider adding \"pragma solidity ^0.8.18;\"\n--> W6/bigint/src/comput.sol\n\n",
+				"message": "Source file does not specify required compiler version! Consider adding \"pragma solidity ^0.8.18;\"",
+				"severity": "warning",
+				"sourceLocation": {
+					"end": -1,
+					"file": "W6/bigint/src/comput.sol",
+					"start": -1
+				},
+				"type": "Warning"
+			}
+		],
+		"sources": {
+			"W6/bigint/src/comput.sol": {
+				"ast": {
+					"absolutePath": "W6/bigint/src/comput.sol",
+					"exportedSymbols": {},
+					"id": 1,
+					"license": "MIT",
+					"nodeType": "SourceUnit",
+					"nodes": [],
+					"src": "987:0:0"
+				},
+				"id": 0
+			}
+		}
+	}
+}

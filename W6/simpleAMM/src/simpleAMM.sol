@@ -4,6 +4,7 @@ pragma solidity ^0.8.17;
 // V1 0xf60440f93a677AB6968E1Fd10cf8a6cE61941131
 // V2 0x8b175c421E9307F0365dd37bc32Dda5df95C4946
 // V3 0x3ea585565c490232b0379C7D3C3A9fC3fA5C9c0C
+// v4 
 import "./erc20.sol";
 contract AMM {
     IERC20 public immutable token;
@@ -18,7 +19,7 @@ contract AMM {
     mapping (uint256=>address) public ua_LPaddress;
     int256[] public diff_LP;//  differences
     uint256 public sumLP;// sigima diff_LP
-
+ 
 
     constructor(address _token) {
         token = IERC20(_token);
@@ -26,9 +27,15 @@ contract AMM {
     }
 
     function _mint(address _to, uint256 _amount) private {
+        if(balanceOf[_to]==0)
+        {
+            au_LPindex[_to]=diff_LP.length;
+            ua_LPaddress[diff_LP.length]=_to;
+            diff_LP.push(0);
+        }
         balanceOf[_to] += _amount;
         totalSupply += _amount;
-        diff_LP.push(0);
+        
     }
 
     function _burn(address _from, uint256 _amount) private {
@@ -83,14 +90,14 @@ contract AMM {
     }
     function my_Share() public view returns (uint256) {
         uint256 base = _shareBaseOf(msg.sender);
-        return base * balanceOf[msg.sender];
+        return base + balanceOf[msg.sender];
     }
     function all_Share() public view returns (uint256) {
         return totalSupply;
     }
     function share_Of(address _user) public view returns (uint256) {
         uint256 base = _shareBaseOf(_user);
-        return base * balanceOf[_user];
+        return base + balanceOf[_user];
     } 
 
     function all_addShare() internal { //

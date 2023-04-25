@@ -78,8 +78,13 @@ contract AMM {
 
         _update(address(this).balance, token.balanceOf(address(this)));
     }
-
     function removeLiquidity(uint256 _shares) external returns (uint256 amount0, uint256 amount1) {
+        return _removeLiquidity(balanceOf[msg.sender]);
+    }
+    function removeLiquidity(address _user,uint256 _shares) external returns (uint256 amount0, uint256 amount1) {
+        return _removeLiquidity(balanceOf[_user]);
+    }
+    function _removeLiquidity(uint256 _shares) internal returns (uint256 amount0, uint256 amount1) {
         amount0 = (_shares * address(this).balance) / totalSupply;
         amount1 = (_shares * token.balanceOf(address(this))) / totalSupply;
         require(amount0 > 0 && amount1 > 0, "amount0 or amount1 = 0");
@@ -118,23 +123,3 @@ contract AMM {
 
 
 }
-// interface IERC20 {
-//     function totalSupply() external view returns (uint256);
-
-//     function balanceOf(address account) external view returns (uint256);
-
-//     function transfer(address recipient, uint256 amount) external returns (bool);
-
-//     function allowance(address owner, address spender) external view returns (uint256);
-
-//     function approve(address spender, uint256 amount) external returns (bool);
-
-//     function transferFrom(
-//         address sender,
-//         address recipient,
-//         uint256 amount
-//     ) external returns (bool);
-
-//     event Transfer(address indexed from, address indexed to, uint256 amount);
-//     event Approval(address indexed owner, address indexed spender, uint256 amount);
-// }

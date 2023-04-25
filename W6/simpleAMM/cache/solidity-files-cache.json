@@ -995,8 +995,8 @@
       }
     },
     "src/simpleAMM.sol": {
-      "lastModificationDate": 1682409083944,
-      "contentHash": "7abc85e58190818770fbc56956a78f2d",
+      "lastModificationDate": 1682427722414,
+      "contentHash": "14f8d68c1e8c9a83dd7ac153854068af",
       "sourceName": "src/simpleAMM.sol",
       "solcConfig": {
         "settings": {

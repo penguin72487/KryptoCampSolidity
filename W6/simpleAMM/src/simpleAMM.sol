@@ -6,6 +6,9 @@ pragma solidity ^0.8.17;
 // V3 0x3ea585565c490232b0379C7D3C3A9fC3fA5C9c0C
 // V4
 import "./erc20.sol";
+import "@openzeppelin/contracts/utils/math/SafeMath.sol";
+import "@openzeppelin/contracts/utils/math/Math.sol";
+
 contract AMM {
     IERC20 public immutable token;
     address public constant ETH_ADDRESS = address(0);
@@ -69,7 +72,7 @@ contract AMM {
         if (totalSupply == 0) {
             shares = _sqrt(_amount0 * _amount1);
         } else {
-            shares = _min(
+            shares = Math.min(
                 (_amount0 * totalSupply) / reserve0,
                 (_amount1 * totalSupply) / reserve1
             );
@@ -80,46 +83,54 @@ contract AMM {
         _update(address(this).balance, token.balanceOf(address(this)));
     }
     function removeLiquidity(uint256 _shares) external returns (uint256 amount0, uint256 amount1) {
-        return _removeLiquidity(balanceOf[msg.sender]);
+        require(_shares <= balanceOf[msg.sender], "Insufficient balance");
+        return _removeLiquidity(msg.sender, _shares);
     }
-    function removeLiquidity(address _user,uint256 _shares) external returns (uint256 amount0, uint256 amount1) {
-        return _removeLiquidity(balanceOf[_user]);
+
+    function removeLiquidity(address _user, uint256 _shares) external returns (uint256 amount0, uint256 amount1) {
+        require(_shares <= balanceOf[_user], "Insufficient balance");
+        return _removeLiquidity(_user, _shares);
     }
-    function _removeLiquidity(uint256 _shares) internal returns (uint256 amount0, uint256 amount1) {
+    function _removeLiquidity(address _user, uint256 _shares) internal returns (uint256 amount0, uint256 amount1) {
         amount0 = (_shares * address(this).balance) / totalSupply;
         amount1 = (_shares * token.balanceOf(address(this))) / totalSupply;
         require(amount0 > 0 && amount1 > 0, "amount0 or amount1 = 0");
 
-        _burn(msg.sender, _shares);
+        _burn(_user, _shares);
         _update(address(this).balance - amount0, token.balanceOf(address(this)) - amount1);
 
-        payable(msg.sender).transfer(amount0);
-        token.transfer(msg.sender, amount1);
+        payable(_user).transfer(amount0);
+        token.transfer(_user, amount1);
+    }
+    function my_shars() public view returns(uint256){
+        return balanceOf[msg.sender];
+    }
+    function sharesOf(address _user) public view returns(uint256){
+        return balanceOf[_user];
     }
 
-    function _sqrt(uint256 x) public pure returns (uint256) {
-    if (x == 0) return 0;
-    
-    uint256 z = (x + 1) / 2;
-    uint256 y = x;
-    
-    while (z < y) {
-        y = z;
-        z = (x / z + z) / 2;
-    }
-    
-    return y;
+    function _sqrt(uint y) internal pure returns (uint z) {
+        if (y > 3) {
+            z = y;
+            uint x = y / 2 + 1;
+            while (x < z) {
+                z = x;
+                x = (y / x + x) / 2;
+            }
+        } else if (y != 0) {
+            z = 1;
+        }
     }
     function _min(uint256 x, uint256 y) private pure returns (uint256) {
         return x <= y ? x : y;
     }
     function getETHPrice() public view returns (uint256) {
     require(reserve0 + reserve1 > 0, "Invalid reserves");
-    return (reserve1 * 1 ether) / reserve0;
+    return (reserve1 * 10**18) / reserve0;
     }
     function getERCPrice() public view returns (uint256) {
     require(reserve0 + reserve1 > 0, "Invalid reserves");
-    return (reserve0 * 1 ether) / reserve1;
+    return (reserve0 * 10**18) / reserve1;
     }
 
 

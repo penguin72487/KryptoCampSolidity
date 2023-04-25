@@ -68,38 +68,6 @@
 				"type": "function"
 			},
 			{
-				"inputs": [],
-				"name": "all_Share",
-				"outputs": [
-					{
-						"internalType": "uint256",
-						"name": "",
-						"type": "uint256"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "address",
-						"name": "",
-						"type": "address"
-					}
-				],
-				"name": "au_LPindex",
-				"outputs": [
-					{
-						"internalType": "uint256",
-						"name": "",
-						"type": "uint256"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
 				"inputs": [
 					{
 						"internalType": "address",
@@ -113,25 +81,6 @@
 						"internalType": "uint256",
 						"name": "",
 						"type": "uint256"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "uint256",
-						"name": "",
-						"type": "uint256"
-					}
-				],
-				"name": "diff_LP",
-				"outputs": [
-					{
-						"internalType": "int256",
-						"name": "",
-						"type": "int256"
 					}
 				],
 				"stateMutability": "view",
@@ -165,7 +114,7 @@
 			},
 			{
 				"inputs": [],
-				"name": "my_Share",
+				"name": "my_shars",
 				"outputs": [
 					{
 						"internalType": "uint256",
@@ -180,12 +129,52 @@
 				"inputs": [
 					{
 						"internalType": "uint256",
-						"name": "_share",
+						"name": "_shares",
 						"type": "uint256"
 					}
 				],
 				"name": "removeLiquidity",
-				"outputs": [],
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "amount0",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "amount1",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_user",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_shares",
+						"type": "uint256"
+					}
+				],
+				"name": "removeLiquidity",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "amount0",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "amount1",
+						"type": "uint256"
+					}
+				],
 				"stateMutability": "nonpayable",
 				"type": "function"
 			},
@@ -223,7 +212,7 @@
 						"type": "address"
 					}
 				],
-				"name": "share_Of",
+				"name": "sharesOf",
 				"outputs": [
 					{
 						"internalType": "uint256",
@@ -232,48 +221,6 @@
 					}
 				],
 				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [],
-				"name": "sumLP",
-				"outputs": [
-					{
-						"internalType": "uint256",
-						"name": "",
-						"type": "uint256"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "address",
-						"name": "a",
-						"type": "address"
-					},
-					{
-						"internalType": "address",
-						"name": "b",
-						"type": "address"
-					}
-				],
-				"name": "swap",
-				"outputs": [
-					{
-						"internalType": "address",
-						"name": "",
-						"type": "address"
-					},
-					{
-						"internalType": "address",
-						"name": "",
-						"type": "address"
-					}
-				],
-				"stateMutability": "pure",
 				"type": "function"
 			},
 			{
@@ -293,64 +240,6 @@
 					}
 				],
 				"stateMutability": "payable",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "int256",
-						"name": "a",
-						"type": "int256"
-					},
-					{
-						"internalType": "int256",
-						"name": "b",
-						"type": "int256"
-					}
-				],
-				"name": "swap",
-				"outputs": [
-					{
-						"internalType": "int256",
-						"name": "",
-						"type": "int256"
-					},
-					{
-						"internalType": "int256",
-						"name": "",
-						"type": "int256"
-					}
-				],
-				"stateMutability": "pure",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "uint256",
-						"name": "a",
-						"type": "uint256"
-					},
-					{
-						"internalType": "uint256",
-						"name": "b",
-						"type": "uint256"
-					}
-				],
-				"name": "swap",
-				"outputs": [
-					{
-						"internalType": "uint256",
-						"name": "",
-						"type": "uint256"
-					},
-					{
-						"internalType": "uint256",
-						"name": "",
-						"type": "uint256"
-					}
-				],
-				"stateMutability": "pure",
 				"type": "function"
 			},
 			{
@@ -393,25 +282,6 @@
 						"internalType": "uint256",
 						"name": "",
 						"type": "uint256"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "uint256",
-						"name": "",
-						"type": "uint256"
-					}
-				],
-				"name": "ua_LPaddress",
-				"outputs": [
-					{
-						"internalType": "address",
-						"name": "",
-						"type": "address"
 					}
 				],
 				"stateMutability": "view",
@@ -486,11 +356,11 @@
 			]
 		},
 		"W6/simpleAMM/src/simpleAMM.sol": {
-			"keccak256": "0x4360a11aeaa3ed93933fb2b9fe236545f4194e3f2d054a1bf8559636b6949930",
+			"keccak256": "0xb467993a6dce80eacb1d6a432429898e7ad145211b0ff87f0768d453ecbfc1b5",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://99a4ef123389014e9327f1f01eeb3aca7dd4306a1590cf514a2f79a626425765",
-				"dweb:/ipfs/QmPZNuVGudG3FFUohHC2WGs5Acr81fqfn1ZNpYzgHr39mj"
+				"bzz-raw://571bf0fd043a8699964b5d2d5eb50a0b35be27bad50270647e129391278c300b",
+				"dweb:/ipfs/Qmb7XGWBa7k3vAw1Dm1Twts9m7J6UE4x89k1xbQH3v8H4M"
 			]
 		}
 	},

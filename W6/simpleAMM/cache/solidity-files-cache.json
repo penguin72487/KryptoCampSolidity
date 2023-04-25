@@ -909,6 +909,86 @@
         }
       }
     },
+    "lib/openzeppelin-contracts/contracts/utils/math/Math.sol": {
+      "lastModificationDate": 1682408604432,
+      "contentHash": "c06231dd51da087d01dbe5b7805efd94",
+      "sourceName": "lib/openzeppelin-contracts/contracts/utils/math/Math.sol",
+      "solcConfig": {
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "metadata": {
+            "bytecodeHash": "ipfs",
+            "appendCBOR": true
+          },
+          "outputSelection": {
+            "*": {
+              "": [
+                "ast"
+              ],
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ]
+            }
+          },
+          "evmVersion": "london",
+          "libraries": {}
+        }
+      },
+      "imports": [],
+      "versionRequirement": "^0.8.0",
+      "artifacts": {
+        "Math": {
+          "0.8.18+commit.87f61d96.Windows.msvc": "Math.sol\\Math.json"
+        }
+      }
+    },
+    "lib/openzeppelin-contracts/contracts/utils/math/SafeMath.sol": {
+      "lastModificationDate": 1682408604434,
+      "contentHash": "162ccf43242f3d61992c57425c5829cf",
+      "sourceName": "lib/openzeppelin-contracts/contracts/utils/math/SafeMath.sol",
+      "solcConfig": {
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "metadata": {
+            "bytecodeHash": "ipfs",
+            "appendCBOR": true
+          },
+          "outputSelection": {
+            "*": {
+              "": [
+                "ast"
+              ],
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ]
+            }
+          },
+          "evmVersion": "london",
+          "libraries": {}
+        }
+      },
+      "imports": [],
+      "versionRequirement": "^0.8.0",
+      "artifacts": {
+        "SafeMath": {
+          "0.8.18+commit.87f61d96.Windows.msvc": "SafeMath.sol\\SafeMath.json"
+        }
+      }
+    },
     "script/testAMM.s.sol": {
       "lastModificationDate": 1682408604882,
       "contentHash": "25a9b713a766d9ce1b62d1fd3c70c2f5",
@@ -995,8 +1075,8 @@
       }
     },
     "src/simpleAMM.sol": {
-      "lastModificationDate": 1682429516671,
-      "contentHash": "142ec36cf59f7a48be4a343751838e61",
+      "lastModificationDate": 1682431724102,
+      "contentHash": "5b31bf6b413840182f74c6c036e5f5b1",
       "sourceName": "src/simpleAMM.sol",
       "solcConfig": {
         "settings": {
@@ -1031,6 +1111,8 @@
         "lib/openzeppelin-contracts/contracts/token/ERC20/IERC20.sol",
         "lib/openzeppelin-contracts/contracts/token/ERC20/extensions/IERC20Metadata.sol",
         "lib/openzeppelin-contracts/contracts/utils/Context.sol",
+        "lib/openzeppelin-contracts\\contracts/utils/math/Math.sol",
+        "lib/openzeppelin-contracts\\contracts/utils/math/SafeMath.sol",
         "src\\erc20.sol"
       ],
       "versionRequirement": "^0.8.17",
@@ -1127,8 +1209,8 @@
       }
     },
     "test/testAMM.t.sol": {
-      "lastModificationDate": 1682409459297,
-      "contentHash": "4f7d77dfb699af61a3e6e0f4625642f4",
+      "lastModificationDate": 1682432121104,
+      "contentHash": "404dd8a3b2564025338744953c5cd42b",
       "sourceName": "test/testAMM.t.sol",
       "solcConfig": {
         "settings": {
@@ -1180,6 +1262,8 @@
         "lib/openzeppelin-contracts/contracts/token/ERC20/IERC20.sol",
         "lib/openzeppelin-contracts/contracts/token/ERC20/extensions/IERC20Metadata.sol",
         "lib/openzeppelin-contracts/contracts/utils/Context.sol",
+        "lib/openzeppelin-contracts\\contracts/utils/math/Math.sol",
+        "lib/openzeppelin-contracts\\contracts/utils/math/SafeMath.sol",
         "src\\erc20.sol",
         "src\\simpleAMM.sol"
       ],

@@ -1,0 +1,21 @@
+{
+  "abi": [],
+  "bytecode": {
+    "object": "0x",
+    "linkReferences": {}
+  },
+  "deployedBytecode": {
+    "object": "0x",
+    "linkReferences": {}
+  },
+  "ast": {
+    "absolutePath": "src/comput.sol",
+    "id": 31866,
+    "exportedSymbols": {},
+    "nodeType": "SourceUnit",
+    "src": "987:0:22",
+    "nodes": [],
+    "license": "MIT"
+  },
+  "id": 22
+}

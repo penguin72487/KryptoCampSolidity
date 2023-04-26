@@ -10,7 +10,7 @@ import "@openzeppelin/contracts/utils/math/SafeMath.sol";
 import "@openzeppelin/contracts/utils/math/Math.sol";
 
 contract AMM {
-    using safeMath for uint256;
+    //using safeMath for uint256;
     IERC20 public immutable token;
     address public constant ETH_ADDRESS = address(0);
 
@@ -49,10 +49,27 @@ contract AMM {
 
         _update(address(this).balance, token.balanceOf(address(this)));
     }
+    function _swapWithOutFee(uint256 _amountIn) internal payable returns (uint256 amountOut) {
+        require(msg.value == _amountIn, "ETH amount mismatch");
+        amountOut = reserve1 / reserve0 ;
+
+        token.transfer(msg.sender, amountOut);
+
+        _update(address(this).balance, token.balanceOf(address(this)));
+    }
     function swapTokenForETH(uint256 _amountIn) external returns (uint256 amountOut) {
         uint256 amountInWithFee = (_amountIn * 997) / 1000;
 
         amountOut = (reserve0 * amountInWithFee) / (reserve1 + amountInWithFee);
+        require(amountOut > 0, "Insufficient output amount");
+
+        token.transferFrom(msg.sender, address(this), _amountIn);
+        payable(msg.sender).transfer(amountOut);
+
+        _update(address(this).balance - amountOut, token.balanceOf(address(this)));
+    }
+    function _swapTokenForETHWithOutFee(uint256 _amountIn) internal returns (uint256 amountOut) {
+        amountOut = reserve0 / reserve1;
         require(amountOut > 0, "Insufficient output amount");
 
         token.transferFrom(msg.sender, address(this), _amountIn);
@@ -67,7 +84,24 @@ contract AMM {
         uint256 _amount0 = msg.value;
 
         if (reserve0 > 0 || reserve1 > 0) {
-            require(reserve0 * _amount1 == reserve1 * _amount0, "x / y != dx / dy");
+            if (reserve0 * _amount1 != reserve1 * _amount0) {
+                // Calculate the required amount of tokens to make the ratio equal
+                uint256 requiredAmount1 = (reserve1 * _amount0) / reserve0;
+                
+                // Swap the excess tokens for ETH without fee
+                if (_amount1 > requiredAmount1) {
+                    uint256 excessAmount1 = _amount1 - requiredAmount1;
+                    _amount0 += _swapTokenForETHWithOutFee(excessAmount1);
+
+                // Swap the excess ETH for tokens without fee
+                } else {
+                    uint256 excessAmount0 = _amount0 - requiredAmount1 * reserve0 / reserve1;
+                    _amount1 += _swapWithOutFee(excessAmount0);
+                }
+
+                // Update the _amount1 to the required amount
+                _amount1 = requiredAmount1;
+            }
         }
 
         if (totalSupply == 0) {
@@ -82,6 +116,10 @@ contract AMM {
         _mint(msg.sender, shares);
 
         _update(address(this).balance, token.balanceOf(address(this)));
+    }
+
+    function removeAllLiquidity(address _user) external returns (uint256 amount0, uint256 amount1) {
+        return _removeLiquidity(_user,balanceOf[_user]);
     }
     function removeLiquidity(uint256 _shares) external returns (uint256 amount0, uint256 amount1) {
         require(_shares <= balanceOf[msg.sender], "Insufficient balance");

@@ -1075,8 +1075,8 @@
       }
     },
     "src/simpleAMM.sol": {
-      "lastModificationDate": 1682431724102,
-      "contentHash": "5b31bf6b413840182f74c6c036e5f5b1",
+      "lastModificationDate": 1682477736993,
+      "contentHash": "decd39922d51a7633f874f37c23af1b8",
       "sourceName": "src/simpleAMM.sol",
       "solcConfig": {
         "settings": {
@@ -1209,8 +1209,8 @@
       }
     },
     "test/testAMM.t.sol": {
-      "lastModificationDate": 1682432121104,
-      "contentHash": "404dd8a3b2564025338744953c5cd42b",
+      "lastModificationDate": 1682479559906,
+      "contentHash": "4773fded665f9331df834ea6a915d13d",
       "sourceName": "test/testAMM.t.sol",
       "solcConfig": {
         "settings": {
@@ -1271,6 +1271,72 @@
       "artifacts": {
         "TestSimpleAMMTest": {
           "0.8.18+commit.87f61d96.Windows.msvc": "testAMM.t.sol\\TestSimpleAMMTest.json"
+        }
+      }
+    },
+    "test/testAllAMMfunction.t.sol": {
+      "lastModificationDate": 1682480972418,
+      "contentHash": "e4f10083775cb3eab68bd423411d4faa",
+      "sourceName": "test/testAllAMMfunction.t.sol",
+      "solcConfig": {
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "metadata": {
+            "bytecodeHash": "ipfs",
+            "appendCBOR": true
+          },
+          "outputSelection": {
+            "*": {
+              "": [
+                "ast"
+              ],
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ]
+            }
+          },
+          "evmVersion": "london",
+          "libraries": {}
+        }
+      },
+      "imports": [
+        "lib/forge-std/lib/ds-test/src\\test.sol",
+        "lib/forge-std/src/Base.sol",
+        "lib/forge-std/src/StdAssertions.sol",
+        "lib/forge-std/src/StdChains.sol",
+        "lib/forge-std/src/StdCheats.sol",
+        "lib/forge-std/src/StdError.sol",
+        "lib/forge-std/src/StdInvariant.sol",
+        "lib/forge-std/src/StdJson.sol",
+        "lib/forge-std/src/StdMath.sol",
+        "lib/forge-std/src/StdStorage.sol",
+        "lib/forge-std/src/StdStyle.sol",
+        "lib/forge-std/src/StdUtils.sol",
+        "lib/forge-std/src\\Test.sol",
+        "lib/forge-std/src\\Vm.sol",
+        "lib/forge-std/src/console.sol",
+        "lib/forge-std/src/console2.sol",
+        "lib/forge-std/src/interfaces/IMulticall3.sol",
+        "lib/openzeppelin-contracts\\contracts/token/ERC20/ERC20.sol",
+        "lib/openzeppelin-contracts/contracts/token/ERC20/IERC20.sol",
+        "lib/openzeppelin-contracts/contracts/token/ERC20/extensions/IERC20Metadata.sol",
+        "lib/openzeppelin-contracts/contracts/utils/Context.sol",
+        "lib/openzeppelin-contracts\\contracts/utils/math/Math.sol",
+        "lib/openzeppelin-contracts\\contracts/utils/math/SafeMath.sol",
+        "src\\erc20.sol",
+        "src\\simpleAMM.sol"
+      ],
+      "versionRequirement": "^0.8.18",
+      "artifacts": {
+        "TestSimpleAMMTest": {
+          "0.8.18+commit.87f61d96.Windows.msvc": "testAllAMMfunction.t.sol\\TestSimpleAMMTest.json"
         }
       }
     }

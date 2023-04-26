@@ -17,7 +17,7 @@ contract TestSimpleAMMTest is Test {
 
 
 
-   function setUp() external {
+    function setUp() external {
         tGD = new testGaoDuckToken("testGaoDuck", "tGD");
         ammInstance = new AMM(address(tGD));
         
@@ -63,78 +63,82 @@ contract TestSimpleAMMTest is Test {
 
         // User 1 removes liquidity
         vm.prank(user1);
-        (uint256 amount0, uint256 amount1) = ammInstance.removeLiquidity(lpBalanceUser1);
+        uint256 beforetGDBalanceUser1 = tGD.balanceOf(user1);
+        uint256 beforeEthBalanceUser1 = address(user1).balance;
+        (uint256 amount0, uint256 amount1) = ammInstance.removeAllLiquidity(user1);
 
         assertTrue(amount0 > 0 && amount1 > 0, "User 1 should have received ETH and tGD");
-        assertEq(tGD.balanceOf(user1), initialBalanceUser1 - amount1, "User 1 tGD balance mismatch");
-        assertEq(address(user1).balance, initialEthBalanceUser1 - amount0, "User 1 ETH balance mismatch");
+        assertEq(tGD.balanceOf(user1), beforetGDBalanceUser1 + amount1, "User 1 tGD balance mismatch");
+        assertEq(address(user1).balance, beforeEthBalanceUser1 + amount0, "User 1 ETH balance mismatch");
     }
 
 
-    // function testInvalidSwap() external {
-    //     uint256 initialEthBalanceUser1 = address(user1).balance;
-    //     uint256 amountIn = 2 ether;
+    function testInvalidSwap() external {
+        uint256 initialEthBalanceUser1 = address(user1).balance;
+        emit logString("initialEthBalanceUser1");
+        emit logUint(initialEthBalanceUser1);
+        uint256 amountIn = initialEthBalanceUser1+2 ether;
 
-    //     // Try swapping more ETH than available in the reserves
-    //     vm.prank(user1);
-    //     bool errorThrown = false;
-    //     try ammInstance.swap{value: amountIn}(amountIn) {
-    //     } catch {
-    //         errorThrown = true;
-    //     }
-    //     assertTrue(errorThrown, "Expected error on invalid swap");
-    //     assertEq(address(user1).balance, initialEthBalanceUser1, "User 1 ETH balance should not change");
-    // }
+        // Try swapping more ETH than available in the reserves
+        vm.prank(user1);
+        bool errorThrown = false;
+        try ammInstance.swap{value: amountIn}(amountIn) {
+        } catch {
+            errorThrown = true;
+        }
+        assertTrue(errorThrown, "Expected error on invalid swap");
+        assertEq(address(user1).balance, initialEthBalanceUser1, "User 1 ETH balance should not change");
+    }
 
-    // function testInvalidSwapTokenForETH() external {
-    //     uint256 initialEthBalanceUser1 = address(user1).balance;
-    //     uint256 initialTokenBalanceUser1 = tGD.balanceOf(user1);
-    //     uint256 amountIn = 2000 * 1e18;
+    function testInvalidSwapTokenForETH() external {
+        uint256 initialEthBalanceUser1 = address(user1).balance;
+        uint256 initialTokenBalanceUser1 = tGD.balanceOf(user1);
+        uint256 amountIn = 2000 * 1e18;
 
-    //     // Try swapping more tokens than available in the reserves
-    //     vm.prank(user1);
-    //     bool errorThrown = false;
-    //     try ammInstance.swapTokenForETH(amountIn) {
-    //     } catch {
-    //         errorThrown = true;
-    //     }
-    //     assertTrue(errorThrown, "Expected error on invalid token swap");
-    //     assertEq(tGD.balanceOf(user1), initialTokenBalanceUser1, "User 1 token balance should not change");
-    //     assertEq(address(user1).balance, initialEthBalanceUser1, "User 1 ETH balance should not change");
-    // }
+        // Try swapping more tokens than available in the reserves
+        vm.prank(user1);
+        bool errorThrown = false;
+        try ammInstance.swapTokenForETH(amountIn) {
+        } catch {
+            errorThrown = true;
+        }
+        assertTrue(errorThrown, "Expected error on invalid token swap");
+        assertEq(tGD.balanceOf(user1), initialTokenBalanceUser1, "User 1 token balance should not change");
+        assertEq(address(user1).balance, initialEthBalanceUser1, "User 1 ETH balance should not change");
+    }
 
-    // function testInvalidAddLiquidity() external {
-    //     uint256 initialEthBalanceUser1 = address(user1).balance;
-    //     uint256 initialTokenBalanceUser1 = tGD.balanceOf(user1);
+    function testInvalidAddLiquidity() external {
+        uint256 initialEthBalanceUser1 = address(user1).balance;
+        uint256 initialTokenBalanceUser1 = tGD.balanceOf(user1);
 
-    //     // Try adding liquidity with unequal ETH/token ratios
-    //     vm.prank(user1);
-    //     bool errorThrown = false;
-    //     try ammInstance.addLiquidity{value: 5 ether}(1000 * 1e18) {
-    //     } catch {
-    //         errorThrown = true;
-    //     }
-    //     assertTrue(errorThrown, "Expected error on invalid liquidity addition");
-    //     assertEq(tGD.balanceOf(user1), initialTokenBalanceUser1, "User 1 token balance should not change");
-    //     assertEq(address(user1).balance, initialEthBalanceUser1, "User 1 ETH balance should not change");
-    // }
+        // Try adding liquidity with unequal ETH/token ratios
+        vm.prank(user1);
+        bool errorThrown = false;
+        try ammInstance.addLiquidity{value: initialEthBalanceUser1+5 ether}(1000 * 1e18) {
+        } catch {
+            errorThrown = true;
+        }
+        assertTrue(errorThrown, "Expected error on invalid liquidity addition");
+        assertEq(tGD.balanceOf(user1), initialTokenBalanceUser1, "User 1 token balance should not change");
+        assertEq(address(user1).balance, initialEthBalanceUser1, "User 1 ETH balance should not change");
+    }
 
-    // function testInvalidRemoveLiquidity() external {
-    //     // Add liquidity first
-    //     vm.prank(user1);
-    //     ammInstance.addLiquidity{value: 10 ether}(1000 * 1e18);
+    function testInvalidRemoveLiquidity() external {
+        // Add liquidity first
+        vm.prank(user1);
+        ammInstance.addLiquidity{value: 10 ether}(1000 * 1e18);
 
-    //     uint256 lpBalanceUser1 = ammInstance.balanceOf(user1);
-    //     uint256 invalidShares = lpBalanceUser1 + 1;
+        uint256 lpBalanceUser1 = ammInstance.balanceOf(user1);
+        uint256 invalidShares = lpBalanceUser1 + 1;
 
-    //     // Try removing more liquidity than available
-    //     bool errorThrown = false;
-    //     try ammInstance.removeLiquidity(invalidShares) {
-    //     } catch {
-    //         errorThrown = true;
-    //     }
-    //     assertTrue(errorThrown, "Expected error on invalid liquidity removal");
-    // }
+        // Try removing more liquidity than available
+        bool errorThrown = false;
+        try ammInstance.removeLiquidity(invalidShares) {
+        } catch {
+            errorThrown = true;
+        }
+        assertTrue(errorThrown, "Expected error on invalid liquidity removal");
+    }
 
 
 }

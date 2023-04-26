@@ -39,7 +39,7 @@ contract AMM {
         reserve1 = _reserve1;
     }
 
-    function swap(uint256 _amountIn) external payable returns (uint256 amountOut) {
+    function swap(uint256 _amountIn) public payable returns (uint256 amountOut) {
         require(msg.value == _amountIn, "ETH amount mismatch");
 
         uint256 amountInWithFee = (_amountIn * 997) / 1000;
@@ -49,15 +49,15 @@ contract AMM {
 
         _update(address(this).balance, token.balanceOf(address(this)));
     }
-    function _swapWithOutFee(uint256 _amountIn) internal payable returns (uint256 amountOut) {
-        require(msg.value == _amountIn, "ETH amount mismatch");
-        amountOut = reserve1 / reserve0 ;
+    // function _swapWithOutFee(uint256 _amountIn) internal payable returns (uint256 amountOut) {
+    //     require(msg.value == _amountIn, "ETH amount mismatch");
+    //     amountOut = reserve1 / reserve0 ;
 
-        token.transfer(msg.sender, amountOut);
+    //     token.transfer(msg.sender, amountOut);
 
-        _update(address(this).balance, token.balanceOf(address(this)));
-    }
-    function swapTokenForETH(uint256 _amountIn) external returns (uint256 amountOut) {
+    //     _update(address(this).balance, token.balanceOf(address(this)));
+    // }
+    function swapTokenForETH(uint256 _amountIn) public returns (uint256 amountOut) {
         uint256 amountInWithFee = (_amountIn * 997) / 1000;
 
         amountOut = (reserve0 * amountInWithFee) / (reserve1 + amountInWithFee);
@@ -68,15 +68,15 @@ contract AMM {
 
         _update(address(this).balance - amountOut, token.balanceOf(address(this)));
     }
-    function _swapTokenForETHWithOutFee(uint256 _amountIn) internal returns (uint256 amountOut) {
-        amountOut = reserve0 / reserve1;
-        require(amountOut > 0, "Insufficient output amount");
+    // function _swapTokenForETHWithOutFee(uint256 _amountIn) internal returns (uint256 amountOut) {
+    //     amountOut = reserve0 / reserve1;
+    //     require(amountOut > 0, "Insufficient output amount");
 
-        token.transferFrom(msg.sender, address(this), _amountIn);
-        payable(msg.sender).transfer(amountOut);
+    //     token.transferFrom(msg.sender, address(this), _amountIn);
+    //     payable(msg.sender).transfer(amountOut);
 
-        _update(address(this).balance - amountOut, token.balanceOf(address(this)));
-    }
+    //     _update(address(this).balance - amountOut, token.balanceOf(address(this)));
+    // }
 
     function addLiquidity(uint256 _amount1) external payable returns (uint256 shares) {
         token.transferFrom(msg.sender, address(this), _amount1);
@@ -91,12 +91,12 @@ contract AMM {
                 // Swap the excess tokens for ETH without fee
                 if (_amount1 > requiredAmount1) {
                     uint256 excessAmount1 = _amount1 - requiredAmount1;
-                    _amount0 += _swapTokenForETHWithOutFee(excessAmount1);
+                    _amount0 += swapTokenForETH(excessAmount1);
 
                 // Swap the excess ETH for tokens without fee
                 } else {
                     uint256 excessAmount0 = _amount0 - requiredAmount1 * reserve0 / reserve1;
-                    _amount1 += _swapWithOutFee(excessAmount0);
+                    _amount1 += swap(excessAmount0);
                 }
 
                 // Update the _amount1 to the required amount

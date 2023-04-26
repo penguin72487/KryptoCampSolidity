@@ -10,6 +10,7 @@ import "@openzeppelin/contracts/utils/math/SafeMath.sol";
 import "@openzeppelin/contracts/utils/math/Math.sol";
 
 contract AMM {
+    using safeMath for uint256;
     IERC20 public immutable token;
     address public constant ETH_ADDRESS = address(0);
 

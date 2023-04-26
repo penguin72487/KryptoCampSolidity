@@ -164,13 +164,51 @@ contract AMM {
         return x <= y ? x : y;
     }
     function getETHPrice() public view returns (uint256) {
-    require(reserve0 + reserve1 > 0, "Invalid reserves");
-    return (reserve1 * 10**18) / reserve0;
+        require(reserve0 + reserve1 > 0, "Invalid reserves");
+        return (reserve1 * 10**18) / reserve0;
     }
     function getERCPrice() public view returns (uint256) {
-    require(reserve0 + reserve1 > 0, "Invalid reserves");
-    return (reserve0 * 10**18) / reserve1;
+        require(reserve0 + reserve1 > 0, "Invalid reserves");
+        return (reserve0 * 10**18) / reserve1;
     }
+    function getPricePredicttGD(uint256 _amount) public view returns (uint256) {
+        require(reserve0 + reserve1 > 0, "Invalid reserves");
+        uint256 amountInWithFee=(_amount * 997) / 1000;
+        return (reserve1 * amountInWithFee) / (reserve0 + amountInWithFee);
+    }
+    function getPricePredictETH(uint256 _amount) public view returns (uint256) {
+        require(reserve0 + reserve1 > 0, "Invalid reserves");
+        uint256 amountInWithFee=(_amount * 997) / 1000;
+        return (reserve0 * amountInWithFee) / (reserve1 + amountInWithFee);
+    }
+    function calculateSlippage(uint256 amountIn) public view returns (uint256) {
+        require(amountIn > 0, "Invalid input amount");
+
+        uint256 amountInWithFee = (amountIn * 997) / 1000;
+        uint256 amountOut = (reserve1 * amountInWithFee) / (reserve0 + amountInWithFee);
+        require(amountOut > 0, "Invalid output amount");
+
+        // Calculate the price without any slippage
+        uint256 noSlippagePrice = getERCPrice();
+
+        // Calculate the expected output amount without any slippage
+        uint256 expectedAmountOut = (amountIn * noSlippagePrice) / 10**18;
+
+        // Calculate the slippage percentage
+        uint256 slippage;
+        if (amountOut > expectedAmountOut) {
+            slippage = ((amountOut - expectedAmountOut) * 1000) / expectedAmountOut;
+        } else {
+            slippage = ((expectedAmountOut - amountOut) * 1000) / expectedAmountOut;
+        }
+
+        // Clamp the slippage value between 1 and 1000 (0.1% and 100%)
+        slippage = _min(slippage, 1000);
+
+        return slippage;
+    }
+
+
 
 
 }

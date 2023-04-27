@@ -363,7 +363,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"W6/simpleAMM/src/simpleAMM.sol": "AMM"
+			"W6/simpleAMM/src/simpleAMMV4.sol": "AMM"
 		},
 		"evmVersion": "paris",
 		"libraries": {},
@@ -433,12 +433,12 @@
 				"dweb:/ipfs/QmZ7E6ediZaBTLUXguJBDey7bkskhAfum1MYrRh8rXGFPV"
 			]
 		},
-		"W6/simpleAMM/src/simpleAMM.sol": {
-			"keccak256": "0xf1fa1f2231df7a9a2b9fdbd9c897045997de206c6aef960f37184cf5ef82363d",
+		"W6/simpleAMM/src/simpleAMMV4.sol": {
+			"keccak256": "0x92d6211a7b08dfbcdf68812bb78a984e58cd02a90643b05bdc97ce1559b7355c",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://e4996e13d0d7102451b8b2b8038f88968a2d97a1d9f7e9f812819898fb826c06",
-				"dweb:/ipfs/QmUesJCka84GxJUpXcGj7ewehb3k74qt6m71b4XYJ2zcMg"
+				"bzz-raw://124746456dee4004dfdf7ee66621bcd003180e9ae29f29c1ef5aaf0e03b53287",
+				"dweb:/ipfs/QmVxGiX6iombX7m4w1ggWD6A9Y6YdJToTNgbCYekfGUGvm"
 			]
 		}
 	},

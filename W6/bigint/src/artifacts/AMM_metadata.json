@@ -68,6 +68,38 @@
 				"type": "function"
 			},
 			{
+				"inputs": [],
+				"name": "all_Share",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"name": "au_LPindex",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
 				"inputs": [
 					{
 						"internalType": "address",
@@ -81,6 +113,25 @@
 						"internalType": "uint256",
 						"name": "",
 						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "diff_LP",
+				"outputs": [
+					{
+						"internalType": "int256",
+						"name": "",
+						"type": "int256"
 					}
 				],
 				"stateMutability": "view",
@@ -114,6 +165,32 @@
 			},
 			{
 				"inputs": [],
+				"name": "my_Share",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_share",
+						"type": "uint256"
+					}
+				],
+				"name": "removeLiquidity",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
 				"name": "reserve0",
 				"outputs": [
 					{
@@ -141,6 +218,67 @@
 			{
 				"inputs": [
 					{
+						"internalType": "address",
+						"name": "_user",
+						"type": "address"
+					}
+				],
+				"name": "share_Of",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "sumLP",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "a",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "b",
+						"type": "address"
+					}
+				],
+				"name": "swap",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "pure",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
 						"internalType": "uint256",
 						"name": "_amountIn",
 						"type": "uint256"
@@ -155,6 +293,64 @@
 					}
 				],
 				"stateMutability": "payable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "int256",
+						"name": "a",
+						"type": "int256"
+					},
+					{
+						"internalType": "int256",
+						"name": "b",
+						"type": "int256"
+					}
+				],
+				"name": "swap",
+				"outputs": [
+					{
+						"internalType": "int256",
+						"name": "",
+						"type": "int256"
+					},
+					{
+						"internalType": "int256",
+						"name": "",
+						"type": "int256"
+					}
+				],
+				"stateMutability": "pure",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "a",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "b",
+						"type": "uint256"
+					}
+				],
+				"name": "swap",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "pure",
 				"type": "function"
 			},
 			{
@@ -201,6 +397,25 @@
 				],
 				"stateMutability": "view",
 				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "ua_LPaddress",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
 			}
 		],
 		"devdoc": {
@@ -216,7 +431,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"W6/bigint/src/simpleamm.sol": "AMM"
+			"W6/bigint/src/simpleammV3.sol": "AMM"
 		},
 		"evmVersion": "paris",
 		"libraries": {},
@@ -263,19 +478,19 @@
 			]
 		},
 		"W6/bigint/src/erc20.sol": {
-			"keccak256": "0xa2aef0e620248ce1f28d737d752d85a6399ed7f8a5e297d1b9e88814ac4658bb",
+			"keccak256": "0xeb868e7af99b4a87353f3ddc625544d496a8a731e729e4112516bef7b89badd4",
 			"license": "GPL-3.0",
 			"urls": [
-				"bzz-raw://0c959eb4f7332ad2ec28d2dd26981b34a822fcbd5127acb7aa92ab108d6b0d32",
-				"dweb:/ipfs/QmdF6SNNf68TcBnJzfoTmSSYmXUCjzQG2EYuBzuLEr61fj"
+				"bzz-raw://cd3904a2c19d7fd93344ac935787020f33d10af3dc8545a1cf6240f54332feff",
+				"dweb:/ipfs/QmZ7E6ediZaBTLUXguJBDey7bkskhAfum1MYrRh8rXGFPV"
 			]
 		},
-		"W6/bigint/src/simpleamm.sol": {
-			"keccak256": "0x2ee9915347a191773aa6b1b82f506a3257b3a989e6a769ed7f3b35b925ca9b51",
+		"W6/bigint/src/simpleammV3.sol": {
+			"keccak256": "0x3ba768024d2a026ee2b787568e9d8ebda5a0636d9e2aa303f476e4ec53b38c83",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://6721c1890f7cca9c39801e0448f465021c57f65869db7135d3399eae120bb410",
-				"dweb:/ipfs/QmPQ3XCmKxYRWTfYx73injS6nQVPNwW2a6tVuCF6fP7dcm"
+				"bzz-raw://ded694bd7a9c4a30f9090de9133c02f0c29eca2aad6926f0527ca72890b7dfa7",
+				"dweb:/ipfs/QmNVJbbQihRqVw6m3xp2WeGi8ee66WUBUCGncGABmtoD2L"
 			]
 		}
 	},

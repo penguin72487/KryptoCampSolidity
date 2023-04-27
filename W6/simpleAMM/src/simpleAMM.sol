@@ -4,7 +4,7 @@ pragma solidity ^0.8.17;
 // V1 0xf60440f93a677AB6968E1Fd10cf8a6cE61941131
 // V2 0x8b175c421E9307F0365dd37bc32Dda5df95C4946
 // V3 0x3ea585565c490232b0379C7D3C3A9fC3fA5C9c0C
-// V4
+// V4 
 import "./erc20.sol";
 import "@openzeppelin/contracts/utils/math/SafeMath.sol";
 import "@openzeppelin/contracts/utils/math/Math.sol";
@@ -79,6 +79,7 @@ contract AMM {
     // }
 
     function addLiquidity(uint256 _amount1) external payable returns (uint256 shares) {
+        //token.approve(address(this), _amount1);
         token.transferFrom(msg.sender, address(this), _amount1);
 
         uint256 _amount0 = msg.value;

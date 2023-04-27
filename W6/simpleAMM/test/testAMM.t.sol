@@ -3,7 +3,7 @@ pragma solidity ^0.8.18;
 
 import "forge-std/Test.sol";
 import "forge-std/Vm.sol";
-import "../src/simpleamm.sol";
+import "../src/simpleAMMV4.sol";
 import "../src/erc20.sol";
 
 contract TestSimpleAMMTest is Test {

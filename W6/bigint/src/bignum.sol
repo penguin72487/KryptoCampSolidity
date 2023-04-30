@@ -3,71 +3,59 @@ pragma solidity ^0.8.18;
 import "@openzeppelin/contracts/utils/Strings.sol";
 import "@openzeppelin/contracts/utils/math/SafeMath.sol";
 library BigInt {
+    using SafeMath for uint256;
     struct bigint {
         uint256[] limbs;
     }
-    using SafeMath for uint256;
+    uint256 constant BASE = 10**38;
 
-    function add(bigint memory a, bigint memory b) internal pure returns (bigint memory) {
-        uint256 max_length = max(a.limbs.length, b.limbs.length);
-        uint256 min_length = min(a.limbs.length, b.limbs.length);
+    function add(bigint memory a, bigint memory b) public pure returns (bigint memory) {
+        if(a.limbs.length < b.limbs.length) {
+            bigint memory temp = a;
+            a = b;
+            b = temp;
+        }
 
         bigint memory result;
-        result.limbs = new uint256[](max_length + 1);
+        result.limbs = new uint256[](a.limbs.length+ 1);
 
-        uint256 carry = 0;
-        for (uint256 i = 0; i < min_length; i++) {
-            (result.limbs[i], carry) = addWithCarry(a.limbs[i], b.limbs[i], carry);
+        uint256 it=0;
+        for(;it<b.limbs.length;it++) {
+            result.limbs[it] = a.limbs[it] + b.limbs[it];
         }
-
-        if(a.limbs.length != b.limbs.length)
-        {
-            for (uint256 i = min_length; i < max_length; i++) {
-                uint256 current = i < a.limbs.length ? a.limbs[i] : b.limbs[i];
-                (result.limbs[i], carry) = addWithCarry(current, 0, carry);
+        for(;it<a.limbs.length;it++) {
+            result.limbs[it] = a.limbs[it];
+        }
+        for(uint256 i = 0; i < a.limbs.length; i++) {
+            if(result.limbs[i] >= BASE) {
+                result.limbs[i + 1] += result.limbs[i] / BASE;
+                result.limbs[i] = result.limbs[i] % BASE; // Change this line
             }
         }
-
-        if (carry > 0) {
-            result.limbs[max_length] = carry;
-        } else {
-            uint256[] memory newLimbs = new uint256[](max_length);
-            for (uint256 i = 0; i < max_length; i++) {
-                newLimbs[i] = result.limbs[i];
+        if(result.limbs[a.limbs.length] == 0) {
+            bigint memory result2;
+            result2.limbs = new uint256[](a.limbs.length);
+            for(uint256 i = 0; i < a.limbs.length; i++) {
+                result2.limbs[i] = result.limbs[i];
             }
-            result.limbs = newLimbs;
+            return result2;
         }
 
         return result;
     }
 
-function addWithCarry(uint256 a, uint256 b, uint256 carry) internal pure returns (uint256, uint256) {
-    uint256 sum = a + b + carry;
-    carry = 0;
-
-    if (sum >= 2**128) {
-        sum -= 2**128;
-        carry = 1;
-    }
-
-    return (sum, carry);
-}
 
 
-
-
-
-
-    function subtract(bigint memory a, bigint memory b) internal pure returns (bigint memory) {
+     function subtract(bigint memory a, bigint memory b) internal pure returns (bigint memory) {
         require(a.limbs.length >= b.limbs.length, "Subtraction result would be negative");
 
         bigint memory result;
         result.limbs = new uint256[](a.limbs.length);
 
-        for(uint256 i = 0; i < a.limbs.length; i++) {
-            if(a.limbs[i] < b.limbs[i]) {
+        for (uint256 i = 0; i < a.limbs.length; i++) {
+            if (a.limbs[i] < b.limbs[i]) {
                 a.limbs[i + 1] -= 1;
-                a.limbs[i] += 2**128;
+                a.limbs[i] += BASE;
             }
             result.limbs[i] = a.limbs[i] - b.limbs[i];
         }
@@ -112,25 +100,7 @@ function slice(bigint memory a, uint256 start, uint256 end) internal pure return
 
     return result;
 }
-
-    function multiply(bigint memory a, bigint memory b) internal pure returns (bigint memory) {
-        bigint memory result;
-        result.limbs = new uint256[](a.limbs.length + b.limbs.length);
-
-        for (uint256 i = 0; i < a.limbs.length; i++) {
-            uint256 carry = 0;
-            for (uint256 j = 0; j < b.limbs.length; j++) {
-                uint256 mul = a.limbs[i] * b.limbs[j] + carry + result.limbs[i + j];
-                result.limbs[i + j] = mul % (2**128);
-                carry = mul / (2**128);
-            }
-            result.limbs[i + b.limbs.length] = carry;
-        }
-
-        return result;
-    }
-
-    function divide(bigint memory a, bigint memory b) internal pure returns (bigint memory, bigint memory) {
+    function divide(bigint memory a, bigint memory b) internal pure returns (bigint memory) {
         require(b.limbs.length > 0, "Division by zero");
 
         bigint memory quotient;
@@ -148,9 +118,8 @@ function slice(bigint memory a, uint256 start, uint256 end) internal pure return
             b = rightShift(b, 1);
         }
 
-        return (quotient, remainder);
+        return quotient;
     }
-
 
     function leftShift(bigint memory a, uint256 n) internal pure returns (bigint memory) {
         bigint memory result;
@@ -226,104 +195,96 @@ function slice(bigint memory a, uint256 start, uint256 end) internal pure return
         return result;
     }
     function set_String(string memory a) internal pure returns (bigint memory) {
-        bytes memory input = bytes(a);
-        require(input.length > 0, "Input string must not be empty");
-
-        uint256 chunkSize = 39;
-        uint256 numChunks = (input.length + chunkSize - 1) / chunkSize;
-
+        bytes memory inputBytes = bytes(a);
         bigint memory result;
-        result.limbs = new uint256[](1);
-        result.limbs[0] = 0;
-
-        uint256 base128 = 2**128;
-        bigint memory bigintBase128 = set_Uint256(base128);
-        bigint memory bigintBase10_39 = set_Uint256(10**39);
-
-        for (uint256 chunkIdx = 0; chunkIdx < numChunks; chunkIdx++) {
-            uint256 start = chunkIdx * chunkSize;
-            uint256 end = start + chunkSize <= input.length ? start + chunkSize : input.length;
-            uint256 chunkValue = 0;
-
-            for (uint256 i = start; i < end; i++) {
-                uint8 digit = uint8(input[i]) - 48; // Convert the ASCII value to the corresponding integer
-                require(digit < 10, "Input string contains invalid characters");
-
-                chunkValue = chunkValue * 10 + uint256(digit);
+        result.limbs = new uint256[]((inputBytes.length + 38) / 39);
+        bytes memory tempBytes = new bytes(39);
+        
+        for (uint256 i = 0; i < inputBytes.length; i++) {
+            // Clear tempBytes when starting a new group of characters
+            if (i % 39 == 0) {
+                for (uint256 j = 0; j < 39; j++) {
+                    tempBytes[j] = 0;
+                }
             }
 
-            bigint memory bigintChunkValue = set_Uint256(chunkValue);
-            bigint memory baseMultiplier = pow(bigintBase10_39, set_Uint256(numChunks - chunkIdx - 1));
-            bigintChunkValue = multiply(bigintChunkValue, baseMultiplier);
-
-            result = add(result, bigintChunkValue);
-        }
-
-        uint256 limbCount = (bitLength(result) + 127) / 128;
-        uint256[] memory limbs = new uint256[](limbCount);
-
-        for (uint256 i = 0; i < limbCount; i++) {
-            bigint memory quotient;
-            bigint memory remainder;
-            (quotient, remainder) = divide(result, bigintBase128);
-            result = quotient;
-            limbs[i] = remainder.limbs[0];
-        }
-
-        result.limbs = limbs;
-        return result;
-    }
-    function bitLength(bigint memory a) internal pure returns (uint256) {
-    uint256 highestLimbIndex = a.limbs.length - 1;
-    uint256 highestLimb = a.limbs[highestLimbIndex];
-    
-    // Count the number of bits in the highest limb
-    uint256 highestLimbBitLength = 0;
-    while (highestLimb != 0) {
-        highestLimb >>= 1;
-        highestLimbBitLength++;
-    }
-
-    // Add the bit length of the remaining limbs (128 bits each)
-    return highestLimbBitLength + (highestLimbIndex * 128);
-}
-    function pow(bigint memory a,bigint memory b) internal pure returns (bigint memory ) {
-        bigint memory result;
-        result=set_Uint256(1);
-        while(b.limbs[0] > 0){
-            if (b.limbs[0] & 1 != 0) {
-                result = karatsubaMultiply(result,a);
+            tempBytes[i % 39] = inputBytes[inputBytes.length - i - 1];
+            if (i % 39 == 38) {
+                result.limbs[i / 39] = bytesToUint256(tempBytes);
             }
-            a =karatsubaMultiply(a,a);
-            (b,) = divide(b, set_Uint256(2));
+        }
+        if (inputBytes.length % 39 != 0) {
+            result.limbs[inputBytes.length / 39] = bytesToUint256(tempBytes);
         }
         return result;
+    }
+
+    function stringToUint256(string memory input) internal pure returns (uint256) {
+        bytes memory inputBytes = bytes(input);
+        uint256 output = 0;
+
+        for (uint256 i = 0; i < inputBytes.length; i++) {
+            uint8 currentChar = uint8(inputBytes[i]);
+            
+            // Check if the character is a valid digit (0-9)
+            require(currentChar >= 48 && currentChar <= 57, "Invalid character in input string");
+
+            // Subtract 48 to get the integer value of the digit (ASCII value of '0' is 48)
+            uint8 digit = currentChar - 48;
+
+            // Update the output with the new digit
+            output = output * 10 + uint256(digit);
+        }
+
+        return output;
+    }
+    function bytesToUint256(bytes memory inputBytes) internal pure returns (uint256) {
+        uint256 output = 0;
+
+        for (uint256 i = 0; i < inputBytes.length; i++) {
+            uint8 currentChar = uint8(inputBytes[i]);
+
+            // Check if the character is a valid digit (0-9)
+            if(currentChar >= 48 && currentChar <= 57)
+            {
+                // Subtract 48 to get the integer value of the digit (ASCII value of '0' is 48)
+                uint8 digit = currentChar - 48;
+
+                // Update the output with the new digit
+                output = output * 10 + uint256(digit);
+            }
+
+        }
+
+        return output;
     }
 
 
     function get_Decimal(BigInt.bigint memory a) internal pure returns (string memory) {
-        uint256 base = 2**128;
-        //uint256 groupSize = 1;
-        uint256 maxGroupValue = base;
-
-        bigint memory temp = a;
         string memory decimal = "";
-
-        while (BigInt.compare(temp, BigInt.set_Uint256(0)) > 0) {
-            bigint memory remainder = BigInt.mod(temp, maxGroupValue);
-            uint256 groupValue = remainder.limbs[0];
-            string memory groupString = Strings.toString(groupValue);
-
-            if (BigInt.compare(temp, BigInt.set_Uint256(maxGroupValue)) >= 0) {
-                (temp, ) = BigInt.divide(temp, BigInt.set_Uint256(maxGroupValue));
-                decimal = string(abi.encodePacked(groupString, decimal));
-            } else {
-                decimal = string(abi.encodePacked(Strings.toString(groupValue), decimal));
+        for (uint256 i = 0; i < a.limbs.length; i++) {
+            if(a.limbs[i]==0)
+            {
                 break;
             }
+            decimal = string(abi.encodePacked(decimal,Strings.toString(a.limbs[i])));
         }
-        return decimal;
+        
+        return reverse(decimal);
     }
+    function reverse(string memory str) internal pure returns (string memory) {
+        bytes memory strBytes = bytes(str);
+        uint256 length = strBytes.length;
+
+        for (uint256 i = 0; i < length / 2; i++) {
+            bytes1 temp = strBytes[i];
+            strBytes[i] = strBytes[length - 1 - i];
+            strBytes[length - 1 - i] = temp;
+        }
+
+        return string(strBytes);
+    }
+
     function mod(bigint memory a, uint256 b) internal pure returns (bigint memory) {
     require(b > 0, "Modulus must be greater than zero");
     bigint memory result;

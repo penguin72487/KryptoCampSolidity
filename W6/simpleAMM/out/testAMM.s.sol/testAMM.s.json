@@ -1,0 +1,21 @@
+{
+  "abi": [],
+  "bytecode": {
+    "object": "0x",
+    "linkReferences": {}
+  },
+  "deployedBytecode": {
+    "object": "0x",
+    "linkReferences": {}
+  },
+  "ast": {
+    "absolutePath": "script/testAMM.s.sol",
+    "id": 29687,
+    "exportedSymbols": {},
+    "nodeType": "SourceUnit",
+    "src": "2165:0:21",
+    "nodes": [],
+    "license": "UNLICENSED"
+  },
+  "id": 21
+}

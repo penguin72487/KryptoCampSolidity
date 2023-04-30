@@ -1,0 +1,18 @@
+{
+  "name": "simpleamm",
+  "version": "1.0.0",
+  "description": "cd W6/bigint  \r `forge script script/testAMM.s.sol:TestSimpleAMM -vvvvv`\r ## start a vm node\r `anvil --fork-url $env:fork_url`",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@openzeppelin/contracts": "^4.8.3"
+  }
+}

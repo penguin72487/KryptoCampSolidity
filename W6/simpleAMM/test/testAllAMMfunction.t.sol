@@ -3,7 +3,7 @@ pragma solidity ^0.8.18;
 
 import "forge-std/Test.sol";
 import "forge-std/Vm.sol";
-import "../src/simpleamm.sol";
+import "../src/simpleAMMV5.sol";
 import "../src/erc20.sol";
 
 contract TestSimpleAMMTest is Test {
@@ -139,6 +139,20 @@ contract TestSimpleAMMTest is Test {
         test_addLiquidity();
 
         uint256 price = ammInstance.getERCPrice();
+        assertGt(price, 0);
+    }
+    function test_getPredictOutputETH() public {
+        // User1 adds liquidity
+        test_addLiquidity();
+
+        uint256 price = ammInstance.getPredictOutputETH(100 * 1e18);
+        assertGt(price, 0);
+    }
+    function test_getPredictOutputERC() public {
+        // User1 adds liquidity
+        test_addLiquidity();
+
+        uint256 price = ammInstance.getPredictOutputERC(100 * 1e18);
         assertGt(price, 0);
     }
 

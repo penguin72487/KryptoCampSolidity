@@ -12,7 +12,7 @@
   },
   "files": {
     "lib/forge-std/lib/ds-test/src/test.sol": {
-      "lastModificationDate": 1682130433613,
+      "lastModificationDate": 1682819284893,
       "contentHash": "2df678a5b2611e0d7bc9ef6745d19157",
       "sourceName": "lib/forge-std/lib/ds-test/src/test.sol",
       "solcConfig": {
@@ -52,7 +52,7 @@
       }
     },
     "lib/forge-std/src/Base.sol": {
-      "lastModificationDate": 1682130430088,
+      "lastModificationDate": 1682819284895,
       "contentHash": "2a76a316dab98751b739247982ac8576",
       "sourceName": "lib/forge-std/src/Base.sol",
       "solcConfig": {
@@ -101,7 +101,7 @@
       }
     },
     "lib/forge-std/src/StdAssertions.sol": {
-      "lastModificationDate": 1682130430090,
+      "lastModificationDate": 1682819284896,
       "contentHash": "d136ed3be15b16e8875196a38f225c2f",
       "sourceName": "lib/forge-std/src/StdAssertions.sol",
       "solcConfig": {
@@ -144,7 +144,7 @@
       }
     },
     "lib/forge-std/src/StdChains.sol": {
-      "lastModificationDate": 1682130433848,
+      "lastModificationDate": 1682819284896,
       "contentHash": "6d666533d12a911129e70c92105a449b",
       "sourceName": "lib/forge-std/src/StdChains.sol",
       "solcConfig": {
@@ -186,7 +186,7 @@
       }
     },
     "lib/forge-std/src/StdCheats.sol": {
-      "lastModificationDate": 1682130430092,
+      "lastModificationDate": 1682819284897,
       "contentHash": "27f7037d3ce568cac654c20032ed71e3",
       "sourceName": "lib/forge-std/src/StdCheats.sol",
       "solcConfig": {
@@ -232,7 +232,7 @@
       }
     },
     "lib/forge-std/src/StdError.sol": {
-      "lastModificationDate": 1682130430092,
+      "lastModificationDate": 1682819284897,
       "contentHash": "8c35ad419c5b8748575080db5fd58cae",
       "sourceName": "lib/forge-std/src/StdError.sol",
       "solcConfig": {
@@ -272,7 +272,7 @@
       }
     },
     "lib/forge-std/src/StdInvariant.sol": {
-      "lastModificationDate": 1682130430093,
+      "lastModificationDate": 1682819284898,
       "contentHash": "3525c75dbb49f9af908a943d9ea635cf",
       "sourceName": "lib/forge-std/src/StdInvariant.sol",
       "solcConfig": {
@@ -312,7 +312,7 @@
       }
     },
     "lib/forge-std/src/StdJson.sol": {
-      "lastModificationDate": 1682130430094,
+      "lastModificationDate": 1682819284898,
       "contentHash": "71c2c9083583f2adbe0d07a725689def",
       "sourceName": "lib/forge-std/src/StdJson.sol",
       "solcConfig": {
@@ -354,7 +354,7 @@
       }
     },
     "lib/forge-std/src/StdMath.sol": {
-      "lastModificationDate": 1682130430095,
+      "lastModificationDate": 1682819284898,
       "contentHash": "fc64b149e462e64dea89f50e9cc0318f",
       "sourceName": "lib/forge-std/src/StdMath.sol",
       "solcConfig": {
@@ -394,7 +394,7 @@
       }
     },
     "lib/forge-std/src/StdStorage.sol": {
-      "lastModificationDate": 1682130430096,
+      "lastModificationDate": 1682819284899,
       "contentHash": "956a40f1cecbf085f687f818356dc22a",
       "sourceName": "lib/forge-std/src/StdStorage.sol",
       "solcConfig": {
@@ -439,7 +439,7 @@
       }
     },
     "lib/forge-std/src/StdStyle.sol": {
-      "lastModificationDate": 1682130430097,
+      "lastModificationDate": 1682819284899,
       "contentHash": "bc32c9e9afd157bb02836b279d2223c5",
       "sourceName": "lib/forge-std/src/StdStyle.sol",
       "solcConfig": {
@@ -481,7 +481,7 @@
       }
     },
     "lib/forge-std/src/StdUtils.sol": {
-      "lastModificationDate": 1682130433849,
+      "lastModificationDate": 1682819284900,
       "contentHash": "553f06f0f2180ca2d5ebcfaf268a6ccb",
       "sourceName": "lib/forge-std/src/StdUtils.sol",
       "solcConfig": {
@@ -524,7 +524,7 @@
       }
     },
     "lib/forge-std/src/Test.sol": {
-      "lastModificationDate": 1682130430099,
+      "lastModificationDate": 1682819284901,
       "contentHash": "53342ae9785fc6ae53971b57c6ab41d3",
       "sourceName": "lib/forge-std/src/Test.sol",
       "solcConfig": {
@@ -569,8 +569,8 @@
         "lib/forge-std/src/StdStyle.sol",
         "lib/forge-std/src/StdUtils.sol",
         "lib/forge-std/src\\Vm.sol",
-        "lib/forge-std/src\\console.sol",
-        "lib/forge-std/src\\console2.sol",
+        "lib/forge-std/src/console.sol",
+        "lib/forge-std/src/console2.sol",
         "lib/forge-std/src/interfaces/IMulticall3.sol"
       ],
       "versionRequirement": ">=0.6.2, <0.9.0",
@@ -581,7 +581,7 @@
       }
     },
     "lib/forge-std/src/Vm.sol": {
-      "lastModificationDate": 1682130433851,
+      "lastModificationDate": 1682819284902,
       "contentHash": "c230eff2f9101f9cd321f489234e1b83",
       "sourceName": "lib/forge-std/src/Vm.sol",
       "solcConfig": {
@@ -624,7 +624,7 @@
       }
     },
     "lib/forge-std/src/console.sol": {
-      "lastModificationDate": 1682130430101,
+      "lastModificationDate": 1682819284902,
       "contentHash": "c8cf989d04bc2e3069e3d91facf3b69c",
       "sourceName": "lib/forge-std/src/console.sol",
       "solcConfig": {
@@ -664,7 +664,7 @@
       }
     },
     "lib/forge-std/src/console2.sol": {
-      "lastModificationDate": 1682130430102,
+      "lastModificationDate": 1682819284902,
       "contentHash": "f0634a1969c1d0ebfc2ea47dafeafb02",
       "sourceName": "lib/forge-std/src/console2.sol",
       "solcConfig": {
@@ -704,7 +704,7 @@
       }
     },
     "lib/forge-std/src/interfaces/IMulticall3.sol": {
-      "lastModificationDate": 1682130430109,
+      "lastModificationDate": 1682819284905,
       "contentHash": "5de707a0d82c8f56049fbd3ba28944ed",
       "sourceName": "lib/forge-std/src/interfaces/IMulticall3.sol",
       "solcConfig": {
@@ -744,7 +744,7 @@
       }
     },
     "lib/openzeppelin-contracts/contracts/token/ERC20/ERC20.sol": {
-      "lastModificationDate": 1682134100125,
+      "lastModificationDate": 1682819285048,
       "contentHash": "a5bfd27b60951ae5277dca1dc60e23a8",
       "sourceName": "lib/openzeppelin-contracts/contracts/token/ERC20/ERC20.sol",
       "solcConfig": {
@@ -788,7 +788,7 @@
       }
     },
     "lib/openzeppelin-contracts/contracts/token/ERC20/IERC20.sol": {
-      "lastModificationDate": 1682134100126,
+      "lastModificationDate": 1682819285048,
       "contentHash": "da337b36f786d26e7e0826fa874f8d27",
       "sourceName": "lib/openzeppelin-contracts/contracts/token/ERC20/IERC20.sol",
       "solcConfig": {
@@ -828,7 +828,7 @@
       }
     },
     "lib/openzeppelin-contracts/contracts/token/ERC20/extensions/IERC20Metadata.sol": {
-      "lastModificationDate": 1682134087148,
+      "lastModificationDate": 1682819285054,
       "contentHash": "7e3e6992395030ccb281dc67c1a8ae2f",
       "sourceName": "lib/openzeppelin-contracts/contracts/token/ERC20/extensions/IERC20Metadata.sol",
       "solcConfig": {
@@ -870,7 +870,7 @@
       }
     },
     "lib/openzeppelin-contracts/contracts/utils/Context.sol": {
-      "lastModificationDate": 1682134087196,
+      "lastModificationDate": 1682819285074,
       "contentHash": "e7f98c33ad1d39d8a6661bf0804fae36",
       "sourceName": "lib/openzeppelin-contracts/contracts/utils/Context.sol",
       "solcConfig": {
@@ -910,7 +910,7 @@
       }
     },
     "lib/openzeppelin-contracts/contracts/utils/math/Math.sol": {
-      "lastModificationDate": 1682408604432,
+      "lastModificationDate": 1682819285085,
       "contentHash": "c06231dd51da087d01dbe5b7805efd94",
       "sourceName": "lib/openzeppelin-contracts/contracts/utils/math/Math.sol",
       "solcConfig": {
@@ -950,7 +950,7 @@
       }
     },
     "lib/openzeppelin-contracts/contracts/utils/math/SafeMath.sol": {
-      "lastModificationDate": 1682408604434,
+      "lastModificationDate": 1682819285087,
       "contentHash": "162ccf43242f3d61992c57425c5829cf",
       "sourceName": "lib/openzeppelin-contracts/contracts/utils/math/SafeMath.sol",
       "solcConfig": {
@@ -990,7 +990,7 @@
       }
     },
     "script/testAMM.s.sol": {
-      "lastModificationDate": 1682408604882,
+      "lastModificationDate": 1682819285637,
       "contentHash": "25a9b713a766d9ce1b62d1fd3c70c2f5",
       "sourceName": "script/testAMM.s.sol",
       "solcConfig": {
@@ -1030,7 +1030,7 @@
       }
     },
     "src/erc20.sol": {
-      "lastModificationDate": 1681869326401,
+      "lastModificationDate": 1682819285699,
       "contentHash": "9ca1d1640129d25e0ce4622f1054218d",
       "sourceName": "src/erc20.sol",
       "solcConfig": {
@@ -1075,7 +1075,7 @@
       }
     },
     "src/simpleAMM.sol": {
-      "lastModificationDate": 1682578761383,
+      "lastModificationDate": 1682819285699,
       "contentHash": "9477826a88eb729e5f0c0cb57ea43a6c",
       "sourceName": "src/simpleAMM.sol",
       "solcConfig": {
@@ -1123,8 +1123,8 @@
       }
     },
     "src/simpleAMMV4.sol": {
-      "lastModificationDate": 1682578792182,
-      "contentHash": "c0fa4d1d1e3173809b705fea044501bb",
+      "lastModificationDate": 1682819285700,
+      "contentHash": "1afef64e437f3f76c5ce1998bf5b88a2",
       "sourceName": "src/simpleAMMV4.sol",
       "solcConfig": {
         "settings": {
@@ -1170,8 +1170,56 @@
         }
       }
     },
+    "src/simpleAMMV5.sol": {
+      "lastModificationDate": 1682821415476,
+      "contentHash": "3be50bc8434cca7bd43cfb3023f9d644",
+      "sourceName": "src/simpleAMMV5.sol",
+      "solcConfig": {
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "metadata": {
+            "bytecodeHash": "ipfs",
+            "appendCBOR": true
+          },
+          "outputSelection": {
+            "*": {
+              "": [
+                "ast"
+              ],
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ]
+            }
+          },
+          "evmVersion": "london",
+          "libraries": {}
+        }
+      },
+      "imports": [
+        "lib/openzeppelin-contracts\\contracts/token/ERC20/ERC20.sol",
+        "lib/openzeppelin-contracts/contracts/token/ERC20/IERC20.sol",
+        "lib/openzeppelin-contracts/contracts/token/ERC20/extensions/IERC20Metadata.sol",
+        "lib/openzeppelin-contracts/contracts/utils/Context.sol",
+        "lib/openzeppelin-contracts\\contracts/utils/math/Math.sol",
+        "lib/openzeppelin-contracts\\contracts/utils/math/SafeMath.sol",
+        "src\\erc20.sol"
+      ],
+      "versionRequirement": "^0.8.17",
+      "artifacts": {
+        "AMM": {
+          "0.8.18+commit.87f61d96.Windows.msvc": "simpleAMMV5.sol\\AMM.json"
+        }
+      }
+    },
     "src/simpleAMMV5abandom.sol": {
-      "lastModificationDate": 1682428128094,
+      "lastModificationDate": 1682819285700,
       "contentHash": "b0ef59d3366dd61703eec1512f6a966a",
       "sourceName": "src/simpleAMMV5abandom.sol",
       "solcConfig": {
@@ -1217,7 +1265,7 @@
       }
     },
     "test/UniswapV3Liquidity.test.sol": {
-      "lastModificationDate": 1682409413260,
+      "lastModificationDate": 1682819285701,
       "contentHash": "f3304dae62419a19a9c9977bb077ecdb",
       "sourceName": "test/UniswapV3Liquidity.test.sol",
       "solcConfig": {
@@ -1257,8 +1305,8 @@
       }
     },
     "test/testAMM.t.sol": {
-      "lastModificationDate": 1682594792069,
-      "contentHash": "229a0e459ba63394051a160912661eb5",
+      "lastModificationDate": 1682820658727,
+      "contentHash": "2b6f0bbfede002f9073630aa07a98836",
       "sourceName": "test/testAMM.t.sol",
       "solcConfig": {
         "settings": {
@@ -1313,7 +1361,7 @@
         "lib/openzeppelin-contracts\\contracts/utils/math/Math.sol",
         "lib/openzeppelin-contracts\\contracts/utils/math/SafeMath.sol",
         "src\\erc20.sol",
-        "src\\simpleAMMV4.sol"
+        "src\\simpleAMMV5.sol"
       ],
       "versionRequirement": "^0.8.18",
       "artifacts": {
@@ -1323,8 +1371,8 @@
       }
     },
     "test/testAllAMMfunction.t.sol": {
-      "lastModificationDate": 1682480972418,
-      "contentHash": "e4f10083775cb3eab68bd423411d4faa",
+      "lastModificationDate": 1682821371674,
+      "contentHash": "a61aa4b457fc7020e6e06dc8dba9e302",
       "sourceName": "test/testAllAMMfunction.t.sol",
       "solcConfig": {
         "settings": {
@@ -1379,7 +1427,7 @@
         "lib/openzeppelin-contracts\\contracts/utils/math/Math.sol",
         "lib/openzeppelin-contracts\\contracts/utils/math/SafeMath.sol",
         "src\\erc20.sol",
-        "src\\simpleAMM.sol"
+        "src\\simpleAMMV5.sol"
       ],
       "versionRequirement": "^0.8.18",
       "artifacts": {

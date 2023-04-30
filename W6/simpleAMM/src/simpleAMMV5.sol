@@ -94,6 +94,7 @@ contract AMM {
             if (reserve0 * _amount1 != reserve1 * _amount0) {
                 // Calculate the required amount of tokens to make the ratio equal
                 uint256 requiredAmount1 = (reserve1 * _amount0) / reserve0;
+                requiredAmount1*=1000/997;
                 
                 // Swap the excess tokens for ETH without fee
                 if (_amount1 > requiredAmount1) {
@@ -171,20 +172,20 @@ contract AMM {
         return x <= y ? x : y;
     }
     function getETHPrice() public view returns (uint256) {
-        require(reserve0 + reserve1 > 0, "Invalid reserves");
+        require(reserve0 > 0 && reserve1 > 0, "Invalid ETH reserves");
         return (reserve1 * 10**18) / reserve0;
     }
     function getERCPrice() public view returns (uint256) {
-        require(reserve0 + reserve1 > 0, "Invalid reserves");
+        require(reserve0 > 0 && reserve1 > 0, "Invalid ERC20 reserves");
         return (reserve0 * 10**18) / reserve1;
     }
-    function getPricePredicttGD(uint256 _amount) public view returns (uint256) {
-        require(reserve0 + reserve1 > 0, "Invalid reserves");
+    function getPredictOutputERC(uint256 _amount) public view returns (uint256) {
+        require(reserve0 > 0 && reserve1 > 0 && _amount>0, "Invalid ERC20 reserves");
         uint256 amountInWithFee=(_amount * 997) / 1000;
         return (reserve1 * amountInWithFee) / (reserve0 + amountInWithFee);
     }
-    function getPricePredictETH(uint256 _amount) public view returns (uint256) {
-        require(reserve0 + reserve1 > 0, "Invalid reserves");
+    function getPredictOutputETH(uint256 _amount) public view returns (uint256) {
+        require(reserve0 > 0 && reserve1 > 0 && _amount>0, "Invalid ETH reserves");
         uint256 amountInWithFee=(_amount * 997) / 1000;
         return (reserve0 * amountInWithFee) / (reserve1 + amountInWithFee);
     }

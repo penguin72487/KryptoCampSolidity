@@ -2,11 +2,11 @@
 pragma solidity ^0.8.18;
 
 import "../src/bignum.sol";
-import "forge-std/console.sol";
-import "forge-std/Vm.sol";
+// import "forge-std/console.sol";
+// import "forge-std/Vm.sol";
 import "forge-std/Script.sol";
-import "forge-std/Test.sol";
-import "forge-std/console2.sol";
+// import "forge-std/Test.sol";
+// import "forge-std/console2.sol";
 
 contract CounterScript is Script {
     using BigInt for BigInt.bigint;
@@ -30,15 +30,19 @@ contract CounterScript is Script {
         // emit LogString("ok mu");
         // testMultiply();
         // emit LogString("ok mu");
+        emit LogString("ok op");
         testLargeNumbers();
         emit LogString("ok ln");
     }
     function testLargeNumbers() internal {
         string memory largeNumber1 = "115792089237316195423570985008687907853269984665640564039457584007913129639936";
         string memory largeNumber2 = "57896044618658097711785492504343953926634992332820282019728792003956564819968";
-        
+        emit LogString("ok st");
         BigInt.bigint memory a = BigInt.set_String(largeNumber1);
         BigInt.bigint memory b = BigInt.set_String(largeNumber2);
+        emit LogString("ok ab");
+        emit LogString(a.get_Decimal());
+        emit LogString(b.get_Decimal());
         BigInt.bigint memory c = a.add(b);
         //BigInt.bigint memory d = a.karatsubaMultiply(b);
         emit LogString(c.get_Decimal());
@@ -80,7 +84,8 @@ contract CounterScript is Script {
     function testDivide() internal {
         BigInt.bigint memory a = BigInt.set_Uint256(987654321);
         BigInt.bigint memory b = BigInt.set_Uint256(123456789);
-        BigInt.bigint memory c = a.divide(b);
+        BigInt.bigint memory c;
+        (c, ) = a.divide(b);
         emit LogString(c.get_Decimal());
 
     }

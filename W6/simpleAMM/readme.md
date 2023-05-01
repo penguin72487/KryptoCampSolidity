@@ -48,6 +48,10 @@ forge test -vvvvv --gas-report --fork-url $env:fork_url --match-path test/testAM
 
 forge test -vvvvv --gas-report --fork-url $env:fork_url --match-path test/testAllAMMfunction.t.sol --match-contract TestSimpleAMM
 
+forge test -vvvvv --fork-url $env:fork_url --match-path test/testTeamToken.t.sol --match-contract TestSimpleAMM
+
+forge test -vvvvv --gas-report --fork-url $env:fork_url --match-path test/testTeamToken.t.sol --match-contract TestSimpleAMM
+
 
 
 

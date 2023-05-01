@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.17;
+pragma solidity ^0.8.18;
 //goerli 0xae6B0f75b55fa4c90b2768e3157b7000241A41c5 merge 0x4a9C121080f6D9250Fc0143f41B595fD172E31bf
 // V1 0xf60440f93a677AB6968E1Fd10cf8a6cE61941131
 // V2 0x8b175c421E9307F0365dd37bc32Dda5df95C4946
@@ -11,12 +11,10 @@ pragma solidity ^0.8.17;
    * @custom:dev-run-script ../script/tAMM.js
    */
 
-import "./erc20.sol";
-import "@openzeppelin/contracts/utils/math/SafeMath.sol";
+import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 import "@openzeppelin/contracts/utils/math/Math.sol";
 
 contract AMM {
-    using SafeMath for uint256;
     IERC20 public immutable token;
     address public constant ETH_ADDRESS = address(0);
 
@@ -55,14 +53,6 @@ contract AMM {
 
         _update(address(this).balance, token.balanceOf(address(this)));
     }
-    // function _swapWithOutFee(uint256 _amountIn) internal payable returns (uint256 amountOut) {
-    //     require(msg.value == _amountIn, "ETH amount mismatch");
-    //     amountOut = reserve1 / reserve0 ;
-
-    //     token.transfer(msg.sender, amountOut);
-
-    //     _update(address(this).balance, token.balanceOf(address(this)));
-    // }
     function swapTokenForETH(uint256 _amountIn) public returns (uint256 amountOut) {
         uint256 amountInWithFee = (_amountIn * 997) / 1000;
 
@@ -74,15 +64,6 @@ contract AMM {
 
         _update(address(this).balance - amountOut, token.balanceOf(address(this)));
     }
-    // function _swapTokenForETHWithOutFee(uint256 _amountIn) internal returns (uint256 amountOut) {
-    //     amountOut = reserve0 / reserve1;
-    //     require(amountOut > 0, "Insufficient output amount");
-
-    //     token.transferFrom(msg.sender, address(this), _amountIn);
-    //     payable(msg.sender).transfer(amountOut);
-
-    //     _update(address(this).balance - amountOut, token.balanceOf(address(this)));
-    // }
 
     function addLiquidity(uint256 _amount1) external payable returns (uint256 shares) {
         //token.approve(address(this), _amount1);
@@ -93,8 +74,8 @@ contract AMM {
         if (reserve0 > 0 || reserve1 > 0) {
             if (reserve0 * _amount1 != reserve1 * _amount0) {
                 // Calculate the required amount of tokens to make the ratio equal
-                uint256 requiredAmount1 = (reserve1 * _amount0) / reserve0;
-                requiredAmount1*=1000/997;
+                uint256 requiredAmount1 = (reserve1 * _amount0) / (reserve0*997/1000);
+                //requiredAmount1*=(1000/997);
                 
                 // Swap the excess tokens for ETH without fee
                 if (_amount1 > requiredAmount1) {

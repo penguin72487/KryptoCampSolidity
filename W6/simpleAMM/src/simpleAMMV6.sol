@@ -44,34 +44,32 @@ contract AMM {
         reserve1 = _reserve1;
     }
 
-    function swap(uint256 _amountIn0) public returns (uint256 amountOut) {
-        require(_amountIn0 > 0, "Invalid input amount");
+    function swap(uint256 _amountIn) public payable returns (uint256 amountOut) {
+        require(msg.value == _amountIn, "ETH amount mismatch");
 
-        uint256 amountInWithFee = (_amountIn0 * 997) / 1000;
+        uint256 amountInWithFee = (_amountIn * 997) / 1000;
         amountOut = (reserve1 * amountInWithFee) / (reserve0 + amountInWithFee);
 
-        token0.transferFrom(msg.sender, address(this), _amountIn0);
-        token1.transfer(msg.sender, amountOut);
+        token.transfer(msg.sender, amountOut);
 
-        _update(token0.balanceOf(address(this)), token1.balanceOf(address(this)));
+        _update(address(this).balance, token.balanceOf(address(this)));
     }
-    
-    function swapTokenForToken(uint256 _amountIn1) public returns (uint256 amountOut) {
-        require(_amountIn1 > 0, "Invalid input amount");
+    function swapTokenForETH(uint256 _amountIn) public returns (uint256 amountOut) {
+        uint256 amountInWithFee = (_amountIn * 997) / 1000;
 
-        uint256 amountInWithFee = (_amountIn1 * 997) / 1000;
         amountOut = (reserve0 * amountInWithFee) / (reserve1 + amountInWithFee);
+        require(amountOut > 0, "Insufficient output amount");
 
-        token1.transferFrom(msg.sender, address(this), _amountIn1);
-        token0.transfer(msg.sender, amountOut);
+        token.transferFrom(msg.sender, address(this), _amountIn);
+        payable(msg.sender).transfer(amountOut);
 
-        _update(token0.balanceOf(address(this)), token1.balanceOf(address(this)));
+        _update(address(this).balance - amountOut, token.balanceOf(address(this)));
     }
 
+    function addLiquidity(uint256 _amount1) external payable returns (uint256 shares) {
+        token.transferFrom(msg.sender, address(this), _amount1);
 
-    function addLiquidity(uint256 _amount0, uint256 _amount1) external returns (uint256 shares) {
-        token0.transferFrom(msg.sender, address(this), _amount0);
-        token1.transferFrom(msg.sender, address(this), _amount1);
+        uint256 _amount0 = msg.value;
 
         if (reserve0 > 0 || reserve1 > 0) {
             require(reserve0 * _amount1 == reserve1 * _amount0, "x / y != dx / dy");
@@ -88,7 +86,7 @@ contract AMM {
         require(shares > 0, "shares = 0");
         _mint(msg.sender, shares);
 
-        _update(token0.balanceOf(address(this)), token1.balanceOf(address(this)));
+        _update(address(this).balance, token.balanceOf(address(this)));
     }
 
     function removeAllLiquidity(address _user) external returns (uint256 amount0, uint256 amount1) {

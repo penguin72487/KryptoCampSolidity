@@ -120,7 +120,7 @@
 						"type": "uint256"
 					}
 				],
-				"name": "getPricePredictETH",
+				"name": "getPredictOutputERC",
 				"outputs": [
 					{
 						"internalType": "uint256",
@@ -139,7 +139,7 @@
 						"type": "uint256"
 					}
 				],
-				"name": "getPricePredicttGD",
+				"name": "getPredictOutputETH",
 				"outputs": [
 					{
 						"internalType": "uint256",
@@ -363,7 +363,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"W6/simpleAMM/src/simpleAMMV4.sol": "AMM"
+			"W6/simpleAMM/src/simpleAMMV5.sol": "AMM"
 		},
 		"evmVersion": "paris",
 		"libraries": {},
@@ -417,28 +417,12 @@
 				"dweb:/ipfs/Qmct36zWXv3j7LZB83uwbg7TXwnZSN1fqHNDZ93GG98bGz"
 			]
 		},
-		"@openzeppelin/contracts/utils/math/SafeMath.sol": {
-			"keccak256": "0x0f633a0223d9a1dcccfcf38a64c9de0874dfcbfac0c6941ccf074d63a2ce0e1e",
+		"W6/simpleAMM/src/simpleAMMV5.sol": {
+			"keccak256": "0xacf2098ca798869dac62623668935a9226a688e976ff977f4eb8bfd6e3cb0d25",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://864a40efcffdf408044c332a5aa38ec5618ed7b4eecb8f65faf45671bd6cdc65",
-				"dweb:/ipfs/QmQJquTMtc6fgm5JQzGdsGpA2fqBe3MHWEdt2qzaLySMdN"
-			]
-		},
-		"W6/simpleAMM/src/erc20.sol": {
-			"keccak256": "0xeb868e7af99b4a87353f3ddc625544d496a8a731e729e4112516bef7b89badd4",
-			"license": "GPL-3.0",
-			"urls": [
-				"bzz-raw://cd3904a2c19d7fd93344ac935787020f33d10af3dc8545a1cf6240f54332feff",
-				"dweb:/ipfs/QmZ7E6ediZaBTLUXguJBDey7bkskhAfum1MYrRh8rXGFPV"
-			]
-		},
-		"W6/simpleAMM/src/simpleAMMV4.sol": {
-			"keccak256": "0x92d6211a7b08dfbcdf68812bb78a984e58cd02a90643b05bdc97ce1559b7355c",
-			"license": "MIT",
-			"urls": [
-				"bzz-raw://124746456dee4004dfdf7ee66621bcd003180e9ae29f29c1ef5aaf0e03b53287",
-				"dweb:/ipfs/QmVxGiX6iombX7m4w1ggWD6A9Y6YdJToTNgbCYekfGUGvm"
+				"bzz-raw://73d56f1bf0569d2ab1761140cf74ab4bf40e7c3c3c4553dccb41c80a8fcfb528",
+				"dweb:/ipfs/QmUysKKtZP7pe5kwbipcqBgRYgQsHeeEBouSy5bJnAiQEm"
 			]
 		}
 	},

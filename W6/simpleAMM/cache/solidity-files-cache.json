@@ -1217,8 +1217,8 @@
       }
     },
     "src/simpleAMMV5ERC.sol": {
-      "lastModificationDate": 1682935515573,
-      "contentHash": "a2e657f33b09d6ad308b2e77d79e30d6",
+      "lastModificationDate": 1683082670070,
+      "contentHash": "2c11af5d311f4fb84917624cde7dbfc7",
       "sourceName": "src/simpleAMMV5ERC.sol",
       "solcConfig": {
         "settings": {
@@ -1302,9 +1302,49 @@
         }
       }
     },
+    "src/simpleAMMV5lock.sol": {
+      "lastModificationDate": 1683026796350,
+      "contentHash": "d41d8cd98f00b204e9800998ecf8427e",
+      "sourceName": "src/simpleAMMV5lock.sol",
+      "solcConfig": {
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "metadata": {
+            "bytecodeHash": "ipfs",
+            "appendCBOR": true
+          },
+          "outputSelection": {
+            "*": {
+              "": [
+                "ast"
+              ],
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ]
+            }
+          },
+          "evmVersion": "london",
+          "libraries": {}
+        }
+      },
+      "imports": [],
+      "versionRequirement": null,
+      "artifacts": {
+        "simpleAMMV5lock": {
+          "0.8.18+commit.87f61d96.Windows.msvc": "simpleAMMV5lock.sol\\simpleAMMV5lock.json"
+        }
+      }
+    },
     "src/teamToken.sol": {
-      "lastModificationDate": 1682943046013,
-      "contentHash": "db9f9de261c5307e7f13bc23ce3a9ceb",
+      "lastModificationDate": 1682946695970,
+      "contentHash": "35d2e6cd12357629895ee8a31e8d0819",
       "sourceName": "src/teamToken.sol",
       "solcConfig": {
         "settings": {
@@ -1439,8 +1479,8 @@
       }
     },
     "test/testAMM.t.sol": {
-      "lastModificationDate": 1682599463388,
-      "contentHash": "2b6f0bbfede002f9073630aa07a98836",
+      "lastModificationDate": 1683085198306,
+      "contentHash": "f302961fccdd60ae67d7b20a9ff34a1b",
       "sourceName": "test/testAMM.t.sol",
       "solcConfig": {
         "settings": {
@@ -1569,8 +1609,8 @@
       }
     },
     "test/testTeamToken.t.sol": {
-      "lastModificationDate": 1682944660098,
-      "contentHash": "8524b678645d8aab1c254cbf25605eba",
+      "lastModificationDate": 1682945805314,
+      "contentHash": "9e3e210c9cb0e8d815369625c8047ba0",
       "sourceName": "test/testTeamToken.t.sol",
       "solcConfig": {
         "settings": {

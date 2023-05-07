@@ -18,7 +18,7 @@ contract TestSimpleAMMTest is Test {
 
 
     function setUp() external {
-        ERC20 = new teamToken("testGaoDuck", "ERC20", 18, 10000000);
+        ERC20 = new teamToken("teamToken", "tT", 18, 10000000);
         ammInstance = new AMM(address(ERC20));
         
         user1 = address(0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266);

@@ -44,6 +44,7 @@ foreach ($env_var in $env_vars) {
 # Run the forge test command with the fork_url environment variable
 forge test -vvvvv --fork-url $env:fork_url --match-path test/testAMM.t.sol --match-contract TestSimpleAMM
 ```
+forge test -vvvvv --fork-url $env:fork_url --match-path test/testAMM.t.sol --match-contract TestSimpleAMM
 forge test -vvvvv --gas-report --fork-url $env:fork_url --match-path test/testAMM.t.sol --match-contract TestSimpleAMM
 
 forge test -vvvvv --gas-report --fork-url $env:fork_url --match-path test/testAllAMMfunction.t.sol --match-contract TestSimpleAMM
@@ -52,6 +53,7 @@ forge test -vvvvv --fork-url $env:fork_url --match-path test/testTeamToken.t.sol
 
 forge test -vvvvv --gas-report --fork-url $env:fork_url --match-path test/testTeamToken.t.sol --match-contract TestSimpleAMM
 
+forge test -vvvvv --fork-url $env:fork_url --match-path test/testAMMV6.t.sol --match-contract TestExtendedAMM
 
 
 

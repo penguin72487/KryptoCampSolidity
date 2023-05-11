@@ -5,27 +5,25 @@ pragma solidity ^0.8.18;
 // V2 0x8b175c421E9307F0365dd37bc32Dda5df95C4946
 // V3 0x3ea585565c490232b0379C7D3C3A9fC3fA5C9c0C
 // V4  0x6D81EE8B003422Ee9d1255aceA42386eCBD20a60 merge 0x540d7E428D5207B30EE03F2551Cbb5751D3c7569
-  /**
-   * @title ContractName
-   * @dev ContractDescription
-   * @custom:dev-run-script ../script/tAMM.js
-   */
-
+// V6 merge 0xf8e81D47203A594245E36C48e151709F0C19fBe8
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import "@openzeppelin/contracts/utils/math/Math.sol";
 
 contract AMM {
+    address developer;
+
     IERC20 public immutable token;
     address public constant ETH_ADDRESS = address(0);
 
-    uint256 public reserve0;
-    uint256 public reserve1;
+    uint256 public reserve0; // eth
+    uint256 public reserve1; // erc20
 
     uint256 public totalSupply;
     mapping(address => uint256) public balanceOf;
 
     constructor(address _token) {
+        developer = msg.sender;
         token = IERC20(_token);
     }
 
@@ -49,6 +47,7 @@ contract AMM {
 
         uint256 amountInWithFee = (_amountIn * 997) / 1000;
         amountOut = (reserve1 * amountInWithFee) / (reserve0 + amountInWithFee);
+        _mint(developer, ((_amountIn-_amountOut)>>1)*totalSupply/reserve0); // 50% of the profit to developer
 
         token.transfer(msg.sender, amountOut);
 
@@ -59,13 +58,40 @@ contract AMM {
 
         amountOut = (reserve0 * amountInWithFee) / (reserve1 + amountInWithFee);
         require(amountOut > 0, "Insufficient output amount");
+        _mint(developer, ((_amountIn-_amountOut)>>1)*totalSupply/reserve1); // 50% of the profit to developer
 
         token.transferFrom(msg.sender, address(this), _amountIn);
         payable(msg.sender).transfer(amountOut);
 
-        _update(address(this).balance - amountOut, token.balanceOf(address(this)));
+        _update(address(this).balance, token.balanceOf(address(this)));
     }
+    function swap_WithSlipLock(uint256 _amountIn,uint256 _forwardOutput,uint256 _slipLock) public payable returns (uint256 amountOut)
+    {
+        require(msg.value == _amountIn, "ETH amount mismatch");
 
+        uint256 amountInWithFee = (_amountIn * 997) / 1000;
+        amountOut = (reserve1 * amountInWithFee) / (reserve0 + amountInWithFee);
+        require(amountOut > 0, "Insufficient output amount");
+        require(amountOut >= (_forwardOutput*(1000-_slipLock)/1000), "SlipLock");
+        _mint(developer, ((_amountIn-_amountOut)>>1)*totalSupply/reserve0); // 50% of the profit to developer
+
+        token.transfer(msg.sender, amountOut);
+
+        _update(address(this).balance, token.balanceOf(address(this)));
+    }
+    function swapTokenForETH_WithSlipLock(uint256 _amountIn,uint256 _forwardOutput,uint256 _slipLock) public returns (uint256 amountOut) {
+        uint256 amountInWithFee = (_amountIn * 997) / 1000;
+
+        amountOut = (reserve0 * amountInWithFee) / (reserve1 + amountInWithFee);
+        require(amountOut > 0, "Insufficient output amount");
+        require(amountOut >= (_forwardOutput*(1000-_slipLock)/1000), "SlipLock");
+        _mint(developer, ((_amountIn-_amountOut)>>1)*totalSupply/reserve1); // 50% of the profit to developer
+
+        token.transferFrom(msg.sender, address(this), _amountIn);
+        payable(msg.sender).transfer(amountOut);
+
+        _update(address(this).balance, token.balanceOf(address(this)));
+    }
     function addLiquidity(uint256 _amount1) external payable returns (uint256 shares) {
         token.transferFrom(msg.sender, address(this), _amount1);
 
@@ -102,8 +128,8 @@ contract AMM {
         return _removeLiquidity(_user, _shares);
     }
     function _removeLiquidity(address _user, uint256 _shares) internal returns (uint256 amount0, uint256 amount1) {
-        amount0 = (_shares * address(this).balance) / totalSupply;
-        amount1 = (_shares * token.balanceOf(address(this))) / totalSupply;
+        amount0 = (_shares * reserve0) / totalSupply;
+        amount1 = (_shares * reserve1) / totalSupply;
         require(amount0 > 0 && amount1 > 0, "amount0 or amount1 = 0");
 
         _burn(_user, _shares);
@@ -140,7 +166,7 @@ contract AMM {
     }
     function getERCPrice() public view returns (uint256) {
         require(reserve0 > 0 && reserve1 > 0, "Invalid ERC20 reserves");
-        return (reserve0 * token.decimals) / reserve1;
+        return (reserve0 * ERC20(address(token)).decimals()) / reserve1;
     }
     function getInETHPredictOutputERC(uint256 _amount) public view returns (uint256) {
         require(reserve0 > 0 && reserve1 > 0 && _amount>0, "Invalid ERC20 reserves");

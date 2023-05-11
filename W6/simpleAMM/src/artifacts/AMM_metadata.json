@@ -68,25 +68,6 @@
 				"type": "function"
 			},
 			{
-				"inputs": [
-					{
-						"internalType": "uint256",
-						"name": "amountIn",
-						"type": "uint256"
-					}
-				],
-				"name": "calculateSlippage",
-				"outputs": [
-					{
-						"internalType": "uint256",
-						"name": "",
-						"type": "uint256"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
 				"inputs": [],
 				"name": "getERCPrice",
 				"outputs": [
@@ -120,7 +101,7 @@
 						"type": "uint256"
 					}
 				],
-				"name": "getPredictOutputERC",
+				"name": "getInERCPredictOutputETH",
 				"outputs": [
 					{
 						"internalType": "uint256",
@@ -139,7 +120,7 @@
 						"type": "uint256"
 					}
 				],
-				"name": "getPredictOutputETH",
+				"name": "getInETHPredictOutputERC",
 				"outputs": [
 					{
 						"internalType": "uint256",
@@ -324,6 +305,64 @@
 				"type": "function"
 			},
 			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_amountIn",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_forwardOutput",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_slipLock",
+						"type": "uint256"
+					}
+				],
+				"name": "swapTokenForETH_WithSlipLock",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "amountOut",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_amountIn",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_forwardOutput",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_slipLock",
+						"type": "uint256"
+					}
+				],
+				"name": "swap_WithSlipLock",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "amountOut",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "payable",
+				"type": "function"
+			},
+			{
 				"inputs": [],
 				"name": "token",
 				"outputs": [
@@ -363,7 +402,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"W6/simpleAMM/src/simpleAMMV5.sol": "AMM"
+			"W6/simpleAMM/src/simpleAMMV6.sol": "AMM"
 		},
 		"evmVersion": "paris",
 		"libraries": {},
@@ -417,12 +456,12 @@
 				"dweb:/ipfs/Qmct36zWXv3j7LZB83uwbg7TXwnZSN1fqHNDZ93GG98bGz"
 			]
 		},
-		"W6/simpleAMM/src/simpleAMMV5.sol": {
-			"keccak256": "0xacf2098ca798869dac62623668935a9226a688e976ff977f4eb8bfd6e3cb0d25",
+		"W6/simpleAMM/src/simpleAMMV6.sol": {
+			"keccak256": "0x827dc400d37d3491782d72ec0fd126abe76fa8ec2dc698ce062b31e31093a161",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://73d56f1bf0569d2ab1761140cf74ab4bf40e7c3c3c4553dccb41c80a8fcfb528",
-				"dweb:/ipfs/QmUysKKtZP7pe5kwbipcqBgRYgQsHeeEBouSy5bJnAiQEm"
+				"bzz-raw://80640fea817357d5bc726c6539408b87e39d1ca8a7f133b05a8f635daee0e019",
+				"dweb:/ipfs/QmQHzsHVLTNNw1YywtVaCjLuYRkzRfBnyyTHwztnfYdxBE"
 			]
 		}
 	},

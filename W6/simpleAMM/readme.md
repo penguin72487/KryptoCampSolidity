@@ -30,6 +30,7 @@ constructor的參數放constructor_args
 
 ## debug
 `forge debug --debug script/Counter.s.sol:CounterScript`
+<!-- forge debug --debug script/Counter.s.sol:CounterScript -->
 
 ## test simpleamm
 ```powershell
@@ -53,8 +54,12 @@ forge test -vvvvv --fork-url $env:fork_url --match-path test/testTeamToken.t.sol
 
 forge test -vvvvv --gas-report --fork-url $env:fork_url --match-path test/testTeamToken.t.sol --match-contract TestSimpleAMM
 
-forge test -vvvvv --fork-url $env:fork_url --match-path test/testAMMV6.t.sol --match-contract TestExtendedAMM
+forge test -vvvvv --fork-url $env:fork_url --match-path test/testAMMV6.t.sol --match-contract TestSimpleAMMTest
+
+forge debug --debug test/testAMMV6.t.sol:TestSimpleAMMTest
+
+forge test -vvvvv --gas-report --fork-url $env:fork_url --match-path test/testAMMV6.t.sol --match-contract TestSimpleAMMTest
 
 
-
+forge test -vvvvv --fork-url $env:fork_url --match-path test/testAMMV6ERC.t.sol --match-contract TestSimpleAMMTest
 

@@ -13,15 +13,15 @@ contract testGaoDuckToken is ERC20 {
     }
     
     function mint(address account, uint256 amount) external {
-        _mint(account,  amount * (10 ** decimals()));
+        _mint(account,  amount );
     }
 
     function burn(address account, uint256 amount) external {
-        _burn(account, amount * (10 ** decimals()));
+        _burn(account, amount);
     }
     
     function decimals() public view virtual override returns (uint8) {
         return 18;
     }
 }
-//0xd9145CCE52D386f254917e481eB44e9943F39138
+//0xcD6a42782d230D7c13A74ddec5dD140e55499Df9

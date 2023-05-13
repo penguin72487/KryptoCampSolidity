@@ -1030,8 +1030,8 @@
       }
     },
     "src/erc20.sol": {
-      "lastModificationDate": 1683688173024,
-      "contentHash": "d0b34e4549b16f8890152b602d306fa4",
+      "lastModificationDate": 1683808706636,
+      "contentHash": "412226f068ac6b28e340c497100069e9",
       "sourceName": "src/erc20.sol",
       "solcConfig": {
         "settings": {
@@ -1305,8 +1305,8 @@
       }
     },
     "src/simpleAMMV6.sol": {
-      "lastModificationDate": 1683688275259,
-      "contentHash": "69a7ca08ade5a28a9c81d174da2838f4",
+      "lastModificationDate": 1683969084715,
+      "contentHash": "150ee1a60d8240d648588851a6bf425e",
       "sourceName": "src/simpleAMMV6.sol",
       "solcConfig": {
         "settings": {
@@ -1351,8 +1351,8 @@
       }
     },
     "src/simpleAMMV6ERC.sol": {
-      "lastModificationDate": 1683688147579,
-      "contentHash": "466cda180ec59a13a4d332ce09071573",
+      "lastModificationDate": 1683972212514,
+      "contentHash": "3753fec93141cfa0f38ef5ae6c9ff08e",
       "sourceName": "src/simpleAMMV6ERC.sol",
       "solcConfig": {
         "settings": {
@@ -1382,11 +1382,17 @@
           "libraries": {}
         }
       },
-      "imports": [],
+      "imports": [
+        "lib/openzeppelin-contracts\\contracts/token/ERC20/ERC20.sol",
+        "lib/openzeppelin-contracts\\contracts/token/ERC20/IERC20.sol",
+        "lib/openzeppelin-contracts/contracts/token/ERC20/extensions/IERC20Metadata.sol",
+        "lib/openzeppelin-contracts/contracts/utils/Context.sol",
+        "lib/openzeppelin-contracts\\contracts/utils/math/Math.sol"
+      ],
       "versionRequirement": "^0.8.18",
       "artifacts": {
-        "simpleAMMV6ERC": {
-          "0.8.18+commit.87f61d96.Windows.msvc": "simpleAMMV6ERC.sol\\simpleAMMV6ERC.json"
+        "AMM": {
+          "0.8.18+commit.87f61d96.Windows.msvc": "simpleAMMV6ERC.sol\\AMM.json"
         }
       }
     },
@@ -1527,8 +1533,8 @@
       }
     },
     "test/testAMM.t.sol": {
-      "lastModificationDate": 1683685837809,
-      "contentHash": "e835815455d785591666c340a95e058f",
+      "lastModificationDate": 1683812705534,
+      "contentHash": "0d30fee037d65954f85601735892d2bf",
       "sourceName": "test/testAMM.t.sol",
       "solcConfig": {
         "settings": {
@@ -1592,8 +1598,8 @@
       }
     },
     "test/testAMMV6.t.sol": {
-      "lastModificationDate": 1683690053970,
-      "contentHash": "3ae08ca77611c260bbdfe50973c1357d",
+      "lastModificationDate": 1683971420710,
+      "contentHash": "a9cef5f236d9be9c72b1dbcdcea638ee",
       "sourceName": "test/testAMMV6.t.sol",
       "solcConfig": {
         "settings": {
@@ -1651,8 +1657,73 @@
       ],
       "versionRequirement": "^0.8.18",
       "artifacts": {
-        "TestExtendedAMM": {
-          "0.8.18+commit.87f61d96.Windows.msvc": "testAMMV6.t.sol\\TestExtendedAMM.json"
+        "TestSimpleAMMTest": {
+          "0.8.18+commit.87f61d96.Windows.msvc": "testAMMV6.t.sol\\TestSimpleAMMTest.json"
+        }
+      }
+    },
+    "test/testAMMV6ERC.t.sol": {
+      "lastModificationDate": 1683990287871,
+      "contentHash": "b2cc9cd866407976c23fb8af90c9c2af",
+      "sourceName": "test/testAMMV6ERC.t.sol",
+      "solcConfig": {
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "metadata": {
+            "bytecodeHash": "ipfs",
+            "appendCBOR": true
+          },
+          "outputSelection": {
+            "*": {
+              "": [
+                "ast"
+              ],
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ]
+            }
+          },
+          "evmVersion": "london",
+          "libraries": {}
+        }
+      },
+      "imports": [
+        "lib/forge-std/lib/ds-test/src\\test.sol",
+        "lib/forge-std/src/Base.sol",
+        "lib/forge-std/src/StdAssertions.sol",
+        "lib/forge-std/src/StdChains.sol",
+        "lib/forge-std/src/StdCheats.sol",
+        "lib/forge-std/src/StdError.sol",
+        "lib/forge-std/src/StdInvariant.sol",
+        "lib/forge-std/src/StdJson.sol",
+        "lib/forge-std/src/StdMath.sol",
+        "lib/forge-std/src/StdStorage.sol",
+        "lib/forge-std/src/StdStyle.sol",
+        "lib/forge-std/src/StdUtils.sol",
+        "lib/forge-std/src\\Test.sol",
+        "lib/forge-std/src\\Vm.sol",
+        "lib/forge-std/src/console.sol",
+        "lib/forge-std/src/console2.sol",
+        "lib/forge-std/src/interfaces/IMulticall3.sol",
+        "lib/openzeppelin-contracts\\contracts/token/ERC20/ERC20.sol",
+        "lib/openzeppelin-contracts\\contracts/token/ERC20/IERC20.sol",
+        "lib/openzeppelin-contracts/contracts/token/ERC20/extensions/IERC20Metadata.sol",
+        "lib/openzeppelin-contracts/contracts/utils/Context.sol",
+        "lib/openzeppelin-contracts\\contracts/utils/math/Math.sol",
+        "src\\erc20.sol",
+        "src\\simpleAMMV6ERC.sol"
+      ],
+      "versionRequirement": "^0.8.18",
+      "artifacts": {
+        "TestSimpleAMMTest": {
+          "0.8.18+commit.87f61d96.Windows.msvc": "testAMMV6ERC.t.sol\\TestSimpleAMMTest.json"
         }
       }
     },

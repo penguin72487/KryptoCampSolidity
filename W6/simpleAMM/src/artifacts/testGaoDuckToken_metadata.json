@@ -438,11 +438,11 @@
 			]
 		},
 		"W6/simpleAMM/src/erc20.sol": {
-			"keccak256": "0x62a3d1b0c6714fff1118fe5f3aedc94af8a95335a005cfeb0bbf645a131aba1b",
+			"keccak256": "0x8df24c461073622e7029b7553ece45dfb1ca407abc4b40ce196660a1466b0b6b",
 			"license": "GPL-3.0",
 			"urls": [
-				"bzz-raw://6fd942078795928e88110fba3fda0694bc505a6f9f19a33efc2f6452be9899a3",
-				"dweb:/ipfs/QmSgRSLfsNovgugTfvrnq9BzXPm5FQNEMQrbuvd6RXhLPK"
+				"bzz-raw://ee011ece4c54a650505b67dd2adacdb8dc4575c4cc49a70235dd63c6f3245682",
+				"dweb:/ipfs/QmfBNa7GyNpXY2kVrhLXULkCK3yWN3CepVGsLdKD2QfugW"
 			]
 		}
 	},

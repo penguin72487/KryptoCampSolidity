@@ -457,11 +457,11 @@
 			]
 		},
 		"W6/simpleAMM/src/simpleAMMV6.sol": {
-			"keccak256": "0x827dc400d37d3491782d72ec0fd126abe76fa8ec2dc698ce062b31e31093a161",
+			"keccak256": "0x84cbd92efb23830110169870e0ce79ba994fd378a18286d4d7019fd7db742ad3",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://80640fea817357d5bc726c6539408b87e39d1ca8a7f133b05a8f635daee0e019",
-				"dweb:/ipfs/QmQHzsHVLTNNw1YywtVaCjLuYRkzRfBnyyTHwztnfYdxBE"
+				"bzz-raw://0a5b1938da4f99dc7a2f84fef148b4e6c5556404e1083a700cb0abe044d6bca0",
+				"dweb:/ipfs/QmaqMV9ptRgrhUwPQx7g6ZYFUFkro4fcXNhs2WVR8hoGKz"
 			]
 		}
 	},

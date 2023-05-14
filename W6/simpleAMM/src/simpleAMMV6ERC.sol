@@ -165,11 +165,17 @@ contract AMM {
         }
     }
 
-    function getERCPrice() public view returns (uint256) {
+    function getToken0Price() public view returns (uint256) {
         require(reserve0 > 0 && reserve1 > 0, "Invalid reserves");
         uint256 decimals0 = ERC20(address(token0)).decimals();
         uint256 decimals1 = ERC20(address(token1)).decimals();
         return (reserve0 * (10**decimals1)) / (reserve1 * (10**decimals0));
+    }
+    function getToken1Price() public view returns (uint256) {
+        require(reserve0 > 0 && reserve1 > 0, "Invalid reserves");
+        uint256 decimals0 = ERC20(address(token0)).decimals();
+        uint256 decimals1 = ERC20(address(token1)).decimals();
+        return (reserve1 * (10**decimals0)) / (reserve0 * (10**decimals1));
     }
 
     function getInToken0PredictOutputToken1(uint256 _amount) public view returns (uint256) {

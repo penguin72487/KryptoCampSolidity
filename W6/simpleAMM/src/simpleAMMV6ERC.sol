@@ -98,7 +98,7 @@ contract AMM {
         _update(token0.balanceOf(address(this)), token1.balanceOf(address(this)));
     }
 
-    function addLiquidity(uint256 _amount0, uint256 _amount1) external payable returns (uint256 shares) {
+    function addLiquidity(uint256 _amount0, uint256 _amount1) external returns (uint256 shares) {
         token0.transferFrom(msg.sender, address(this), _amount0);
         token1.transferFrom(msg.sender, address(this), _amount1);
 

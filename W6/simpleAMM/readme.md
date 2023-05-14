@@ -62,4 +62,5 @@ forge test -vvvvv --gas-report --fork-url $env:fork_url --match-path test/testAM
 
 
 forge test -vvvvv --fork-url $env:fork_url --match-path test/testAMMV6ERC.t.sol --match-contract TestSimpleAMMTest
+forge debug --debug test/testAMMV6ERC.t.sol:TestSimpleAMMTest
 

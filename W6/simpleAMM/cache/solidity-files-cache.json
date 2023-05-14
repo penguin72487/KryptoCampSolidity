@@ -1351,8 +1351,8 @@
       }
     },
     "src/simpleAMMV6ERC.sol": {
-      "lastModificationDate": 1683972212514,
-      "contentHash": "3753fec93141cfa0f38ef5ae6c9ff08e",
+      "lastModificationDate": 1684026801978,
+      "contentHash": "a944872194971b9457a64e4733cebd18",
       "sourceName": "src/simpleAMMV6ERC.sol",
       "solcConfig": {
         "settings": {
@@ -1663,8 +1663,8 @@
       }
     },
     "test/testAMMV6ERC.t.sol": {
-      "lastModificationDate": 1683990287871,
-      "contentHash": "b2cc9cd866407976c23fb8af90c9c2af",
+      "lastModificationDate": 1684027106733,
+      "contentHash": "4b5e0332983754dade44fec3e3ad5beb",
       "sourceName": "test/testAMMV6ERC.t.sol",
       "solcConfig": {
         "settings": {

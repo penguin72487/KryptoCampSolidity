@@ -172,13 +172,13 @@ contract AMM {
         return (reserve0 * (10**decimals1)) / (reserve1 * (10**decimals0));
     }
 
-    function getPredictOutputToken1(uint256 _amount) public view returns (uint256) {
+    function getInToken0PredictOutputToken1(uint256 _amount) public view returns (uint256) {
         require(reserve0 > 0 && reserve1 > 0 && _amount > 0, "Invalid reserves");
         uint256 amountInWithFee = (_amount * 997) / 1000;
         return (reserve1 * amountInWithFee) / (reserve0 + amountInWithFee);
     }
 
-    function getPredictOutputToken0(uint256 _amount) public view returns (uint256) {
+    function getInToken1PredictOutputToken0(uint256 _amount) public view returns (uint256) {
         require(reserve0 > 0 && reserve1 > 0 && _amount > 0, "Invalid reserves");
         uint256 amountInWithFee = (_amount * 997) / 1000;
         return (reserve0 * amountInWithFee) / (reserve1 + amountInWithFee);

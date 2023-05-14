@@ -1663,8 +1663,8 @@
       }
     },
     "test/testAMMV6ERC.t.sol": {
-      "lastModificationDate": 1684027106733,
-      "contentHash": "4b5e0332983754dade44fec3e3ad5beb",
+      "lastModificationDate": 1684032495101,
+      "contentHash": "426ad4520fb7df6948c13f4ed349b1a3",
       "sourceName": "test/testAMMV6ERC.t.sol",
       "solcConfig": {
         "settings": {

@@ -9,7 +9,12 @@
 				"inputs": [
 					{
 						"internalType": "address",
-						"name": "_token",
+						"name": "_token0",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "_token1",
 						"type": "address"
 					}
 				],
@@ -17,20 +22,12 @@
 				"type": "constructor"
 			},
 			{
-				"inputs": [],
-				"name": "ETH_ADDRESS",
-				"outputs": [
-					{
-						"internalType": "address",
-						"name": "",
-						"type": "address"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
 				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_amount0",
+						"type": "uint256"
+					},
 					{
 						"internalType": "uint256",
 						"name": "_amount1",
@@ -45,7 +42,7 @@
 						"type": "uint256"
 					}
 				],
-				"stateMutability": "payable",
+				"stateMutability": "nonpayable",
 				"type": "function"
 			},
 			{
@@ -81,8 +78,14 @@
 				"type": "function"
 			},
 			{
-				"inputs": [],
-				"name": "getETHPrice",
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_amount",
+						"type": "uint256"
+					}
+				],
+				"name": "getPredictOutputToken0",
 				"outputs": [
 					{
 						"internalType": "uint256",
@@ -101,26 +104,7 @@
 						"type": "uint256"
 					}
 				],
-				"name": "getInERCPredictOutputETH",
-				"outputs": [
-					{
-						"internalType": "uint256",
-						"name": "",
-						"type": "uint256"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "uint256",
-						"name": "_amount",
-						"type": "uint256"
-					}
-				],
-				"name": "getInETHPredictOutputERC",
+				"name": "getPredictOutputToken1",
 				"outputs": [
 					{
 						"internalType": "uint256",
@@ -133,7 +117,7 @@
 			},
 			{
 				"inputs": [],
-				"name": "my_shars",
+				"name": "myShares",
 				"outputs": [
 					{
 						"internalType": "uint256",
@@ -282,7 +266,7 @@
 						"type": "uint256"
 					}
 				],
-				"stateMutability": "payable",
+				"stateMutability": "nonpayable",
 				"type": "function"
 			},
 			{
@@ -293,7 +277,7 @@
 						"type": "uint256"
 					}
 				],
-				"name": "swapTokenForETH",
+				"name": "swapTokenForToken1",
 				"outputs": [
 					{
 						"internalType": "uint256",
@@ -322,7 +306,7 @@
 						"type": "uint256"
 					}
 				],
-				"name": "swapTokenForETH_WithSlipLock",
+				"name": "swapTokenForToken1_WithSlipLock",
 				"outputs": [
 					{
 						"internalType": "uint256",
@@ -359,12 +343,25 @@
 						"type": "uint256"
 					}
 				],
-				"stateMutability": "payable",
+				"stateMutability": "nonpayable",
 				"type": "function"
 			},
 			{
 				"inputs": [],
-				"name": "token",
+				"name": "token0",
+				"outputs": [
+					{
+						"internalType": "contract IERC20",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "token1",
 				"outputs": [
 					{
 						"internalType": "contract IERC20",
@@ -402,7 +399,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"W6/simpleAMM/src/simpleAMMV6.sol": "AMM"
+			"W6/simpleAMM/src/simpleAMMV6ERC.sol": "AMM"
 		},
 		"evmVersion": "paris",
 		"libraries": {},
@@ -456,12 +453,12 @@
 				"dweb:/ipfs/Qmct36zWXv3j7LZB83uwbg7TXwnZSN1fqHNDZ93GG98bGz"
 			]
 		},
-		"W6/simpleAMM/src/simpleAMMV6.sol": {
-			"keccak256": "0x84cbd92efb23830110169870e0ce79ba994fd378a18286d4d7019fd7db742ad3",
+		"W6/simpleAMM/src/simpleAMMV6ERC.sol": {
+			"keccak256": "0x4005aa16a4e721fa71e4c1368db82d270dd19ca13b59e5b6f2fe2c1ff510c9a5",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://0a5b1938da4f99dc7a2f84fef148b4e6c5556404e1083a700cb0abe044d6bca0",
-				"dweb:/ipfs/QmaqMV9ptRgrhUwPQx7g6ZYFUFkro4fcXNhs2WVR8hoGKz"
+				"bzz-raw://8ceb907fc4e046cda982874a5d3234b9e1d6b33ca1e79c24a6a634193c0208a2",
+				"dweb:/ipfs/QmU1yYH7BLED4rGMxeoqhGA8ZVDTZZVzHHUesu4dQgAJpB"
 			]
 		}
 	},

@@ -26,6 +26,9 @@ contract TestSimpleAMMTest is Test {
         token1.mint(user1, 40000 * 10**18);
         token1.mint(user2, 40000 * 10**18);
 
+        payable(user1).transfer(50 ether);
+        payable(user2).transfer(50 ether);
+        
         vm.prank(user1);
         token0.approve(address(ammInstance), 40000 * 10**18);
         token1.approve(address(ammInstance), 40000 * 10**18);

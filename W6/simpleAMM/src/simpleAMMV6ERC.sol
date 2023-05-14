@@ -4,7 +4,7 @@ pragma solidity ^0.8.18;
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import "@openzeppelin/contracts/utils/math/Math.sol";
-
+//merge 0xd2a5bC10698FD955D1Fe6cb468a17809A08fd005
 contract AMM {
     address developer;
 
@@ -38,7 +38,7 @@ contract AMM {
         reserve1 = _reserve1;
     }
 
-    function swap(uint256 _amountIn) public returns (uint256 amountOut) {
+    function swapToken1ForToken0(uint256 _amountIn) public returns (uint256 amountOut) { // T0/T1
         token1.transferFrom(msg.sender, address(this), _amountIn);
         uint256 amountInWithFee = (_amountIn * 997) / 1000;
         amountOut = (reserve1 * amountInWithFee) / (reserve0 + amountInWithFee);
@@ -50,7 +50,7 @@ contract AMM {
         _update(token0.balanceOf(address(this)), token1.balanceOf(address(this)));
     }
 
-    function swapTokenForToken1(uint256 _amountIn) public returns (uint256 amountOut) {
+    function swapToken0ForToken1(uint256 _amountIn) public returns (uint256 amountOut) { // T1/T0
         token0.transferFrom(msg.sender, address(this), _amountIn);
         uint256 amountInWithFee = (_amountIn * 997) / 1000;
         amountOut = (reserve1 * amountInWithFee) / (reserve0 + amountInWithFee);
@@ -63,7 +63,7 @@ contract AMM {
         _update(token0.balanceOf(address(this)), token1.balanceOf(address(this)));
     }
 
-    function swap_WithSlipLock(
+    function swapToken1ForToken0_WithSlipLock(
         uint256 _amountIn,
         uint256 _forwardOutput,
         uint256 _slipLock
@@ -79,7 +79,7 @@ contract AMM {
         token0.transfer(msg.sender, amountOut);
         _update(token0.balanceOf(address(this)), token1.balanceOf(address(this)));
     }
-    function swapTokenForToken1_WithSlipLock(
+    function swapToken0ForToken1_WithSlipLock(
         uint256 _amountIn,
         uint256 _forwardOutput,
         uint256 _slipLock

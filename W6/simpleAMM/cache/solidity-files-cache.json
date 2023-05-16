@@ -1030,8 +1030,8 @@
       }
     },
     "src/erc20.sol": {
-      "lastModificationDate": 1683808706636,
-      "contentHash": "412226f068ac6b28e340c497100069e9",
+      "lastModificationDate": 1684155092289,
+      "contentHash": "4123f51ebf7a9ff7393783a86dba5385",
       "sourceName": "src/erc20.sol",
       "solcConfig": {
         "settings": {
@@ -1076,7 +1076,7 @@
       }
     },
     "src/simpleAMM.sol": {
-      "lastModificationDate": 1682597756296,
+      "lastModificationDate": 1684152285108,
       "contentHash": "9477826a88eb729e5f0c0cb57ea43a6c",
       "sourceName": "src/simpleAMM.sol",
       "solcConfig": {
@@ -1124,7 +1124,7 @@
       }
     },
     "src/simpleAMMV4.sol": {
-      "lastModificationDate": 1682598147268,
+      "lastModificationDate": 1684152292596,
       "contentHash": "1afef64e437f3f76c5ce1998bf5b88a2",
       "sourceName": "src/simpleAMMV4.sol",
       "solcConfig": {
@@ -1305,8 +1305,8 @@
       }
     },
     "src/simpleAMMV6.sol": {
-      "lastModificationDate": 1683969084715,
-      "contentHash": "150ee1a60d8240d648588851a6bf425e",
+      "lastModificationDate": 1684153808877,
+      "contentHash": "00b38d96ea2b09d350e1daf38030e62e",
       "sourceName": "src/simpleAMMV6.sol",
       "solcConfig": {
         "settings": {
@@ -1351,8 +1351,8 @@
       }
     },
     "src/simpleAMMV6ERC.sol": {
-      "lastModificationDate": 1684026801978,
-      "contentHash": "a944872194971b9457a64e4733cebd18",
+      "lastModificationDate": 1684152484154,
+      "contentHash": "84458e4f2ac72cda66953d87b1ac65e8",
       "sourceName": "src/simpleAMMV6ERC.sol",
       "solcConfig": {
         "settings": {
@@ -1393,6 +1393,98 @@
       "artifacts": {
         "AMM": {
           "0.8.18+commit.87f61d96.Windows.msvc": "simpleAMMV6ERC.sol\\AMM.json"
+        }
+      }
+    },
+    "src/simpleAMMV7.sol": {
+      "lastModificationDate": 1684159344298,
+      "contentHash": "d74f81dc0ebfe0fa3dbcca6880520287",
+      "sourceName": "src/simpleAMMV7.sol",
+      "solcConfig": {
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "metadata": {
+            "bytecodeHash": "ipfs",
+            "appendCBOR": true
+          },
+          "outputSelection": {
+            "*": {
+              "": [
+                "ast"
+              ],
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ]
+            }
+          },
+          "evmVersion": "london",
+          "libraries": {}
+        }
+      },
+      "imports": [
+        "lib/openzeppelin-contracts\\contracts/token/ERC20/ERC20.sol",
+        "lib/openzeppelin-contracts\\contracts/token/ERC20/IERC20.sol",
+        "lib/openzeppelin-contracts/contracts/token/ERC20/extensions/IERC20Metadata.sol",
+        "lib/openzeppelin-contracts/contracts/utils/Context.sol",
+        "lib/openzeppelin-contracts\\contracts/utils/math/Math.sol"
+      ],
+      "versionRequirement": "^0.8.18",
+      "artifacts": {
+        "AMM": {
+          "0.8.18+commit.87f61d96.Windows.msvc": "simpleAMMV7.sol\\AMM.json"
+        }
+      }
+    },
+    "src/simpleAMMV7ERC.sol": {
+      "lastModificationDate": 1684157830780,
+      "contentHash": "89b1ebb628cb4a8070d6d68f059acce2",
+      "sourceName": "src/simpleAMMV7ERC.sol",
+      "solcConfig": {
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "metadata": {
+            "bytecodeHash": "ipfs",
+            "appendCBOR": true
+          },
+          "outputSelection": {
+            "*": {
+              "": [
+                "ast"
+              ],
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ]
+            }
+          },
+          "evmVersion": "london",
+          "libraries": {}
+        }
+      },
+      "imports": [
+        "lib/openzeppelin-contracts\\contracts/token/ERC20/ERC20.sol",
+        "lib/openzeppelin-contracts\\contracts/token/ERC20/IERC20.sol",
+        "lib/openzeppelin-contracts/contracts/token/ERC20/extensions/IERC20Metadata.sol",
+        "lib/openzeppelin-contracts/contracts/utils/Context.sol",
+        "lib/openzeppelin-contracts\\contracts/utils/math/Math.sol"
+      ],
+      "versionRequirement": "^0.8.18",
+      "artifacts": {
+        "AMM": {
+          "0.8.18+commit.87f61d96.Windows.msvc": "simpleAMMV7ERC.sol\\AMM.json"
         }
       }
     },
@@ -1533,8 +1625,8 @@
       }
     },
     "test/testAMM.t.sol": {
-      "lastModificationDate": 1683812705534,
-      "contentHash": "0d30fee037d65954f85601735892d2bf",
+      "lastModificationDate": 1684157726432,
+      "contentHash": "23f5547d54b28cc021e4b35624085a33",
       "sourceName": "test/testAMM.t.sol",
       "solcConfig": {
         "settings": {
@@ -1598,8 +1690,8 @@
       }
     },
     "test/testAMMV6.t.sol": {
-      "lastModificationDate": 1683971420710,
-      "contentHash": "a9cef5f236d9be9c72b1dbcdcea638ee",
+      "lastModificationDate": 1684159385569,
+      "contentHash": "76c237dd27ec8152270712858bc52ae4",
       "sourceName": "test/testAMMV6.t.sol",
       "solcConfig": {
         "settings": {
@@ -1653,7 +1745,7 @@
         "lib/openzeppelin-contracts/contracts/utils/Context.sol",
         "lib/openzeppelin-contracts\\contracts/utils/math/Math.sol",
         "src\\erc20.sol",
-        "src\\simpleAMMV6.sol"
+        "src\\simpleAMMV7.sol"
       ],
       "versionRequirement": "^0.8.18",
       "artifacts": {
@@ -1663,8 +1755,8 @@
       }
     },
     "test/testAMMV6ERC.t.sol": {
-      "lastModificationDate": 1684032495101,
-      "contentHash": "426ad4520fb7df6948c13f4ed349b1a3",
+      "lastModificationDate": 1684157719812,
+      "contentHash": "0364f33165f843120512d45223558efa",
       "sourceName": "test/testAMMV6ERC.t.sol",
       "solcConfig": {
         "settings": {
@@ -1728,8 +1820,8 @@
       }
     },
     "test/testAllAMMfunction.t.sol": {
-      "lastModificationDate": 1682846554179,
-      "contentHash": "a61aa4b457fc7020e6e06dc8dba9e302",
+      "lastModificationDate": 1684157730941,
+      "contentHash": "d5bd3bc272d1482b448e7cf4fcf8e021",
       "sourceName": "test/testAllAMMfunction.t.sol",
       "solcConfig": {
         "settings": {

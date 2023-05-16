@@ -3,7 +3,7 @@ pragma solidity ^0.8.18;
 
 import "forge-std/Test.sol";
 import "forge-std/Vm.sol";
-import "../src/simpleAMMV6.sol";
+import "../src/simpleAMMV7.sol";
 import "../src/erc20.sol";
 
 contract TestSimpleAMMTest is Test {
@@ -15,9 +15,9 @@ contract TestSimpleAMMTest is Test {
     event logUint(uint256);
     event log(string indexed key, uint256 value);
 
-    function setUp() external {
-        tGD = new testGaoDuckToken("testGaoDuck", "tGD");
-        ammInstance = new AMM(address(tGD));
+    function setUp() public {
+        tGD = new testGaoDuckToken("testGaoDuck", "tGD",18);
+        ammInstance = new AMM(address(tGD),3);
         
         user1 = address(0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266);
         user2 = address(0x70997970C51812dc3A010C7d01b50e0d17dc79C8);
@@ -35,11 +35,11 @@ contract TestSimpleAMMTest is Test {
         vm.prank(user2);
         tGD.approve(address(ammInstance), 4000 * 1e18);
     }
-    // function run () public {
-    //     testSwap();
-    // }
+    function run () public {
+        testRemoveLiquidity();
+    }
 
-    function testAddLiquidity() external {
+    function testAddLiquidity() public {
         vm.prank(user1);
         ammInstance.addLiquidity{value: 10 ether}(1000 * 1e18);
 
@@ -76,7 +76,7 @@ contract TestSimpleAMMTest is Test {
         assertEq(address(user2).balance, initialEthBalanceUser2 - amountIn, "User 2 ETH balance mismatch");
     }
 
-    function testSwapTokenForETH() external {
+    function testSwapTokenForETH() public {
         uint256 initialBalanceUser1 = tGD.balanceOf(user1);
         uint256 initialBalanceUser2 = tGD.balanceOf(user2);
         uint256 initialEthBalanceUser1 = address(user1).balance;
@@ -96,7 +96,7 @@ contract TestSimpleAMMTest is Test {
         assertEq(address(user2).balance, initialEthBalanceUser2 + amountOut, "User 2 ETH balance mismatch");
     }
 
-    function testSwap_WithSlipLock() external {
+    function testSwap_WithSlipLock() public {
         uint256 initialEthBalanceUser2 = address(user2).balance;
 
         // User 1 adds liquidity
@@ -116,7 +116,7 @@ contract TestSimpleAMMTest is Test {
 
 
 
-    function testSwapTokenForETH_WithSlipLock() external {
+    function testSwapTokenForETH_WithSlipLock() public {
         uint256 initialEthBalanceUser2 = address(user2).balance;
         uint256 initialBalanceUser2 = tGD.balanceOf(user2);
 
@@ -135,7 +135,7 @@ contract TestSimpleAMMTest is Test {
         assertEq(tGD.balanceOf(user2), initialBalanceUser2 - amountIn, "User 2 tGD balance mismatch");
         assertEq(address(user2).balance, initialEthBalanceUser2 + amountOut, "User 2 ETH balance mismatch");
     }
-    function testSwap_WithSlipLock_Invalid() external {
+    function testSwap_WithSlipLock_Invalid() public {
         uint256 initialEthBalanceUser2 = address(user2).balance;
 
         // User 1 adds liquidity
@@ -156,7 +156,7 @@ contract TestSimpleAMMTest is Test {
             assertEq(reason, "SlipLock", "SlipLock not applied");
         }
     }
-    function testSwapTokenForETH_WithSlipLock_Invalid() external {
+    function testSwapTokenForETH_WithSlipLock_Invalid() public {
         uint256 initialEthBalanceUser2 = address(user2).balance;
         uint256 initialBalanceUser2 = tGD.balanceOf(user2);
 
@@ -178,7 +178,7 @@ contract TestSimpleAMMTest is Test {
         }
     }
 
-    function testRemoveLiquidity() external {
+    function testRemoveLiquidity() public {
         // User 1 adds liquidity
         vm.prank(user1);
         ammInstance.addLiquidity{value: 10 ether}(1000 * 1e18);

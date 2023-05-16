@@ -16,6 +16,11 @@
 						"internalType": "string",
 						"name": "symbol",
 						"type": "string"
+					},
+					{
+						"internalType": "uint8",
+						"name": "decimals_",
+						"type": "uint8"
 					}
 				],
 				"stateMutability": "nonpayable",
@@ -438,11 +443,11 @@
 			]
 		},
 		"W6/simpleAMM/src/erc20.sol": {
-			"keccak256": "0x8df24c461073622e7029b7553ece45dfb1ca407abc4b40ce196660a1466b0b6b",
+			"keccak256": "0x91d3e38a12d61bb867b4238b7d6db6dbf2aacb630ff63ce46c4cc1def373a62a",
 			"license": "GPL-3.0",
 			"urls": [
-				"bzz-raw://ee011ece4c54a650505b67dd2adacdb8dc4575c4cc49a70235dd63c6f3245682",
-				"dweb:/ipfs/QmfBNa7GyNpXY2kVrhLXULkCK3yWN3CepVGsLdKD2QfugW"
+				"bzz-raw://8b11df75c9424b60232c6177dc50914d308c83b4da859d0a14cfcc28335df301",
+				"dweb:/ipfs/QmYZHqXKeNHNc3D17fMbShnuTK3FknB5TbRMEzZsyTtNMK"
 			]
 		}
 	},

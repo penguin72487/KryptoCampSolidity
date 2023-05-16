@@ -137,10 +137,12 @@ contract AMM {
         require(amountETH > 0 && amountERC > 0, "amountETH or amountERC = 0");
 
         _burn(_user, _shares);
-        _update(address(this).balance - amountETH, token.balanceOf(address(this)) - amountERC);
 
         payable(_user).transfer(amountETH);
         token.transfer(_user, amountERC);
+        
+        _update(address(this).balance - amountETH, token.balanceOf(address(this)) - amountERC);
+
     }
     function my_shars() public view returns(uint256){
         return balanceOf[msg.sender];
@@ -184,5 +186,6 @@ contract AMM {
         uint256 amountInWithFee=(_amount * 997) / 1000;
         return (reserveETH * amountInWithFee) / (reserveERC + amountInWithFee);
     }
+
 
 }

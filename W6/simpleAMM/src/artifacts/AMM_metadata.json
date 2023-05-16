@@ -65,8 +65,46 @@
 				"type": "function"
 			},
 			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_amount",
+						"type": "uint256"
+					}
+				],
+				"name": "getInToken0PredictOutputToken1",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_amount",
+						"type": "uint256"
+					}
+				],
+				"name": "getInToken1PredictOutputToken0",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
 				"inputs": [],
-				"name": "getERCPrice",
+				"name": "getToken0Price",
 				"outputs": [
 					{
 						"internalType": "uint256",
@@ -78,33 +116,8 @@
 				"type": "function"
 			},
 			{
-				"inputs": [
-					{
-						"internalType": "uint256",
-						"name": "_amount",
-						"type": "uint256"
-					}
-				],
-				"name": "getPredictOutputToken0",
-				"outputs": [
-					{
-						"internalType": "uint256",
-						"name": "",
-						"type": "uint256"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "uint256",
-						"name": "_amount",
-						"type": "uint256"
-					}
-				],
-				"name": "getPredictOutputToken1",
+				"inputs": [],
+				"name": "getToken1Price",
 				"outputs": [
 					{
 						"internalType": "uint256",
@@ -258,26 +271,7 @@
 						"type": "uint256"
 					}
 				],
-				"name": "swap",
-				"outputs": [
-					{
-						"internalType": "uint256",
-						"name": "amountOut",
-						"type": "uint256"
-					}
-				],
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "uint256",
-						"name": "_amountIn",
-						"type": "uint256"
-					}
-				],
-				"name": "swapTokenForToken1",
+				"name": "swapToken0ForToken1",
 				"outputs": [
 					{
 						"internalType": "uint256",
@@ -306,7 +300,26 @@
 						"type": "uint256"
 					}
 				],
-				"name": "swapTokenForToken1_WithSlipLock",
+				"name": "swapToken0ForToken1_WithSlipLock",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "amountOut",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_amountIn",
+						"type": "uint256"
+					}
+				],
+				"name": "swapToken1ForToken0",
 				"outputs": [
 					{
 						"internalType": "uint256",
@@ -335,7 +348,7 @@
 						"type": "uint256"
 					}
 				],
-				"name": "swap_WithSlipLock",
+				"name": "swapToken1ForToken0_WithSlipLock",
 				"outputs": [
 					{
 						"internalType": "uint256",
@@ -454,11 +467,11 @@
 			]
 		},
 		"W6/simpleAMM/src/simpleAMMV6ERC.sol": {
-			"keccak256": "0x4005aa16a4e721fa71e4c1368db82d270dd19ca13b59e5b6f2fe2c1ff510c9a5",
+			"keccak256": "0x68ecdf32d403eff67a32dfa351ec2fb19a9239a33a346cfca00f743ad06a559e",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://8ceb907fc4e046cda982874a5d3234b9e1d6b33ca1e79c24a6a634193c0208a2",
-				"dweb:/ipfs/QmU1yYH7BLED4rGMxeoqhGA8ZVDTZZVzHHUesu4dQgAJpB"
+				"bzz-raw://e871886fcde020c5f1d72a1af51fd7c3906e117e1bdc8e82dde6761319c0b859",
+				"dweb:/ipfs/QmVF6jas3Zc2XiKmECfd3mLf1sEeUzSGa6V5yFZufW1Yji"
 			]
 		}
 	},

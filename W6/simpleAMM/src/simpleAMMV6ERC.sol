@@ -5,6 +5,10 @@ import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import "@openzeppelin/contracts/utils/math/Math.sol";
 //merge 0xd2a5bC10698FD955D1Fe6cb468a17809A08fd005
+//sepolia 0xbc807A10d42e2B1eFF7c1e8dD8e4E63D10A377A7
+
+//T0 0x5d74d6264b0cbE893EeaDF8c8eEB2783120a465d
+//T1 0x02B1d2929f6c38f1728b3Fc99dB595FdDfA97bF7
 contract AMM {
     address developer;
 
@@ -103,7 +107,7 @@ contract AMM {
         token1.transferFrom(msg.sender, address(this), _amount1);
 
         if (reserve0 > 0 || reserve1 > 0) {
-            require((_amount0 * reserve1) / reserve0 == _amount1, "Invalid liquidity ratio");
+            require((_amount0 * reserve1) == (reserve0 *_amount1)  , "Invalid liquidity ratio");
         }
 
         if (totalSupply == 0) {
@@ -140,10 +144,9 @@ contract AMM {
         require(amount0 > 0 && amount1 > 0, "amount0 or amount1 = 0");
 
         _burn(_user, _shares);
-        _update(token0.balanceOf(address(this)), token1.balanceOf(address(this)));
-
         token0.transfer(_user, amount0);
         token1.transfer(_user, amount1);
+        _update(token0.balanceOf(address(this)), token1.balanceOf(address(this)));
     }
 
     function myShares() public view returns (uint256) {
@@ -167,14 +170,12 @@ contract AMM {
 
     function getToken0Price() public view returns (uint256) {
         require(reserve0 > 0 && reserve1 > 0, "Invalid reserves");
-        uint256 decimals0 = ERC20(address(token0)).decimals();
         uint256 decimals1 = ERC20(address(token1)).decimals();
         return (reserve0 * (10**decimals1)) / (reserve1);
     }
     function getToken1Price() public view returns (uint256) {
         require(reserve0 > 0 && reserve1 > 0, "Invalid reserves");
         uint256 decimals0 = ERC20(address(token0)).decimals();
-        uint256 decimals1 = ERC20(address(token1)).decimals();
         return (reserve1 * (10**decimals0)) / (reserve0);
     }
 
@@ -190,3 +191,8 @@ contract AMM {
         return (reserve0 * amountInWithFee) / (reserve1 + amountInWithFee);
     }
 }
+/*
+50000000000000000000
+1984109215560431250
+5
+*/

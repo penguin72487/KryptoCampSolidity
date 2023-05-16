@@ -8,10 +8,13 @@ import "@openzeppelin/contracts/utils/math/Math.sol";
 
 // testGoaDuck tGD
 contract testGaoDuckToken is ERC20 {
-    constructor (string memory name, string memory symbol) ERC20(name, symbol) {
-        
+    uint8 private _decimals;
+
+    constructor (string memory name, string memory symbol, uint8 decimals_) ERC20(name, symbol) {
+        _decimals = decimals_;
     }
     
+
     function mint(address account, uint256 amount) external {
         _mint(account,  amount );
     }
@@ -19,16 +22,13 @@ contract testGaoDuckToken is ERC20 {
     function burn(address account, uint256 amount) external {
         _burn(account, amount);
     }
-    
-    function decimals() public view virtual override returns (uint8) {
-        return 18;
-    }
 }
-//0xcD6a42782d230D7c13A74ddec5dD140e55499Df9
-//0xd9145CCE52D386f254917e481eB44e9943F39138
-//0xd8b934580fcE35a11B58C6D73aDeE468a2833fa8
+interface IExtendedERC20 is IERC20 {
+    function name() external view returns (string memory);
+    function symbol() external view returns (string memory);
+    function decimals() external view returns (uint8);
+}
 
-// 4000000000000000000000
-// 000000000000000000
-
-//0x5B38Da6a701c568545dCfcB03FcB875f56beddC4
+// sepolia
+// token0 T0 8 0x5d74d6264b0cbE893EeaDF8c8eEB2783120a465d
+// token1 T1 18 0x02B1d2929f6c38f1728b3Fc99dB595FdDfA97bF7

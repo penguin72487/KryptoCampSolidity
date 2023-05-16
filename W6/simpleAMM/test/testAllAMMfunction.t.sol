@@ -13,7 +13,7 @@ contract TestSimpleAMMTest is Test {
     address public user2;
 
     function setUp() external {
-        tGD = new testGaoDuckToken("testGaoDuck", "tGD");
+        tGD = new testGaoDuckToken("testGaoDuck", "tGD",18);
         ammInstance = new AMM(address(tGD));
         
         user1 = address(0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266);

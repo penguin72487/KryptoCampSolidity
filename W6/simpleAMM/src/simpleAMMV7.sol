@@ -13,7 +13,7 @@ import "@openzeppelin/contracts/utils/math/Math.sol";
 contract AMM {
     address developer;
 
-    IERC20 public immutable token;
+    ERC20 public immutable token;
     address public constant ETH_ADDRESS = address(0);
 
     uint256 public reserveETH; // eth
@@ -27,9 +27,9 @@ contract AMM {
     constructor(address _token, uint256 _fee) {
         require(_fee>0 &&_fee <= 100, "fee > 10%");
         developer = msg.sender;
-        token = IERC20(_token);
+        token = ERC20(_token);
         fee = _fee;
-        //test IERC20 interface
+        //check ERC20 interface
         token.name();
         token.symbol();
         token.decimals();
@@ -197,7 +197,7 @@ contract AMM {
     }
     function getInERCOutputETHLiquidityAmount(uint256 _amount) public view returns (uint256) {
         require(reserveETH > 0 && reserveERC > 0,"Invalid reserves");
-        require(_amount>0, "Invalid"+token.symbol+"amount");
+        require(_amount>0, string(abi.encodePacked("Invalid ", token.symbol(), " amount")));
         return reserveETH * _amount / reserveERC;
     }
     function getInETHOutputERCLiquidityAmount(uint256 _amount) public view returns (uint256) {

@@ -6,14 +6,12 @@ import "forge-std/Vm.sol";
 import "../src/simpleAMMV7.sol";
 import "../src/erc20.sol";
 
+
 contract TestSimpleAMMTest is Test {
     AMM public ammInstance;
     testGaoDuckToken public tGD;
     address public user1;
     address public user2;
-    event logString(string);
-    event logUint(uint256);
-    event log(string indexed key, uint256 value);
 
     function setUp() public {
         tGD = new testGaoDuckToken("testGaoDuck", "tGD",18);
@@ -197,3 +195,8 @@ contract TestSimpleAMMTest is Test {
 }
 
 
+// interface IExtendedERC20 is IERC20 {
+//     function name() external view returns (string memory);
+//     function symbol() external view returns (string memory);
+//     function decimals() external view returns (uint8);
+// }

@@ -1030,8 +1030,8 @@
       }
     },
     "src/erc20.sol": {
-      "lastModificationDate": 1684155092289,
-      "contentHash": "4123f51ebf7a9ff7393783a86dba5385",
+      "lastModificationDate": 1684205606648,
+      "contentHash": "00d9867196e7587bd8c320bbbefef38c",
       "sourceName": "src/erc20.sol",
       "solcConfig": {
         "settings": {
@@ -1076,7 +1076,7 @@
       }
     },
     "src/simpleAMM.sol": {
-      "lastModificationDate": 1684152285108,
+      "lastModificationDate": 1684161411500,
       "contentHash": "9477826a88eb729e5f0c0cb57ea43a6c",
       "sourceName": "src/simpleAMM.sol",
       "solcConfig": {
@@ -1124,7 +1124,7 @@
       }
     },
     "src/simpleAMMV4.sol": {
-      "lastModificationDate": 1684152292596,
+      "lastModificationDate": 1684161411841,
       "contentHash": "1afef64e437f3f76c5ce1998bf5b88a2",
       "sourceName": "src/simpleAMMV4.sol",
       "solcConfig": {
@@ -1218,7 +1218,7 @@
       }
     },
     "src/simpleAMMV5abandom.sol": {
-      "lastModificationDate": 1682594918431,
+      "lastModificationDate": 1684161412380,
       "contentHash": "b0ef59d3366dd61703eec1512f6a966a",
       "sourceName": "src/simpleAMMV5abandom.sol",
       "solcConfig": {
@@ -1397,8 +1397,8 @@
       }
     },
     "src/simpleAMMV7.sol": {
-      "lastModificationDate": 1684159344298,
-      "contentHash": "d74f81dc0ebfe0fa3dbcca6880520287",
+      "lastModificationDate": 1684205914483,
+      "contentHash": "2ef807d46009dab4e3f79ced81d0cee8",
       "sourceName": "src/simpleAMMV7.sol",
       "solcConfig": {
         "settings": {
@@ -1443,8 +1443,8 @@
       }
     },
     "src/simpleAMMV7ERC.sol": {
-      "lastModificationDate": 1684157830780,
-      "contentHash": "89b1ebb628cb4a8070d6d68f059acce2",
+      "lastModificationDate": 1684206173531,
+      "contentHash": "3e8b14d43bd193a85199cd8d28d896cd",
       "sourceName": "src/simpleAMMV7ERC.sol",
       "solcConfig": {
         "settings": {
@@ -1690,8 +1690,8 @@
       }
     },
     "test/testAMMV6.t.sol": {
-      "lastModificationDate": 1684159385569,
-      "contentHash": "76c237dd27ec8152270712858bc52ae4",
+      "lastModificationDate": 1684205523533,
+      "contentHash": "bd3ce52aa3decb51695270949f661bcf",
       "sourceName": "test/testAMMV6.t.sol",
       "solcConfig": {
         "settings": {
@@ -1755,8 +1755,8 @@
       }
     },
     "test/testAMMV6ERC.t.sol": {
-      "lastModificationDate": 1684157719812,
-      "contentHash": "0364f33165f843120512d45223558efa",
+      "lastModificationDate": 1684206717354,
+      "contentHash": "32c812aba17e034bcd627b69aee1e285",
       "sourceName": "test/testAMMV6ERC.t.sol",
       "solcConfig": {
         "settings": {
@@ -1810,7 +1810,7 @@
         "lib/openzeppelin-contracts/contracts/utils/Context.sol",
         "lib/openzeppelin-contracts\\contracts/utils/math/Math.sol",
         "src\\erc20.sol",
-        "src\\simpleAMMV6ERC.sol"
+        "src\\simpleAMMV7ERC.sol"
       ],
       "versionRequirement": "^0.8.18",
       "artifacts": {

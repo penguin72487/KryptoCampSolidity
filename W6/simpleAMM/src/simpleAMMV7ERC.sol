@@ -12,8 +12,8 @@ import "@openzeppelin/contracts/utils/math/Math.sol";
 contract AMM {
     address developer;
 
-    IERC20 public immutable token0;
-    IERC20 public immutable token1;
+    ERC20 public immutable token0;
+    ERC20 public immutable token1;
 
     uint256 public reserve0;
     uint256 public reserve1;
@@ -26,9 +26,13 @@ contract AMM {
     constructor(address _token0, address _token1, uint256 _fee) {
         require(_fee>0 &&_fee <= 100, "fee > 10%");
         developer = msg.sender;
-        token0 = IERC20(_token0);
-        token1 = IERC20(_token1);
+        token0 = ERC20(_token0);
+        token1 = ERC20(_token1);
         fee = _fee;
+        //check ERC20 interface
+        token0.name();
+        token0.symbol();
+        token0.decimals();
     }
 
     function _mint(address _to, uint256 _amount) private {
@@ -195,11 +199,11 @@ contract AMM {
         return (reserve0 * amountInWithFee) / (reserve1 + amountInWithFee);
     }
     function getInToken1OutputToken0LiquidityAmount(uint256 _amount) public view returns (uint256) {
-        require(reserve0 > 0 && reserve1 > 0 && _amount>0, "Invalid"+ token1.symbol+"reserves");
+        require(reserve0 > 0 && reserve1 > 0 && _amount>0,string(abi.encodePacked("Invalid", token1.symbol(),"reserves")));
         return reserve0 * _amount / reserve1;
     }
     function getInToken0OutputToken1LiquidityAmount(uint256 _amount) public view returns (uint256) {
-        require(reserve0 > 0 && reserve1 > 0 && _amount>0, "Invalid"+ token0.symbol+"reserves");
+        require(reserve0 > 0 && reserve1 > 0 && _amount>0,string(abi.encodePacked("Invalid", token0.symbol(),"reserves")));
         return reserve1 * _amount / reserve0;
     }
 

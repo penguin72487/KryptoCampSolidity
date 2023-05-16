@@ -3,7 +3,7 @@ pragma solidity ^0.8.18;
 
 import "forge-std/Test.sol";
 import "forge-std/Vm.sol";
-import "../src/simpleAMMV6ERC.sol";
+import "../src/simpleAMMV7ERC.sol";
 import "../src/erc20.sol";
 
 contract TestSimpleAMMTest is Test {
@@ -16,25 +16,26 @@ contract TestSimpleAMMTest is Test {
     function setUp() external {
         token0 = new testGaoDuckToken("Token0", "TK0",8);
         token1 = new testGaoDuckToken("Token1", "TK1",18);
-        ammInstance = new AMM(address(token0), address(token1));
+        ammInstance = new AMM(address(token0), address(token1),3);
         
         user1 = address(0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266);
         user2 = address(0x70997970C51812dc3A010C7d01b50e0d17dc79C8);
 
-        token0.mint(user1, 40000 * 10**18);
-        token0.mint(user2, 40000 * 10**18);
-        token1.mint(user1, 40000 * 10**18);
-        token1.mint(user2, 40000 * 10**18);
+        token0.mint(user1, 40000 * 10**token0.decimals());
+        token0.mint(user2, 40000 * 10**token0.decimals());
+        token1.mint(user1, 40000 * 10**token1.decimals());
+        token1.mint(user2, 40000 * 10**token1.decimals());
+
 
         payable(user1).transfer(50 ether);
         payable(user2).transfer(50 ether);
         
         vm.prank(user1);
-        token0.approve(address(ammInstance), 40000 * 10**18);
-        token1.approve(address(ammInstance), 40000 * 10**18);
+        token0.approve(address(ammInstance), 40000 * 10**token0.decimals());
+        token1.approve(address(ammInstance), 40000 * 10**token1.decimals());
         vm.prank(user2);
-        token0.approve(address(ammInstance), 40000 * 10**18);
-        token1.approve(address(ammInstance), 40000 * 10**18);
+        token0.approve(address(ammInstance), 40000 * 10**token0.decimals());
+        token1.approve(address(ammInstance), 40000 * 10**token1.decimals());
     }
     // function run() external {
     //     testAddLiquidity();
@@ -51,13 +52,13 @@ contract TestSimpleAMMTest is Test {
 
 
         vm.prank(user1);
-        ammInstance.addLiquidity(1000 * 10**18, 1000 * 10**18);
+        ammInstance.addLiquidity(1000 * 10**token0.decimals(), 1000 * 10**token1.decimals());
 
         uint256 lpBalanceUser1 = ammInstance.balanceOf(user1);
         assertTrue(lpBalanceUser1 > 0, "User 1 should have received LP tokens");
 
         vm.prank(user2);
-        ammInstance.addLiquidity(2000 * 10**18, 2000 * 10**18);
+        ammInstance.addLiquidity(2000 * 10**token0.decimals(), 2000 * 10**token1.decimals());
 
         uint256 lpBalanceUser2 = ammInstance.balanceOf(user2);
         assertTrue(lpBalanceUser2 > 0, "User 2 should have received LP tokens");

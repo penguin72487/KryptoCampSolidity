@@ -423,7 +423,7 @@
 				"name": "token",
 				"outputs": [
 					{
-						"internalType": "contract IExtendedERC20",
+						"internalType": "contract ERC20",
 						"name": "",
 						"type": "address"
 					}
@@ -513,11 +513,11 @@
 			]
 		},
 		"W6/simpleAMM/src/simpleAMMV7.sol": {
-			"keccak256": "0x6a2386971bc64cb40ab7f298c56f99379d1c017f746102a7fcda65ff8a622983",
+			"keccak256": "0x7d565f23b6f37767e03120452593a52da47fb456afc79895f7421537564dec04",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://658bfadcd0ffdab2caae8fceeadecc57a026d2b050b85c49030278daf8852c01",
-				"dweb:/ipfs/QmPwViVYpKs5LyPxtCCZ2dmMt96X3zSSUoEP4YRqSGzgvg"
+				"bzz-raw://d483acc451e82cfb0d1f18d44b6727c565cff55be5352f0c7dfa2d70f0cc39d2",
+				"dweb:/ipfs/QmUp6rhvAr38KfZfZYZyS3oZbGtF8eVN8wGLCLdMLt4qNX"
 			]
 		}
 	},

@@ -30,12 +30,7 @@ contract TestSimpleAMMTest is Test {
         payable(user1).transfer(50 ether);
         payable(user2).transfer(50 ether);
         
-        vm.prank(user1);
-        token0.approve(address(ammInstance), 40000 * 10**token0.decimals());
-        token1.approve(address(ammInstance), 40000 * 10**token1.decimals());
-        vm.prank(user2);
-        token0.approve(address(ammInstance), 40000 * 10**token0.decimals());
-        token1.approve(address(ammInstance), 40000 * 10**token1.decimals());
+
     }
     // function run() external {
     //     testAddLiquidity();
@@ -46,107 +41,78 @@ contract TestSimpleAMMTest is Test {
     //     // testRemoveLiquidity();
     // }
 
-    function testAddLiquidity() public {
-        uint256 initialBalanceUser1 = token0.balanceOf(user1);
-        uint256 initialBalanceUser2 = token1.balanceOf(user2);
-
-
+    function testAddLiquidity() external {
+        uint256 amount0 = 10000 * 10**token0.decimals();
+        uint256 amount1 = 10000 * 10**token1.decimals();
         vm.prank(user1);
-        ammInstance.addLiquidity(1000 * 10**token0.decimals(), 1000 * 10**token1.decimals());
-
-        uint256 lpBalanceUser1 = ammInstance.balanceOf(user1);
-        assertTrue(lpBalanceUser1 > 0, "User 1 should have received LP tokens");
+        token0.approve(address(ammInstance), 40000 * 10**token0.decimals());
+        token1.approve(address(ammInstance), 40000 * 10**token1.decimals());
+        vm.prank(user2);
+        token0.approve(address(ammInstance), 40000 * 10**token0.decimals());
+        token1.approve(address(ammInstance), 40000 * 10**token1.decimals());
+        vm.prank(user1);
+        ammInstance.addLiquidity(amount0, amount1);
+        assertEq(ammInstance.reserve0(), 10000 * 10**token0.decimals());
+        assertEq(ammInstance.reserve1(), 10000 * 10**token1.decimals());
 
         vm.prank(user2);
-        ammInstance.addLiquidity(2000 * 10**token0.decimals(), 2000 * 10**token1.decimals());
-
-        uint256 lpBalanceUser2 = ammInstance.balanceOf(user2);
-        assertTrue(lpBalanceUser2 > 0, "User 2 should have received LP tokens");
+        ammInstance.addLiquidity(amount0, amount1);
+        assertEq(ammInstance.reserve0(), 20000 * 10**token0.decimals());
+        assertEq(ammInstance.reserve1(), 20000 * 10**token1.decimals());
     }
 
-
-    // function testSwap() public {
-    //     uint256 initialBalanceUser1 = token0.balanceOf(user1);
-    //     uint256 initialBalanceUser2 = token1.balanceOf(user2);
-        
-    //     vm.prank(user1);
-    //     ammInstance.addLiquidity{value: 10 ether}(1000 * 10**18, 1000 * 10**18);
-    //     uint256 lpBalanceUser1 = ammInstance.balanceOf(user1);
-        
-    //     vm.prank(user2);
-    //     uint256 amountIn = 1 ether;
-    //     uint256 amountOut = ammInstance.swap(amountIn);
-
-    //     assertTrue(amountOut > 0, "User 2 should have received token0 tokens");
-    //     assertEq(token0.balanceOf(user2), initialBalanceUser2 + amountOut, "User 2 token0 balance mismatch");
-    // }
-
-    //     function testSwapTokenForToken1() external {
-    //     uint256 initialBalanceUser1 = token0.balanceOf(user1);
-    //     uint256 initialBalanceUser2 = token1.balanceOf(user2);
-        
-    //     vm.prank(user1);
-    //     ammInstance.addLiquidity{value: 10 ether}(1000 * 10**18, 1000 * 10**18);
-        
-    //     vm.prank(user2);
-    //     uint256 amountIn = 100 * 10**18;
-    //     uint256 amountOut = ammInstance.swapTokenForToken1(amountIn);
-
-    //     assertTrue(amountOut > 0, "User 2 should have received token1 tokens");
-    //     assertEq(token1.balanceOf(user2), initialBalanceUser2 + amountOut, "User 2 token1 balance mismatch");
-    // }
-
-    // function testSwap_WithSlipLock() external {
-    //     uint256 initialBalanceUser2 = token0.balanceOf(user2);
-
-    //     vm.prank(user2);
-    //     ammInstance.addLiquidity{value: 10 ether}(1000 * 10**18, 1000 * 10**18);
-
-    //     uint256 amountIn = 1 ether;
-    //     uint256 forwardOutput = ammInstance.getPredictOutputToken1(amountIn);
-    //     uint256 slipLock = 5;
-    //     uint256 amountOut = ammInstance.swap_WithSlipLock(amountIn, forwardOutput, slipLock);
-
-    //     assertTrue(amountOut >= (forwardOutput * (1000 - slipLock) / 1000), "SlipLock not applied");
-    //     assertEq(token0.balanceOf(user2), initialBalanceUser2 + amountOut, "User 2 token0 balance mismatch");
-    // }
-
-    // function testSwapTokenForToken1_WithSlipLock() external {
-    //     uint256 initialBalanceUser2 = token1.balanceOf(user2);
-    //     vm.prank(user2);
-    //     ammInstance.addLiquidity{value: 10 ether}(1000 * 10**18, 1000 * 10**18);
-
-    //     uint256 amountIn = 100 * 10**18;
-    //     uint256 forwardOutput = ammInstance.getPredictOutputToken0(amountIn);
-    //     uint256 slipLock = 5;
-    //     uint256 amountOut = ammInstance.swapTokenForToken1_WithSlipLock(amountIn, forwardOutput, slipLock);
-
-    //     assertTrue(amountOut >= (forwardOutput * (1000 - slipLock) / 1000), "SlipLock not applied");
-    //     assertEq(token1.balanceOf(user2), initialBalanceUser2 + amountOut, "User 2 token1 balance mismatch");
-    // }
     // function testRemoveLiquidity() external {
-    //     uint256 initialBalanceUser1 = token0.balanceOf(user1);
-    //     uint256 initialBalanceUser2 = token1.balanceOf(user2);
-    //     uint256 initialEthBalanceUser1 = address(user1).balance;
-    //     uint256 initialEthBalanceUser2 = address(user2).balance;
     //     vm.prank(user1);
-    //     ammInstance.addLiquidity{value: 10 ether}(1000 * 10**18, 1000 * 10**18);
+    //     uint256 shares = ammInstance.myShares();
+    //     (uint256 amount0, uint256 amount1) = ammInstance.removeLiquidity(shares / 2);
+    //     assertEq(amount0, 5000 * 10**token0.decimals());
+    //     assertEq(amount1, 5000 * 10**token1.decimals());
 
-    //     uint256 lpBalanceUser1 = ammInstance.sharesOf(user1);
-    //     uint256 lpBalanceUser2 = ammInstance.sharesOf(user2);
-
-    //     (uint256 amount0, uint256 amount1) = ammInstance.removeLiquidity(lpBalanceUser1);
-    //     assertTrue(amount0 > 0 && amount1 > 0, "User 1 should have received tokens");
-    //     assertEq(token0.balanceOf(user1), initialBalanceUser1 + amount0, "User 1 token0 balance mismatch");
-    //     assertEq(token1.balanceOf(user1), initialBalanceUser1 + amount1, "User 1 token1 balance mismatch");
-    //     assertEq(address(user1).balance, initialEthBalanceUser1, "User 1 ETH balance should not change");
     //     vm.prank(user2);
-    //     (amount0, amount1) = ammInstance.removeLiquidity(lpBalanceUser2);
-    //     assertTrue(amount0 > 0 && amount1 > 0, "User 2 should have received tokens");
-    //     assertEq(token0.balanceOf(user2), initialBalanceUser2 + amount0, "User 2 token0 balance mismatch");
-    //     assertEq(token1.balanceOf(user2), initialBalanceUser2 + amount1, "User 2 token1 balance mismatch");
-    //     assertEq(address(user2).balance, initialEthBalanceUser2, "User 2 ETH balance should not change");
+    //     shares = ammInstance.myShares();
+    //     (amount0, amount1) = ammInstance.removeLiquidity(shares / 2);
+    //     assertEq(amount0, 5000 * 10**token0.decimals());
+    //     assertEq(amount1, 5000 * 10**token1.decimals());
     // }
 
+    // function testSwapToken1ForToken0() external {
+    //     vm.prank(user1);
+    //     uint256 amountOut = ammInstance.swapToken1ForToken0(1000 * 10**token1.decimals());
+    //     assertTrue(amountOut > 0);
+
+    //     vm.prank(user2);
+    //     amountOut = ammInstance.swapToken1ForToken0(1000 * 10**token1.decimals());
+    //     assertTrue(amountOut > 0);
+    // }
+
+    // function testSwapToken0ForToken1() external {
+    //     vm.prank(user1);
+    //     uint256 amountOut = ammInstance.swapToken0ForToken1(1000 * 10**token0.decimals());
+    //     assertTrue(amountOut > 0);
+
+    //     vm.prank(user2);
+    //     amountOut = ammInstance.swapToken0ForToken1(1000 * 10**token0.decimals());
+    //     assertTrue(amountOut > 0);
+    // }
+
+    // function testSwapToken1ForToken0_WithSlipLock() external {
+    //     vm.prank(user1);
+    //     uint256 amountOut = ammInstance.swapToken1ForToken0_WithSlipLock(1000 * 10**token1.decimals(), 500 * 10**token0.decimals(), 10);
+    //     assertTrue(amountOut >= 500 * 10**token0.decimals());
+
+    //     vm.prank(user2);
+    //     amountOut = ammInstance.swapToken1ForToken0_WithSlipLock(1000 * 10**token1.decimals(), 500 * 10**token0.decimals(), 10);
+    //     assertTrue(amountOut >= 500 * 10**token0.decimals());
+    // }
+
+    // function testSwapToken0ForToken1_WithSlipLock() external {
+    //     vm.prank(user1);
+    //     uint256 amountOut = ammInstance.swapToken0ForToken1_WithSlipLock(1000 * 10**token0.decimals(), 500 * 10**token1.decimals(), 10);
+    //     assertTrue(amountOut >= 500 * 10**token1.decimals());
+
+    //     vm.prank(user2);
+    //     amountOut = ammInstance.swapToken0ForToken1_WithSlipLock(1000 * 10**token0.decimals(), 500 * 10**token1.decimals(), 10);
+    //     assertTrue(amountOut >= 500 * 10**token1.decimals());
+    // }
 }
 

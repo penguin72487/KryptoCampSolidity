@@ -1,14 +1,14 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.18;
+pragma solidity >=0.8.18 <0.9.0;
 
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
-import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import "@openzeppelin/contracts/utils/math/Math.sol";
 //merge 0xd2a5bC10698FD955D1Fe6cb468a17809A08fd005
-//sepolia 0xbc807A10d42e2B1eFF7c1e8dD8e4E63D10A377A7
+//sepolia 0x4cD54dB1026CAcC623ac50bE02Ce21C9B28E4f0E
 
-//T0 0x5d74d6264b0cbE893EeaDF8c8eEB2783120a465d
-//T1 0x02B1d2929f6c38f1728b3Fc99dB595FdDfA97bF7
+//T0 0xafea7BB86Fb50A68db5bD443e0607aab59DF0750
+//T1 0x4aF233EF89022f4618a3879C7133Ac24d039feee
+
 contract AMM {
     address developer;
 

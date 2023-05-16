@@ -6,8 +6,8 @@ pragma solidity ^0.8.18;
 // V3 0x3ea585565c490232b0379C7D3C3A9fC3fA5C9c0C
 // V4  0x6D81EE8B003422Ee9d1255aceA42386eCBD20a60 merge 0x540d7E428D5207B30EE03F2551Cbb5751D3c7569
 // V6 merge 0xaE036c65C649172b43ef7156b009c6221B596B8b
+// V7 sepolia 0x69911ED54C0393Afd31B278B93D908Fb4387A94f
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
-import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import "@openzeppelin/contracts/utils/math/Math.sol";
 
 contract AMM {
@@ -197,7 +197,8 @@ contract AMM {
     }
     function getInERCOutputETHLiquidityAmount(uint256 _amount) public view returns (uint256) {
         require(reserveETH > 0 && reserveERC > 0,"Invalid reserves");
-        require(_amount>0, string(abi.encodePacked("Invalid ", token.symbol(), " amount")));
+        require(_amount>0, string(abi.encodePacked("Invalid", token.symbol(),"reserves")));
+          
         return reserveETH * _amount / reserveERC;
     }
     function getInETHOutputERCLiquidityAmount(uint256 _amount) public view returns (uint256) {

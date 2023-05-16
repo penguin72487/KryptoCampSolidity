@@ -434,20 +434,12 @@
 				"dweb:/ipfs/QmRK2Y5Yc6BK7tGKkgsgn3aJEQGi5aakeSPZvS65PV8Xp3"
 			]
 		},
-		"@openzeppelin/contracts/utils/math/Math.sol": {
-			"keccak256": "0xa1e8e83cd0087785df04ac79fb395d9f3684caeaf973d9e2c71caef723a3a5d6",
-			"license": "MIT",
-			"urls": [
-				"bzz-raw://33bbf48cc069be677705037ba7520c22b1b622c23b33e1a71495f2d36549d40b",
-				"dweb:/ipfs/Qmct36zWXv3j7LZB83uwbg7TXwnZSN1fqHNDZ93GG98bGz"
-			]
-		},
 		"W6/simpleAMM/src/erc20.sol": {
-			"keccak256": "0x6f5577302f618b3fa525f84cefbc2b13fbd415dc9ca36ac4077e4f133f045e42",
+			"keccak256": "0x2724c80cbcbec2f563c372f78490673cbffceb7f2ffb74f048f831007d1b4dbe",
 			"license": "GPL-3.0",
 			"urls": [
-				"bzz-raw://7a51c1cacaf7e67f50f232d7817f24472d08ea1827bee4c9f75fb816bedaabaa",
-				"dweb:/ipfs/QmYtc3gAFnoHtJNrAxE6ZvuMLjESaNrgnHSwx7hw4af8dz"
+				"bzz-raw://b6bc5a091c8dfea5e6368f762d7a43ec6320c6622b15d7c61c035b86e044ea8e",
+				"dweb:/ipfs/QmdwQCAsrp9R38tMNWKeZyw2nBTRqvvNiurqxYmyW4iDQC"
 			]
 		}
 	},

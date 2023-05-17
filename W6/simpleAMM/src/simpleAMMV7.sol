@@ -129,16 +129,11 @@ contract AMM {
     }
 
     function removeAllLiquidity(address _user) external returns (uint256 amountETH, uint256 amountERC) {
-        return _removeLiquidity(_user,balanceOf[_user]);
+        return _removeLiquidity(msg.sender,balanceOf[_user]);
     }
     function removeLiquidity(uint256 _shares) external returns (uint256 amountETH, uint256 amountERC) {
         require(_shares <= balanceOf[msg.sender], "Insufficient balance");
         return _removeLiquidity(msg.sender, _shares);
-    }
-
-    function removeLiquidity(address _user, uint256 _shares) external returns (uint256 amountETH, uint256 amountERC) {
-        require(_shares <= balanceOf[_user], "Insufficient balance");
-        return _removeLiquidity(_user, _shares);
     }
     function _removeLiquidity(address _user, uint256 _shares) internal returns (uint256 amountETH, uint256 amountERC) {
         amountETH = (_shares * reserveETH) / totalSupply;
@@ -171,9 +166,6 @@ contract AMM {
         } else if (y != 0) {
             z = 1;
         }
-    }
-    function _min(uint256 x, uint256 y) private pure returns (uint256) {
-        return x <= y ? x : y;
     }
     function getETHPrice() public view returns (uint256) {
         require(reserveETH > 0 && reserveERC > 0, "Invalid ETH reserves");

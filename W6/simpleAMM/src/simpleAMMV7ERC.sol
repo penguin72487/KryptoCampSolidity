@@ -133,17 +133,12 @@ contract AMM {
     }
 
     function removeAllLiquidity(address _user) external returns (uint256 amount0, uint256 amount1) {
-        return _removeLiquidity(_user, balanceOf[_user]);
+        return _removeLiquidity(msg.sender, balanceOf[_user]);
     }
 
     function removeLiquidity(uint256 _shares) external returns (uint256 amount0, uint256 amount1) {
         require(_shares <= balanceOf[msg.sender], "Insufficient balance");
         return _removeLiquidity(msg.sender, _shares);
-    }
-
-    function removeLiquidity(address _user, uint256 _shares) external returns (uint256 amount0, uint256 amount1) {
-        require(_shares <= balanceOf[_user], "Insufficient balance");
-        return _removeLiquidity(_user, _shares);
     }
 
     function _removeLiquidity(address _user, uint256 _shares) internal returns (uint256 amount0, uint256 amount1) {

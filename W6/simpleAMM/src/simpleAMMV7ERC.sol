@@ -3,11 +3,6 @@ pragma solidity >=0.8.18 <0.9.0;
 
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 import "@openzeppelin/contracts/utils/math/Math.sol";
-//merge 0xd2a5bC10698FD955D1Fe6cb468a17809A08fd005
-//sepolia 0x4cD54dB1026CAcC623ac50bE02Ce21C9B28E4f0E
-
-//T0 0xafea7BB86Fb50A68db5bD443e0607aab59DF0750
-//T1 0x4aF233EF89022f4618a3879C7133Ac24d039feee
 
 contract AMM {
     address developer;
@@ -33,6 +28,9 @@ contract AMM {
         token0.name();
         token0.symbol();
         token0.decimals();
+        token1.name();
+        token1.symbol();
+        token1.decimals();
     }
 
     function _mint(address _to, uint256 _amount) private {

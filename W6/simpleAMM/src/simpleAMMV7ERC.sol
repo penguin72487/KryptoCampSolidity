@@ -33,6 +33,9 @@ contract AMM {
         token0.name();
         token0.symbol();
         token0.decimals();
+        token1.name();
+        token1.symbol();
+        token1.decimals();
     }
 
     function _mint(address _to, uint256 _amount) private {

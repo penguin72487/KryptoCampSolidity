@@ -5,7 +5,7 @@ import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 import "@openzeppelin/contracts/utils/math/Math.sol";
 
 contract AMM {
-    address developer;
+    address public immutable developer;
 
     ERC20 public immutable token0;
     ERC20 public immutable token1;
@@ -130,18 +130,13 @@ contract AMM {
         _update(token0.balanceOf(address(this)), token1.balanceOf(address(this)));
     }
 
-    function removeAllLiquidity(address _user) external returns (uint256 amount0, uint256 amount1) {
-        return _removeLiquidity(_user, balanceOf[_user]);
+    function removeAllLiquidity() external returns (uint256 amount0, uint256 amount1) {
+        return _removeLiquidity(msg.sender, balanceOf[msg.sender]);
     }
 
     function removeLiquidity(uint256 _shares) external returns (uint256 amount0, uint256 amount1) {
         require(_shares <= balanceOf[msg.sender], "Insufficient balance");
         return _removeLiquidity(msg.sender, _shares);
-    }
-
-    function removeLiquidity(address _user, uint256 _shares) external returns (uint256 amount0, uint256 amount1) {
-        require(_shares <= balanceOf[_user], "Insufficient balance");
-        return _removeLiquidity(_user, _shares);
     }
 
     function _removeLiquidity(address _user, uint256 _shares) internal returns (uint256 amount0, uint256 amount1) {

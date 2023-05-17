@@ -5,7 +5,7 @@ import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 import "@openzeppelin/contracts/utils/math/Math.sol";
 
 contract AMM {
-    address developer;
+    address public immutable developer;
 
     ERC20 public immutable token;
     address public constant ETH_ADDRESS = address(0);
@@ -122,17 +122,12 @@ contract AMM {
         _update(address(this).balance, token.balanceOf(address(this)));
     }
 
-    function removeAllLiquidity(address _user) external returns (uint256 amountETH, uint256 amountERC) {
-        return _removeLiquidity(_user,balanceOf[_user]);
+    function removeAllLiquidity() external returns (uint256 amountETH, uint256 amountERC) {
+        return _removeLiquidity(msg.sender,balanceOf[msg.sender]);
     }
     function removeLiquidity(uint256 _shares) external returns (uint256 amountETH, uint256 amountERC) {
         require(_shares <= balanceOf[msg.sender], "Insufficient balance");
         return _removeLiquidity(msg.sender, _shares);
-    }
-
-    function removeLiquidity(address _user, uint256 _shares) external returns (uint256 amountETH, uint256 amountERC) {
-        require(_shares <= balanceOf[_user], "Insufficient balance");
-        return _removeLiquidity(_user, _shares);
     }
     function _removeLiquidity(address _user, uint256 _shares) internal returns (uint256 amountETH, uint256 amountERC) {
         amountETH = (_shares * reserveETH) / totalSupply;
@@ -165,9 +160,6 @@ contract AMM {
         } else if (y != 0) {
             z = 1;
         }
-    }
-    function _min(uint256 x, uint256 y) private pure returns (uint256) {
-        return x <= y ? x : y;
     }
     function getETHPrice() public view returns (uint256) {
         require(reserveETH > 0 && reserveERC > 0, "Invalid ETH reserves");

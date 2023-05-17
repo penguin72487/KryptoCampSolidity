@@ -135,8 +135,8 @@ contract AMM {
         _update(token0.balanceOf(address(this)), token1.balanceOf(address(this)));
     }
 
-    function removeAllLiquidity(address _user) external returns (uint256 amount0, uint256 amount1) {
-        return _removeLiquidity(msg.sender, balanceOf[_user]);
+    function removeAllLiquidity() external returns (uint256 amount0, uint256 amount1) {
+        return _removeLiquidity(msg.sender, balanceOf[msg.sender]);
     }
 
     function removeLiquidity(uint256 _shares) external returns (uint256 amount0, uint256 amount1) {

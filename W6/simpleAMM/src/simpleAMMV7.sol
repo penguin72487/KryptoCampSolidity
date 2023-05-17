@@ -128,8 +128,8 @@ contract AMM {
         _update(address(this).balance, token.balanceOf(address(this)));
     }
 
-    function removeAllLiquidity(address _user) external returns (uint256 amountETH, uint256 amountERC) {
-        return _removeLiquidity(msg.sender,balanceOf[_user]);
+    function removeAllLiquidity() external returns (uint256 amountETH, uint256 amountERC) {
+        return _removeLiquidity(msg.sender,balanceOf[msg.sender]);
     }
     function removeLiquidity(uint256 _shares) external returns (uint256 amountETH, uint256 amountERC) {
         require(_shares <= balanceOf[msg.sender], "Insufficient balance");

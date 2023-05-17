@@ -11,7 +11,7 @@ import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 import "@openzeppelin/contracts/utils/math/Math.sol";
 
 contract AMM {
-    address developer;
+    address public immutable developer;
 
     ERC20 public immutable token;
     address public constant ETH_ADDRESS = address(0);

@@ -10,7 +10,7 @@ import "@openzeppelin/contracts/utils/math/Math.sol";
 //T1 0x4aF233EF89022f4618a3879C7133Ac24d039feee
 
 contract AMM {
-    address developer;
+    address public immutable developer;
 
     ERC20 public immutable token0;
     ERC20 public immutable token1;

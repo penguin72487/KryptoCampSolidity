@@ -776,7 +776,7 @@
         }
       },
       "imports": [
-        "lib/openzeppelin-contracts/contracts/token/ERC20/IERC20.sol",
+        "lib/openzeppelin-contracts\\contracts/token/ERC20/IERC20.sol",
         "lib/openzeppelin-contracts/contracts/token/ERC20/extensions/IERC20Metadata.sol",
         "lib/openzeppelin-contracts/contracts/utils/Context.sol"
       ],
@@ -860,7 +860,7 @@
         }
       },
       "imports": [
-        "lib/openzeppelin-contracts/contracts/token/ERC20/IERC20.sol"
+        "lib/openzeppelin-contracts\\contracts/token/ERC20/IERC20.sol"
       ],
       "versionRequirement": "^0.8.0",
       "artifacts": {
@@ -1030,8 +1030,8 @@
       }
     },
     "src/erc20.sol": {
-      "lastModificationDate": 1684205606648,
-      "contentHash": "00d9867196e7587bd8c320bbbefef38c",
+      "lastModificationDate": 1684302074796,
+      "contentHash": "7b1d2c8f989b834e8ceef1e7733424f4",
       "sourceName": "src/erc20.sol",
       "solcConfig": {
         "settings": {
@@ -1065,8 +1065,7 @@
         "lib/openzeppelin-contracts\\contracts/token/ERC20/ERC20.sol",
         "lib/openzeppelin-contracts\\contracts/token/ERC20/IERC20.sol",
         "lib/openzeppelin-contracts/contracts/token/ERC20/extensions/IERC20Metadata.sol",
-        "lib/openzeppelin-contracts/contracts/utils/Context.sol",
-        "lib/openzeppelin-contracts\\contracts/utils/math/Math.sol"
+        "lib/openzeppelin-contracts/contracts/utils/Context.sol"
       ],
       "versionRequirement": ">=0.8.18, <0.9.0",
       "artifacts": {
@@ -1076,7 +1075,7 @@
       }
     },
     "src/simpleAMM.sol": {
-      "lastModificationDate": 1684161411500,
+      "lastModificationDate": 1682819285699,
       "contentHash": "9477826a88eb729e5f0c0cb57ea43a6c",
       "sourceName": "src/simpleAMM.sol",
       "solcConfig": {
@@ -1124,7 +1123,7 @@
       }
     },
     "src/simpleAMMV4.sol": {
-      "lastModificationDate": 1684161411841,
+      "lastModificationDate": 1682819285700,
       "contentHash": "1afef64e437f3f76c5ce1998bf5b88a2",
       "sourceName": "src/simpleAMMV4.sol",
       "solcConfig": {
@@ -1172,7 +1171,7 @@
       }
     },
     "src/simpleAMMV5.sol": {
-      "lastModificationDate": 1682936017696,
+      "lastModificationDate": 1684302074797,
       "contentHash": "72efbe7309895d987fc928d8873a51c7",
       "sourceName": "src/simpleAMMV5.sol",
       "solcConfig": {
@@ -1218,7 +1217,7 @@
       }
     },
     "src/simpleAMMV5abandom.sol": {
-      "lastModificationDate": 1684161412380,
+      "lastModificationDate": 1682819285700,
       "contentHash": "b0ef59d3366dd61703eec1512f6a966a",
       "sourceName": "src/simpleAMMV5abandom.sol",
       "solcConfig": {
@@ -1254,7 +1253,6 @@
         "lib/openzeppelin-contracts\\contracts/token/ERC20/IERC20.sol",
         "lib/openzeppelin-contracts/contracts/token/ERC20/extensions/IERC20Metadata.sol",
         "lib/openzeppelin-contracts/contracts/utils/Context.sol",
-        "lib/openzeppelin-contracts\\contracts/utils/math/Math.sol",
         "src\\erc20.sol"
       ],
       "versionRequirement": "^0.8.17",
@@ -1265,7 +1263,7 @@
       }
     },
     "src/simpleAMMV5lock.sol": {
-      "lastModificationDate": 1683026796350,
+      "lastModificationDate": 1684302074797,
       "contentHash": "d41d8cd98f00b204e9800998ecf8427e",
       "sourceName": "src/simpleAMMV5lock.sol",
       "solcConfig": {
@@ -1305,7 +1303,7 @@
       }
     },
     "src/simpleAMMV6.sol": {
-      "lastModificationDate": 1684153808877,
+      "lastModificationDate": 1684302074798,
       "contentHash": "00b38d96ea2b09d350e1daf38030e62e",
       "sourceName": "src/simpleAMMV6.sol",
       "solcConfig": {
@@ -1351,7 +1349,7 @@
       }
     },
     "src/simpleAMMV6ERC.sol": {
-      "lastModificationDate": 1684152484154,
+      "lastModificationDate": 1684302074798,
       "contentHash": "84458e4f2ac72cda66953d87b1ac65e8",
       "sourceName": "src/simpleAMMV6ERC.sol",
       "solcConfig": {
@@ -1397,8 +1395,8 @@
       }
     },
     "src/simpleAMMV7.sol": {
-      "lastModificationDate": 1684205914483,
-      "contentHash": "2ef807d46009dab4e3f79ced81d0cee8",
+      "lastModificationDate": 1684305678219,
+      "contentHash": "309d7fb06603ac94c2aca5d634542aa0",
       "sourceName": "src/simpleAMMV7.sol",
       "solcConfig": {
         "settings": {
@@ -1443,8 +1441,8 @@
       }
     },
     "src/simpleAMMV7ERC.sol": {
-      "lastModificationDate": 1684206173531,
-      "contentHash": "3e8b14d43bd193a85199cd8d28d896cd",
+      "lastModificationDate": 1684305684823,
+      "contentHash": "81a742f392c55eb2acf66884fd19927b",
       "sourceName": "src/simpleAMMV7ERC.sol",
       "solcConfig": {
         "settings": {
@@ -1481,7 +1479,7 @@
         "lib/openzeppelin-contracts/contracts/utils/Context.sol",
         "lib/openzeppelin-contracts\\contracts/utils/math/Math.sol"
       ],
-      "versionRequirement": "^0.8.18",
+      "versionRequirement": ">=0.8.18, <0.9.0",
       "artifacts": {
         "AMM": {
           "0.8.18+commit.87f61d96.Windows.msvc": "simpleAMMV7ERC.sol\\AMM.json"
@@ -1489,7 +1487,7 @@
       }
     },
     "src/teamToken.sol": {
-      "lastModificationDate": 1682946695970,
+      "lastModificationDate": 1684302074799,
       "contentHash": "35d2e6cd12357629895ee8a31e8d0819",
       "sourceName": "src/teamToken.sol",
       "solcConfig": {
@@ -1534,8 +1532,8 @@
       }
     },
     "src/test2.sol": {
-      "lastModificationDate": 1682943059725,
-      "contentHash": "0040238891318d32d6c95d89faf91402",
+      "lastModificationDate": 1684302074800,
+      "contentHash": "63c7232b5bd130139e1cb6c7f8f448fb",
       "sourceName": "src/test2.sol",
       "solcConfig": {
         "settings": {
@@ -1625,7 +1623,7 @@
       }
     },
     "test/testAMM.t.sol": {
-      "lastModificationDate": 1684157726432,
+      "lastModificationDate": 1684302074800,
       "contentHash": "23f5547d54b28cc021e4b35624085a33",
       "sourceName": "test/testAMM.t.sol",
       "solcConfig": {
@@ -1690,7 +1688,7 @@
       }
     },
     "test/testAMMV6.t.sol": {
-      "lastModificationDate": 1684205523533,
+      "lastModificationDate": 1684302074801,
       "contentHash": "bd3ce52aa3decb51695270949f661bcf",
       "sourceName": "test/testAMMV6.t.sol",
       "solcConfig": {
@@ -1755,7 +1753,7 @@
       }
     },
     "test/testAMMV6ERC.t.sol": {
-      "lastModificationDate": 1684220404633,
+      "lastModificationDate": 1684302074801,
       "contentHash": "735fd413f224d109a013911a5e36cd1a",
       "sourceName": "test/testAMMV6ERC.t.sol",
       "solcConfig": {
@@ -1820,7 +1818,7 @@
       }
     },
     "test/testAllAMMfunction.t.sol": {
-      "lastModificationDate": 1684157730941,
+      "lastModificationDate": 1684302074801,
       "contentHash": "d5bd3bc272d1482b448e7cf4fcf8e021",
       "sourceName": "test/testAllAMMfunction.t.sol",
       "solcConfig": {
@@ -1885,7 +1883,7 @@
       }
     },
     "test/testTeamToken.t.sol": {
-      "lastModificationDate": 1682945805314,
+      "lastModificationDate": 1684302074802,
       "contentHash": "9e3e210c9cb0e8d815369625c8047ba0",
       "sourceName": "test/testTeamToken.t.sol",
       "solcConfig": {

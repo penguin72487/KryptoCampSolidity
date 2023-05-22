@@ -3,6 +3,8 @@ pragma solidity >=0.8.18 <0.9.0;
 
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 import "@openzeppelin/contracts/utils/math/Math.sol";
+// token0 T0 8 0xafea7BB86Fb50A68db5bD443e0607aab59DF0750
+// token1 T1 18 0x4aF233EF89022f4618a3879C7133Ac24d039feee
 
 contract AMM {
     address public immutable developer;
